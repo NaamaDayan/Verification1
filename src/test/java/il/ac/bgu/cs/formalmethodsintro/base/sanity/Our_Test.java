@@ -12,7 +12,13 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.IntStream;
 
+import static il.ac.bgu.cs.formalmethodsintro.base.TSTestUtils.APs.*;
+import static il.ac.bgu.cs.formalmethodsintro.base.TSTestUtils.APs.R;
+import static il.ac.bgu.cs.formalmethodsintro.base.TSTestUtils.Actions.*;
+import static il.ac.bgu.cs.formalmethodsintro.base.TSTestUtils.Actions.delta;
+import static il.ac.bgu.cs.formalmethodsintro.base.TSTestUtils.States.*;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
@@ -24,12 +30,58 @@ public class Our_Test {
 
     static FvmFacade fvmFacadeImpl = FvmFacade.get();
 
-    @Before
-    public void before() {
 
+    public static TransitionSystem<TSTestUtils.States, TSTestUtils.Actions, TSTestUtils.APs> myTS1(String name) {
+        System.out.println(name);
+        TransitionSystem<TSTestUtils.States, TSTestUtils.Actions, TSTestUtils.APs> ts = new TransitionSystem<>();
+
+        ts.setName("Simple Transition System");
+
+        IntStream.range(0, 2).forEach(i -> {
+            ts.addState(TSTestUtils.States.values()[i]);
+            ts.addAction(TSTestUtils.Actions.values()[i]);
+            ts.addAtomicProposition(TSTestUtils.APs.values()[i]);
+        });
+
+        ts.addInitialState(a);
+
+        ts.addTransitionFrom(a).action(alpha).to(b);
+        ts.addTransitionFrom(b).action(beta).to(a);
+
+        ts.addToLabel(a, P);
+        ts.addToLabel(b, Q);
+
+        return ts;
+    }
+
+    public static TransitionSystem<TSTestUtils.States, TSTestUtils.Actions, TSTestUtils.APs> myTS2(String name) {
+        System.out.println(name);
+        TransitionSystem<TSTestUtils.States, TSTestUtils.Actions, TSTestUtils.APs> ts = new TransitionSystem<>();
+
+        ts.setName("Simple Transition System");
+
+        IntStream.range(2, 4).forEach(i -> {
+            ts.addState(TSTestUtils.States.values()[i]);
+            ts.addAction(TSTestUtils.Actions.values()[i]);
+            ts.addAtomicProposition(TSTestUtils.APs.values()[i]);
+        });
+
+        ts.addInitialState(c);
+        ts.addTransitionFrom(c).action(gamma).to(d);
+        ts.addTransitionFrom(d).action(delta).to(c);
+
+        ts.addToLabel(c, R);
+        ts.addToLabel(d, R);
+        return ts;
+    }
+
+    @Before
+    public void before()
+    {
         ts = TSTestUtils.simpleTransitionSystem();
-        ts1 = TSTestUtils.myTS1();
-        ts2 = TSTestUtils.myTS2();
+        ts1 = myTS1("1");
+        ts2 = myTS2("2");
+
     }
 
     @Test(timeout = 2000)
@@ -111,9 +163,9 @@ public class Our_Test {
 
     @Test(timeout = 2000)
     public void testInterleave1() throws Exception {
-        TransitionSystem inteleaveTs = fvmFacadeImpl.interleave(ts, ts);
+        TransitionSystem inteleaveTs = fvmFacadeImpl.interleave(ts1, ts2);
         System.out.println(inteleaveTs.getStates());
-        assertEquals(inteleaveTs.getInitialStates().toString(), "[<a,a>]");
+        assertEquals(inteleaveTs.getInitialStates().toString(), "[<a,c>]");
         assertEquals(inteleaveTs.getActions(), new HashSet<TSTestUtils.Actions>(Arrays.asList(TSTestUtils.Actions.alpha, TSTestUtils.Actions.beta, TSTestUtils.Actions.gamma, TSTestUtils.Actions.delta)));
         assertEquals(inteleaveTs.getAtomicPropositions(), new HashSet<TSTestUtils.APs>(Arrays.asList(TSTestUtils.APs.R, TSTestUtils.APs.P, TSTestUtils.APs.Q, TSTestUtils.APs.S)));
 

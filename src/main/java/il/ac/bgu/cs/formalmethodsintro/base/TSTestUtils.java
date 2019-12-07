@@ -75,32 +75,6 @@ public class TSTestUtils {
 
         ts.setName("Simple Transition System");
 
-        IntStream.range(0, 4).forEach(i -> {
-            ts.addState(States.values()[i]);
-            ts.addAction(Actions.values()[i]);
-            ts.addAtomicProposition(APs.values()[i]);
-        });
-
-        ts.addInitialState(a);
-
-        ts.addTransitionFrom(a).action(alpha).to(b);
-        ts.addTransitionFrom(b).action(beta).to(c);
-        ts.addTransitionFrom(c).action(gamma).to(d);
-        ts.addTransitionFrom(d).action(delta).to(a);
-
-        ts.addToLabel(a, P);
-        ts.addToLabel(b, Q);
-        ts.addToLabel(c, R);
-        ts.addToLabel(d, R);
-
-        return ts;
-    }
-
-    public static TransitionSystem<States, Actions, APs> myTS1() {
-        TransitionSystem<States, Actions, APs> ts = new TransitionSystem<>();
-
-        ts.setName("Simple Transition System");
-
         IntStream.range(0, 2).forEach(i -> {
             ts.addState(States.values()[i]);
             ts.addAction(Actions.values()[i]);
@@ -111,30 +85,14 @@ public class TSTestUtils {
 
         ts.addTransitionFrom(a).action(alpha).to(b);
         ts.addTransitionFrom(b).action(beta).to(a);
+//        ts.addTransitionFrom(c).action(gamma).to(d);
+//        ts.addTransitionFrom(d).action(delta).to(a);
 
         ts.addToLabel(a, P);
         ts.addToLabel(b, Q);
+//        ts.addToLabel(c, R);
+//        ts.addToLabel(d, R);
 
-        return ts;
-    }
-
-    public static TransitionSystem<States, Actions, APs> myTS2() {
-        TransitionSystem<States, Actions, APs> ts = new TransitionSystem<>();
-
-        ts.setName("Simple Transition System");
-
-        IntStream.range(2, 4).forEach(i -> {
-            ts.addState(States.values()[i]);
-            ts.addAction(Actions.values()[i]);
-            ts.addAtomicProposition(APs.values()[i]);
-        });
-
-        ts.addInitialState(c);
-        ts.addTransitionFrom(c).action(gamma).to(d);
-        ts.addTransitionFrom(d).action(delta).to(c);
-
-        ts.addToLabel(c, R);
-        ts.addToLabel(d, R);
         return ts;
     }
     /**
