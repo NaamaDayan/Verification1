@@ -18,11 +18,11 @@ import il.ac.bgu.cs.formalmethodsintro.base.nanopromela.NanoPromelaParser.StmtCo
  */
 public class ParserBasedActDef implements ActionDef {
 
-    /**
-     * @see
-     * il.ac.bgu.cs.formalmethodsintro.base.programgraph.ActionDef#effect(java.util.Map,
-     * java.lang.String)
-     */
+//    /**
+//     * @see
+//     * il.ac.bgu.cs.formalmethodsintro.base.programgraph.ActionDef#effect(java.util.Map,
+//     * java.lang.String)
+//     */
     @Override
     public Map<String, Object> effect(Map<String, Object> eval, Object action) {
         if (action.equals("")) {
@@ -59,10 +59,10 @@ public class ParserBasedActDef implements ActionDef {
         }
     }
 
-    /**
-     * @see
-     * il.ac.bgu.cs.formalmethodsintro.base.programgraph.ActionDef#isMatchingAction(java.lang.String)
-     */
+//    /**
+//     * @see
+//     * il.ac.bgu.cs.formalmethodsintro.base.programgraph.ActionDef#isMatchingAction(java.lang.String)
+//     */
     @Override
     public boolean isMatchingAction(Object action) {
         return action.equals("") || parseAction((String) action) != null;

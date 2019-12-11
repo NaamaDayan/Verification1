@@ -79,6 +79,16 @@ public class ProgramGraph<L, A> {
         }
     }
 
+
+    public Set<A> getActions(){
+        Set<A> actions = new HashSet<>();
+        for (PGTransition<L,A> transition : transitions){
+            actions.add(transition.getAction());
+        }
+        return actions;
+    }
+
+
     /**
      * Ann a new location (node) to the program graph.
      *

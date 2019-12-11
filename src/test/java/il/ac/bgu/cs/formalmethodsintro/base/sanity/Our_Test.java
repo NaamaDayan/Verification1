@@ -3,15 +3,15 @@ package il.ac.bgu.cs.formalmethodsintro.base.sanity;
 import il.ac.bgu.cs.formalmethodsintro.base.FvmFacade;
 import il.ac.bgu.cs.formalmethodsintro.base.TSTestUtils;
 
+import il.ac.bgu.cs.formalmethodsintro.base.programgraph.PGTransition;
+import il.ac.bgu.cs.formalmethodsintro.base.programgraph.ProgramGraph;
 import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.TSTransition;
 import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.TransitionSystem;
 import il.ac.bgu.cs.formalmethodsintro.base.util.Pair;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.IntStream;
 
 import static il.ac.bgu.cs.formalmethodsintro.base.TSTestUtils.APs.*;
@@ -27,6 +27,11 @@ public class Our_Test {
     TransitionSystem<TSTestUtils.States, TSTestUtils.Actions, TSTestUtils.APs> ts;
     TransitionSystem<TSTestUtils.States, TSTestUtils.Actions, TSTestUtils.APs> ts1;
     TransitionSystem<TSTestUtils.States, TSTestUtils.Actions, TSTestUtils.APs> ts2;
+    TransitionSystem<TSTestUtils.States, TSTestUtils.Actions, TSTestUtils.APs> ts3;
+    TransitionSystem<TSTestUtils.States, TSTestUtils.Actions, TSTestUtils.APs> ts4;
+
+    ProgramGraph<String, String> pg1;
+    ProgramGraph<String, String> pg2;
 
     static FvmFacade fvmFacadeImpl = FvmFacade.get();
 
@@ -75,12 +80,87 @@ public class Our_Test {
         return ts;
     }
 
+    public static TransitionSystem<TSTestUtils.States, TSTestUtils.Actions, TSTestUtils.APs> myTS3(String name) {
+        System.out.println(name);
+        TransitionSystem<TSTestUtils.States, TSTestUtils.Actions, TSTestUtils.APs> ts = new TransitionSystem<>();
+
+        ts.setName("Simple Transition System");
+
+        IntStream.range(2, 4).forEach(i -> {
+            ts.addState(TSTestUtils.States.values()[i]);
+            ts.addAtomicProposition(TSTestUtils.APs.values()[i]);
+        });
+
+        IntStream.range(0, 3).forEach(i -> {
+            ts.addAction(TSTestUtils.Actions.values()[i]);
+        });
+
+
+        ts.addInitialState(c);
+        ts.addTransitionFrom(c).action(alpha).to(d);
+        ts.addTransitionFrom(d).action(gamma).to(c);
+
+        ts.addToLabel(c, R);
+        ts.addToLabel(d, R);
+        return ts;
+    }
+
+    public static TransitionSystem<TSTestUtils.States, TSTestUtils.Actions, TSTestUtils.APs> myTS4(String name) {
+        System.out.println(name);
+        TransitionSystem<TSTestUtils.States, TSTestUtils.Actions, TSTestUtils.APs> ts = new TransitionSystem<>();
+
+        ts.setName("Simple Transition System");
+
+        IntStream.range(2, 4).forEach(i -> {
+            ts.addState(TSTestUtils.States.values()[i]);
+            ts.addAtomicProposition(TSTestUtils.APs.values()[i]);
+        });
+
+        IntStream.range(0, 2).forEach(i -> {
+            ts.addAction(TSTestUtils.Actions.values()[i]);
+        });
+
+
+        ts.addInitialState(c);
+        ts.addTransitionFrom(c).action(alpha).to(d);
+        ts.addTransitionFrom(c).action(alpha).to(c);
+        ts.addTransitionFrom(d).action(beta).to(c);
+
+        ts.addToLabel(c, R);
+        ts.addToLabel(d, R);
+        return ts;
+    }
+
+    public static ProgramGraph<String, String> myPG1() {
+        ProgramGraph<String, String> pg1 = FvmFacade.get().createProgramGraph();
+        pg1.setName("pg1");
+        pg1.addTransition(new PGTransition<>("a", "true", "x:=x+1", "b"));
+        pg1.addInitalization(new LinkedList<>(Arrays.asList("x:=5", "y:=1")));
+        pg1.setInitial("a", true);
+        return pg1;
+    }
+
+    public static ProgramGraph<String, String> myPG2() {
+        ProgramGraph<String, String> pg = FvmFacade.get().createProgramGraph();
+        pg.setName("pg2");
+        pg.addTransition(new PGTransition<>("c", "true", "z:=z+1", "d"));
+        pg.addInitalization(new LinkedList<>(Arrays.asList("z:=3")));
+        pg.setInitial("c", true);
+        return pg;
+    }
+
+
     @Before
     public void before()
     {
         ts = TSTestUtils.simpleTransitionSystem();
         ts1 = myTS1("1");
         ts2 = myTS2("2");
+        ts3 = myTS3("3");
+        ts4 = myTS4("4");
+
+        pg1 = myPG1();
+        pg2 = myPG2();
 
     }
 
@@ -172,6 +252,52 @@ public class Our_Test {
         System.out.println(inteleaveTs.getTransitions());
         System.out.println(inteleaveTs.getAtomicPropositions());
         System.out.println(inteleaveTs.getLabelingFunction());
+    }
+
+    @Test(timeout = 2000)
+    public void testInterleave2() throws Exception {
+        TransitionSystem inteleaveTs = fvmFacadeImpl.interleave(ts1, ts3, new HashSet<TSTestUtils.Actions>(Arrays.asList(alpha)));
+        System.out.println(inteleaveTs.getStates());
+        assertEquals(inteleaveTs.getInitialStates().toString(), "[<a,c>]");
+        assertEquals(inteleaveTs.getActions(), new HashSet<TSTestUtils.Actions>(Arrays.asList(TSTestUtils.Actions.alpha, TSTestUtils.Actions.beta, TSTestUtils.Actions.gamma)));
+        assertEquals(inteleaveTs.getAtomicPropositions(), new HashSet<TSTestUtils.APs>(Arrays.asList(TSTestUtils.APs.R, TSTestUtils.APs.P, TSTestUtils.APs.Q, TSTestUtils.APs.S)));
+
+        System.out.println(inteleaveTs.getTransitions());
+        System.out.println(inteleaveTs.getAtomicPropositions());
+        System.out.println(inteleaveTs.getLabelingFunction());
+    }
+
+    @Test(timeout = 2000)
+    public void testInterleave3() throws Exception {
+        TransitionSystem inteleaveTs = fvmFacadeImpl.interleave(ts1, ts4, new HashSet<TSTestUtils.Actions>(Arrays.asList(alpha, beta)));
+        System.out.println(inteleaveTs.getStates());
+        assertEquals(inteleaveTs.getInitialStates().toString(), "[<a,c>]");
+        assertEquals(inteleaveTs.getActions(), new HashSet<TSTestUtils.Actions>(Arrays.asList(TSTestUtils.Actions.alpha, TSTestUtils.Actions.beta)));
+        assertEquals(inteleaveTs.getAtomicPropositions(), new HashSet<TSTestUtils.APs>(Arrays.asList(TSTestUtils.APs.R, TSTestUtils.APs.P, TSTestUtils.APs.Q, TSTestUtils.APs.S)));
+
+        System.out.println(inteleaveTs.getTransitions());
+        System.out.println(inteleaveTs.getAtomicPropositions());
+        System.out.println(inteleaveTs.getLabelingFunction());
+    }
+
+
+    @Test(timeout = 2000)
+    public void testInterleavePG1() throws Exception {
+        ProgramGraph inteleaveTs = fvmFacadeImpl.interleave(pg1, pg2);
+        System.out.println(inteleaveTs.getLocations());
+        System.out.println(inteleaveTs.getActions());
+        assertEquals(inteleaveTs.getInitialLocations().toString(), "[<a,c>]");
+        System.out.println(inteleaveTs.getTransitions());
+    }
+
+
+    @Test(timeout = 2000)
+    public void check(){
+        List<String> inputs = new LinkedList<>();
+        inputs.add("k1");
+        inputs.add("k2");
+        binaryPermAsMap(inputs);
+
     }
 
 }

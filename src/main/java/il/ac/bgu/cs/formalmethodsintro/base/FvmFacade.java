@@ -11,6 +11,7 @@ import il.ac.bgu.cs.formalmethodsintro.base.exceptions.StateNotFoundException;
 import il.ac.bgu.cs.formalmethodsintro.base.ltl.LTL;
 import il.ac.bgu.cs.formalmethodsintro.base.programgraph.ActionDef;
 import il.ac.bgu.cs.formalmethodsintro.base.programgraph.ConditionDef;
+import il.ac.bgu.cs.formalmethodsintro.base.programgraph.PGTransition;
 import il.ac.bgu.cs.formalmethodsintro.base.programgraph.ProgramGraph;
 import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.AlternatingSequence;
 import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.TSTransition;
@@ -165,7 +166,6 @@ public class FvmFacade {
         return post(ts, s).size() == 0;
     }
 
-
     /**
      * @param <S> Type of states.
      * @param ts  Transition system of {@code s}.
@@ -314,6 +314,40 @@ public class FvmFacade {
         throw new java.lang.UnsupportedOperationException();
     }
 
+    private <S, S1, S2, A, P> TransitionSystem<Pair<S1, S2>, A, P> interleaveHelper(TransitionSystem<S1, A, P> ts1,
+                                                                                    TransitionSystem<S2, A, P> ts2, Handler handler1, Handler handler2) {
+        TransitionSystem<Pair<S1, S2>, A, P> interleaveTs = new TransitionSystem<>();
+        interleaveTs.addAllStates(cartesian_set(ts1.getStates(), ts2.getStates()));
+        Set<A> ts1Actions = new HashSet<>(ts1.getActions());
+        ts1Actions.addAll(ts2.getActions());
+        interleaveTs.addAllActions(ts1Actions);
+        Set<Pair<S1, S2>> allInitialStates = cartesian_set(ts1.getInitialStates(), ts2.getInitialStates());
+        for (Pair<S1, S2> initialState : allInitialStates)
+            interleaveTs.addInitialState(initialState);
+
+        Set<TSTransition<Pair<S1, S2>, A>> transitionsByFirst = getTransitions(ts1, interleaveTs.getStates(),
+                handler1, true);
+        Set<TSTransition<Pair<S1, S2>, A>> transitionsBySecond = getTransitions(ts2, interleaveTs.getStates(),
+                handler2, false);
+        for (TSTransition<Pair<S1, S2>, A> transition : transitionsByFirst)
+            interleaveTs.addTransition(transition);
+        for (TSTransition<Pair<S1, S2>, A> transition : transitionsBySecond)
+            interleaveTs.addTransition(transition);
+
+
+        Set<P> ts1AtomicPropositions = new HashSet<>(ts1.getAtomicPropositions());
+        ts1AtomicPropositions.addAll(ts2.getAtomicPropositions());
+        interleaveTs.addAllAtomicPropositions(ts1AtomicPropositions);
+        for (Pair<S1, S2> state : interleaveTs.getStates()) {
+            Set<P> allPropositions = new HashSet<>(ts1.getLabel(state.getFirst()));
+            Set<P> prop2 = ts2.getLabel(state.getSecond());
+            allPropositions.addAll(prop2);
+            for (P proposition : allPropositions)
+                interleaveTs.addToLabel(state, proposition);
+        }
+        return interleaveTs;
+    }
+
     /**
      * Compute the synchronous product of two transition systems.
      *
@@ -327,73 +361,19 @@ public class FvmFacade {
      */
     public <S1, S2, A, P> TransitionSystem<Pair<S1, S2>, A, P> interleave(TransitionSystem<S1, A, P> ts1,
                                                                           TransitionSystem<S2, A, P> ts2) {
-        TransitionSystem<Pair<S1, S2>, A, P> interleaveTs = new TransitionSystem<>();
-        interleaveTs.addAllStates(cartesian_set(ts1.getStates(), ts2.getStates()));
-        Set<A> ts1Actions = new HashSet<>(ts1.getActions());
-        ts1Actions.addAll(ts2.getActions());
-        interleaveTs.addAllActions(ts1Actions);
-        Set<Pair<S1, S2>> allInitialStates = cartesian_set(ts1.getInitialStates(), ts2.getInitialStates());
-        for (Pair<S1, S2> initialState : allInitialStates)
-            interleaveTs.addInitialState(initialState);
-        Set<TSTransition<Pair<S1, S2>, A>> transitionsByFirst = getTransitions(ts1, interleaveTs.getStates(),
-                new Handler() {
-                    @Override
-                    public Pair getPair(TSTransition originalTransition, Pair fromState) {
-                        return new Pair(originalTransition.getTo(), fromState.getSecond());
-                    }
-                }, true);
-        Set<TSTransition<Pair<S1, S2>, A>> transitionsBySecond = getTransitions(ts2, interleaveTs.getStates(),
-                new Handler() {
-                    @Override
-                    public Pair getPair(TSTransition originalTransition, Pair fromState) {
-                        return new Pair(fromState.getFirst(), originalTransition.getTo());
-                    }
-                }, true);
-        for (TSTransition<Pair<S1, S2>, A> transition : transitionsByFirst)
-            interleaveTs.addTransition(transition);
-        for (TSTransition<Pair<S1, S2>, A> transition : transitionsBySecond)
-            interleaveTs.addTransition(transition);
-        Set<P> ts1AtomicPropositions = new HashSet<>(ts1.getAtomicPropositions());
-        ts1AtomicPropositions.addAll(ts2.getAtomicPropositions());
-        interleaveTs.addAllAtomicPropositions(ts1AtomicPropositions);
-        for (Pair<S1,S2> state : interleaveTs.getStates()) {
-            Set<P> allPropositions = new HashSet<>(ts1.getLabel(state.getFirst()));
-            Set<P> prop2 = ts2.getLabel(state.getSecond());
-            allPropositions.addAll(prop2);
-            for (P proposition : allPropositions)
-                interleaveTs.addToLabel(state, proposition);
-        }
+        TransitionSystem<Pair<S1, S2>, A, P> interleaveTs = interleaveHelper(ts1, ts2, new Handler() {
+            @Override
+            public Set<Pair> getPairs(TSTransition originalTransition, Pair fromState) {
+                return new HashSet<>(Arrays.asList(new Pair(originalTransition.getTo(), fromState.getSecond())));
+            }
+        }, new Handler() {
+            @Override
+            public Set<Pair> getPairs(TSTransition originalTransition, Pair fromState) {
+                return new HashSet<>(Arrays.asList(new Pair(fromState.getFirst(), originalTransition.getTo())));
+            }
+        });
         return interleaveTs;
     }
-
-
-    private interface Handler<S, S1,S2,A>{
-        Pair<S1,S2> getPair(TSTransition<S, A> originalTransition, Pair<S1, S2> fromState);
-    }
-
-    private static <S, S1, S2, A, P> Set<TSTransition<Pair<S1, S2>, A>> getTransitions(TransitionSystem<S, A, P> tsOrigin, Set<Pair<S1, S2>> allStates, Handler<S,S1,S2,A> handler, boolean isFirst) {
-        Set<TSTransition<Pair<S1, S2>, A>> transitions = new HashSet<>();
-        for (TSTransition<S, A> originalTransition : tsOrigin.getTransitions()) {
-            Set<Pair<S1, S2>> fromStates = getAllRelevantPairStates(originalTransition.getFrom(), allStates, isFirst);
-            for (Pair<S1, S2> fromState : fromStates) {
-                Pair<S1, S2> toState = handler.getPair(originalTransition, fromState);
-                transitions.add(new TSTransition<Pair<S1, S2>, A>(fromState, originalTransition.getAction(), toState));
-            }
-        }
-        return transitions;
-    }
-
-    private static <S, S1, S2> Set<Pair<S1, S2>> getAllRelevantPairStates(S from, Set<Pair<S1, S2>> states, boolean isFirst) {
-        Set<Pair<S1, S2>> relevantPairStates = new HashSet<>();
-        for (Pair<S1, S2> state : states) {
-            if (isFirst && state.getFirst().equals(from))
-                relevantPairStates.add(state);
-            else if (!isFirst && state.getSecond().equals(from))
-                relevantPairStates.add(state);
-        }
-        return relevantPairStates;
-    }
-
 
     /**
      * Compute the synchronous product of two transition systems.
@@ -409,7 +389,36 @@ public class FvmFacade {
      */
     public <S1, S2, A, P> TransitionSystem<Pair<S1, S2>, A, P> interleave(TransitionSystem<S1, A, P> ts1,
                                                                           TransitionSystem<S2, A, P> ts2, Set<A> handShakingActions) {
-        throw new java.lang.UnsupportedOperationException();
+        TransitionSystem<Pair<S1, S2>, A, P> interleaveTs = interleaveHelper(ts1, ts2, new Handler() {
+            @Override
+            public Set<Pair> getPairs(TSTransition originalTransition, Pair fromState) {
+                if (!handShakingActions.contains(originalTransition.getAction()))
+                    return new HashSet<>(Arrays.asList(new Pair(originalTransition.getTo(), fromState.getSecond())));
+                else {
+                    Set<TSTransition> fittingTransitions = getRelevantTransitions(originalTransition, fromState.getSecond(), ts2);
+                    Set<Pair> toStates = new HashSet<>();
+                    for (TSTransition<S2, A> trans : fittingTransitions)
+                        if (trans != null)
+                            toStates.add(new Pair(originalTransition.getTo(), trans.getTo()));
+                    return toStates;
+                }
+            }
+        }, new Handler() {
+            @Override
+            public Set<Pair> getPairs(TSTransition originalTransition, Pair fromState) {
+                if (!handShakingActions.contains(originalTransition.getAction()))
+                    return new HashSet<>(Arrays.asList(new Pair(fromState.getFirst(), originalTransition.getTo())));
+                else {
+                    Set<TSTransition> fittingTransitions = getRelevantTransitions(originalTransition, fromState.getSecond(), ts1);
+                    Set<Pair> toStates = new HashSet<>();
+                    for (TSTransition<S1, A> trans : fittingTransitions)
+                        if (trans != null)
+                            toStates.add(new Pair(trans.getTo(), originalTransition.getTo()));
+                    return toStates;
+                }
+            }
+        });
+        return interleaveTs;
     }
 
     /**
@@ -423,6 +432,41 @@ public class FvmFacade {
         return new ProgramGraph<>();
     }
 
+    private <L1, L2, A> ProgramGraph<Pair<L1, L2>, A> interleaveHelper(ProgramGraph<L1, A> pg1, ProgramGraph<L2, A> pg2, HandlerPG handler1, HandlerPG handler2) {
+        ProgramGraph<Pair<L1, L2>, A> interleaveGraph = createProgramGraph();
+        //locations = locations1 * locations2
+        Set<Pair<L1, L2>> locations = cartesian_set(pg1.getLocations(), pg2.getLocations());
+        for (Pair<L1, L2> location : locations)
+            interleaveGraph.addLocation(location);
+
+        //initial_loc = initial_loc1 * initial_loc2
+        Set<Pair<L1, L2>> initialLocations = cartesian_set(pg1.getInitialLocations(), pg2.getInitialLocations());
+        for (Pair<L1, L2> location : initialLocations)
+            interleaveGraph.setInitial(location, true);
+
+        //actions = actions1 + actions2
+        Set<A> pg1Actions = new HashSet<A>(pg1.getActions());
+        pg1Actions.addAll(pg2.getActions());
+
+        //transitions
+        Set<PGTransition<Pair<L1, L2>, A>> transitionsByFirst = getTransitionsPG(pg1, interleaveGraph.getLocations(),
+                handler1, true);
+        Set<PGTransition<Pair<L1, L2>, A>> transitionsBySecond = getTransitionsPG(pg2, interleaveGraph.getLocations(),
+                handler2, false);
+        for (PGTransition<Pair<L1, L2>, A> transition : transitionsByFirst)
+            interleaveGraph.addTransition(transition);
+        for (PGTransition<Pair<L1, L2>, A> transition : transitionsBySecond)
+            interleaveGraph.addTransition(transition);
+
+        //g = g0 * g1
+        Set<List<String>> initializations = cartesian_initizalizations(pg1.getInitalizations(), pg2.getInitalizations());
+        for (List<String> initial : initializations)
+            interleaveGraph.addInitalization(initial);
+
+        return interleaveGraph;
+    }
+
+
     /**
      * Interleaves two program graphs.
      *
@@ -434,8 +478,20 @@ public class FvmFacade {
      * @return Interleaved program graph.
      */
     public <L1, L2, A> ProgramGraph<Pair<L1, L2>, A> interleave(ProgramGraph<L1, A> pg1, ProgramGraph<L2, A> pg2) {
-        throw new java.lang.UnsupportedOperationException();
+        ProgramGraph<Pair<L1, L2>, A> interleaveTs = interleaveHelper(pg1, pg2, new HandlerPG() {
+            @Override
+            public Set<Pair> getPairs(PGTransition originalTransition, Pair fromState) {
+                return new HashSet<>(Arrays.asList(new Pair(originalTransition.getTo(), fromState.getSecond())));
+            }
+        }, new HandlerPG() {
+            @Override
+            public Set<Pair> getPairs(PGTransition originalTransition, Pair fromState) {
+                return new HashSet<>(Arrays.asList(new Pair(fromState.getFirst(), originalTransition.getTo())));
+            }
+        });
+        return interleaveTs;
     }
+
 
     /**
      * Creates a {@link TransitionSystem} representing the passed circuit.
@@ -445,7 +501,62 @@ public class FvmFacade {
      */
     public TransitionSystem<Pair<Map<String, Boolean>, Map<String, Boolean>>, Map<String, Boolean>, Object> transitionSystemFromCircuit(
             Circuit c) {
-        throw new java.lang.UnsupportedOperationException();
+        TransitionSystem<Pair<Map<String, Boolean>, Map<String, Boolean>>, Map<String, Boolean>, Object> transitionSystem = new TransitionSystem<>();
+
+        //states
+        Set<Map<String, Boolean>> inputsLabels = binaryPermAsMap(c.getInputPortNames());
+        Set<Map<String, Boolean>> registersLabels = binaryPermAsMap(c.getRegisterNames());
+        Set<Pair<Map<String, Boolean>, Map<String, Boolean>>> states = cartesian_set(registersLabels, inputsLabels);
+        transitionSystem.addAllStates(states);
+        //actions
+        Set<Map<String, Boolean>> actions = binaryPermAsMap(c.getInputPortNames());
+        transitionSystem.addAllActions(actions);
+        //initialStates
+        Map<String, Boolean> registersMap = new HashMap<>();
+        for (String reg : c.getRegisterNames())
+            registersMap.put(reg, false);
+        Set<Map<String, Boolean>> initRegisters = new HashSet<Map<String, Boolean>>();
+        initRegisters.add(registersMap);
+        Set<Map<String, Boolean>> initInputs = binaryPermAsMap(c.getInputPortNames());
+        Set<Pair<Map<String, Boolean>, Map<String, Boolean>>> initialStates = cartesian_set(initRegisters, initInputs);
+        for (Pair<Map<String, Boolean>, Map<String, Boolean>> initialState : initialStates)
+            transitionSystem.addInitialState(initialState);
+
+        //transitions
+        for (Pair<Map<String, Boolean>, Map<String, Boolean>> state : transitionSystem.getStates()) {
+            Map<String, Boolean> inputMap = state.getSecond();
+            for (String input : c.getInputPortNames()) {
+                Set<Map<String, Boolean>> relevantActions = new HashSet<>();
+                for (int i = 0; i < 2; i++) { //true and false
+                    Map<String, Boolean> relevantAction = new HashMap<>(inputMap);
+                    relevantAction.replace(input, i == 1);
+                    relevantActions.add(relevantAction);
+                }
+                for (Map<String, Boolean> relevantAction : relevantActions) {
+                    Pair<Map<String, Boolean>, Map<String, Boolean>> toState = new Pair<Map<String, Boolean>, Map<String, Boolean>>(c.updateRegisters(state.getSecond(), state.getFirst()), relevantAction);
+                    transitionSystem.addTransitionFrom(state).action(relevantAction).to(toState);
+                }
+            }
+        }
+        //atomic propositions
+        List atomicPropositions = new LinkedList();
+        atomicPropositions.addAll(c.getInputPortNames());
+        atomicPropositions.addAll(c.getOutputPortNames());
+        atomicPropositions.addAll(c.getRegisterNames());
+        transitionSystem.addAllAtomicPropositions(atomicPropositions);
+
+        //labeling function
+        for (Pair<Map<String, Boolean>, Map<String, Boolean>> state : transitionSystem.getStates()) {
+            Map<String, Boolean> inputs = state.getSecond();
+            Map<String, Boolean> registers = state.getFirst();
+            Map<String, Boolean> outputs = c.computeOutputs(inputs,registers);
+            List<String> relevantAPs = new LinkedList<String>();
+            relevantAPs.addAll(getRelevantAPS(inputs));
+            relevantAPs.addAll(getRelevantAPS(registers));
+            relevantAPs.addAll(getRelevantAPS(outputs));
+            transitionSystem.addToLabel(state, relevantAPs);
+        }
+        return transitionSystem;
     }
 
     /**
@@ -571,14 +682,90 @@ public class FvmFacade {
     }
 
 
-    //********************************* UTILITIES *****************************************
+//********************************* UTILITIES *****************************************
 
+    private interface Handler<S1, S2> {
+        Set<Pair<S1, S2>> getPairs(TSTransition originalTransition, Pair fromState);
+    }
+
+    private interface HandlerPG<L1, L2> {
+        Set<Pair<L1, L2>> getPairs(PGTransition originalTransition, Pair fromState);
+
+    }
+
+    private Set<TSTransition> getRelevantTransitions(TSTransition originalTransition, Object fromState, TransitionSystem ts) {
+        Set<TSTransition> tsTransitions = ts.getTransitions();
+        Set<TSTransition> tsRelevantTransitions = new HashSet<>();
+        for (TSTransition trans : tsTransitions) {
+            if (trans.getFrom().equals(fromState) && trans.getAction().equals(originalTransition.getAction()))
+                tsRelevantTransitions.add(trans);
+        }
+        return tsRelevantTransitions;
+    }
+
+
+    private static <S, S1, S2> Set<Pair<S1, S2>> getAllRelevantPairStates(S from, Set<Pair<S1, S2>> states, boolean isFirst) {
+        Set<Pair<S1, S2>> relevantPairStates = new HashSet<>();
+        for (Pair<S1, S2> state : states) {
+            if (isFirst && state.getFirst().equals(from))
+                relevantPairStates.add(state);
+            else if (!isFirst && state.getSecond().equals(from))
+                relevantPairStates.add(state);
+        }
+        return relevantPairStates;
+    }
+
+    private static <S, S1, S2, A, P> Set<TSTransition<Pair<S1, S2>, A>> getTransitions(TransitionSystem<S, A, P> tsOrigin, Set<Pair<S1, S2>> allStates, Handler handler, boolean isFirst) {
+        Set<TSTransition<Pair<S1, S2>, A>> transitions = new HashSet<>();
+        for (TSTransition<S, A> originalTransition : tsOrigin.getTransitions()) {
+            Set<Pair<S1, S2>> fromStates = getAllRelevantPairStates(originalTransition.getFrom(), allStates, isFirst);
+            for (Pair<S1, S2> fromState : fromStates) {
+                Set<Pair<S1, S2>> toStates = handler.getPairs(originalTransition, fromState);
+                for (Pair<S1, S2> toState : toStates)
+                    if (toState != null)
+                        transitions.add(new TSTransition<Pair<S1, S2>, A>(fromState, originalTransition.getAction(), toState));
+            }
+        }
+        return transitions;
+    }
+
+    private <L, A, L1, L2> Set<PGTransition<Pair<L1, L2>, A>> getTransitionsPG(ProgramGraph<L, A> pgOrigin, Set<Pair<L1, L2>> locations, HandlerPG handler, boolean isFirst) {
+        Set<PGTransition<Pair<L1, L2>, A>> transitions = new HashSet<>();
+        for (PGTransition<L, A> originalTransition : pgOrigin.getTransitions()) {
+            Set<Pair<L1, L2>> fromStates = getAllRelevantPairStates(originalTransition.getFrom(), locations, isFirst);
+            for (Pair<L1, L2> fromState : fromStates) {
+                Set<Pair<L1, L2>> toStates = handler.getPairs(originalTransition, fromState);
+                for (Pair<L1, L2> toState : toStates)
+                    if (toState != null)
+                        transitions.add(new PGTransition<Pair<L1, L2>, A>(fromState, originalTransition.getCondition(), originalTransition.getAction(), toState));
+            }
+        }
+        return transitions;
+    }
+
+    private List<String> getRelevantAPS(Map<String, Boolean> values){
+        List<String> relevantAPs = new LinkedList<String>();
+        for (Map.Entry<String,Boolean> input : values.entrySet())
+            if (input.getValue())
+                relevantAPs.add(input.getKey());
+        return relevantAPs;
+    }
 
     private static <S1, S2> Set<Pair<S1, S2>> cartesian_set(Set<S1> s1, Set<S2> s2) {
         Set<Pair<S1, S2>> cartesianSet = new HashSet<>();
         for (S1 state1 : s1)
             for (S2 state2 : s2)
                 cartesianSet.add(new Pair<>(state1, state2));
+        return cartesianSet;
+    }
+
+    private static Set<List<String>> cartesian_initizalizations(Set<List<String>> inits1, Set<List<String>> inits2) {
+        Set<List<String>> cartesianSet = new HashSet<List<String>>();
+        for (List<String> initial1 : inits1)
+            for (List<String> initial2 : inits2) {
+                initial1.addAll(initial2);
+                cartesianSet.add(initial1);
+            }
         return cartesianSet;
     }
 
@@ -599,5 +786,38 @@ public class FvmFacade {
             sets.add(set);
         }
         return sets;
+    }
+
+
+    private static Set<boolean[]> sets = new HashSet<>();
+
+    private static void generateAllBinaryStrings(int n, boolean[] arr, int i) {
+        if (i == n) {
+            boolean newArr[] = new boolean[arr.length];
+            for (int k = 0; k < arr.length; k++)
+                newArr[k] = arr[k];
+            sets.add(newArr);
+            return;
+        }
+        arr[i] = false;
+        generateAllBinaryStrings(n, arr, i + 1);
+        arr[i] = true;
+        generateAllBinaryStrings(n, arr, i + 1);
+    }
+
+    private static Set<Map<String, Boolean>> binaryPermAsMap(Set<String> inputs) {
+        sets = new HashSet<>();
+        generateAllBinaryStrings(inputs.size(), new boolean[inputs.size()], 0);
+        Set<Map<String, Boolean>> allMaps = new HashSet<>();
+        for (boolean[] set : sets) {
+            Map<String, Boolean> map = new HashMap<>();
+            int i = 0;
+            for (String input : inputs) {
+                map.put(input, set[i]);
+                i++;
+            }
+            allMaps.add(map);
+        }
+        return allMaps;
     }
 }
