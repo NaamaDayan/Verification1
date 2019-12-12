@@ -99,7 +99,7 @@ public class FvmFacade {
      * @return {@code true} iff {@code e} is an execution of {@code ts}.
      */
     public <S, A, P> boolean isExecution(TransitionSystem<S, A, P> ts, AlternatingSequence<S, A> e) {
-        throw new java.lang.UnsupportedOperationException();
+        return isExecutionFragment(ts, e) && isInitialExecutionFragment(ts, e) && isMaximalExecutionFragment(ts, e);
     }
 
     /**
@@ -116,7 +116,13 @@ public class FvmFacade {
      * {@code ts}.
      */
     public <S, A, P> boolean isExecutionFragment(TransitionSystem<S, A, P> ts, AlternatingSequence<S, A> e) {
-        throw new java.lang.UnsupportedOperationException();
+//        S head = e.head();
+//        AlternatingSequence<A, S> tail = e.tail(); //action and then next state
+//        while (e.size() > 0) {
+//            //לבדוק אם קונטיינס של set מחזירה לפי הערכים או לפי הכתובת בזיכרון (אם לפי הערכים אז לבנות TSTransition חדש מהפעולה והמצב ולבדוק האם הוא בתוך הset
+//            //לא לשכוח לשים not
+//            if (ts.getStates().contains(head) && ts.getTransitions().contains(tail.head()))
+//        }
     }
 
     /**
@@ -133,7 +139,7 @@ public class FvmFacade {
      * {@code ts}.
      */
     public <S, A, P> boolean isInitialExecutionFragment(TransitionSystem<S, A, P> ts, AlternatingSequence<S, A> e) {
-        throw new java.lang.UnsupportedOperationException();
+        return isExecutionFragment(ts, e) && ts.getInitialStates().contains(e.head());
     }
 
     /**
@@ -149,7 +155,7 @@ public class FvmFacade {
      * @return {@code true} iff {@code e} is a maximal fragment of {@code ts}.
      */
     public <S, A, P> boolean isMaximalExecutionFragment(TransitionSystem<S, A, P> ts, AlternatingSequence<S, A> e) {
-        throw new java.lang.UnsupportedOperationException();
+        return isExecutionFragment(ts, e) &&
     }
 
     /**
@@ -163,6 +169,8 @@ public class FvmFacade {
      * @throws StateNotFoundException if {@code s} is not a state of {@code ts}.
      */
     public <S, A> boolean isStateTerminal(TransitionSystem<S, A, ?> ts, S s) {
+        if (!ts.getStates().contains(s))
+            throw new StateNotFoundException(s);
         return post(ts, s).size() == 0;
     }
 
@@ -174,6 +182,8 @@ public class FvmFacade {
      * @throws StateNotFoundException if {@code s} is not a state of {@code ts}.
      */
     public <S> Set<S> post(TransitionSystem<S, ?, ?> ts, S s) {
+        if (!ts.getStates().contains(s))
+            throw new StateNotFoundException(s);
         Set<? extends TSTransition<S, ?>> transitions = ts.getTransitions();
         Set<S> post_states = new HashSet<>();
         for (TSTransition<S, ?> transition : transitions) {
@@ -209,6 +219,8 @@ public class FvmFacade {
      * @throws StateNotFoundException if {@code s} is not a state of {@code ts}.
      */
     public <S, A> Set<S> post(TransitionSystem<S, A, ?> ts, S s, A a) {
+        if (!ts.getStates().contains(s))
+            throw new StateNotFoundException(s);
         Set<? extends TSTransition<S, A>> transitions = ts.getTransitions();
         Set<S> post_states = new HashSet<>();
         for (TSTransition<S, A> transition : transitions) {
@@ -260,8 +272,11 @@ public class FvmFacade {
      */
     public <S> Set<S> pre(TransitionSystem<S, ?, ?> ts, Set<S> c) {
         Set<S> all_pre = new HashSet<>();
-        for (S state : c)
+        for (S state : c) {
+            if (!ts.getStates().contains(state))
+                throw new StateNotFoundException(state);
             all_pre.addAll(pre(ts, state));
+        }
         return all_pre;
     }
 
@@ -276,6 +291,8 @@ public class FvmFacade {
      * @throws StateNotFoundException if {@code s} is not a state of {@code ts}.
      */
     public <S, A> Set<S> pre(TransitionSystem<S, A, ?> ts, S s, A a) {
+        if (!ts.getStates().contains(s))
+            throw new StateNotFoundException(s);
         Set<? extends TSTransition<S, A>> transitions = ts.getTransitions();
         Set<S> pre_states = new HashSet<>();
         for (TSTransition<S, A> transition : transitions) {
