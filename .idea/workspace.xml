@@ -4,6 +4,8 @@
     <list default="true" id="02f42502-737d-47aa-afd6-61f272b83f42" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/sanity/Our_Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/sanity/Our_Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/sanity/ProgramGraphSanityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/sanity/ProgramGraphSanityTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -21,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="380" column="28" lean-forward="true" selection-start-line="380" selection-start-column="28" selection-end-line="380" selection-end-column="28" />
+            <state relative-caret-position="89">
+              <caret line="343" column="22" selection-start-line="343" selection-start-column="22" selection-end-line="343" selection-end-column="22" />
               <folding>
                 <element signature="e#1479#1532#0" />
                 <element signature="e#1479#1681#0" />
@@ -31,77 +33,17 @@
                 <element signature="e#2488#2874#0" />
                 <element signature="e#2488#3599#0" />
                 <element signature="e#3605#4069#0" />
-                <element signature="e#3605#4238#0" />
-                <element signature="e#4244#4760#0" />
-                <element signature="e#4300#5363#0" />
-                <element signature="e#4996#5528#0" />
-                <element signature="e#5665#6185#0" />
-                <element signature="e#6172#7009#0" />
-                <element signature="e#6904#7022#0" />
-                <element signature="e#6375#6783#0" />
-                <element signature="e#6375#7006#0" />
-                <element signature="e#6914#7211#0" />
-                <element signature="e#6914#7603#0" />
-                <element signature="e#7609#7953#0" />
-                <element signature="e#7609#8168#0" />
-                <element signature="e#8174#8579#0" />
-                <element signature="e#8174#9015#0" />
-                <element signature="e#9021#9364#0" />
-                <element signature="e#9021#9590#0" />
-                <element signature="e#9596#9811#0" />
-                <element signature="e#9596#10199#0" />
-                <element signature="e#10205#10548#0" />
-                <element signature="e#10385#11056#0" />
-                <element signature="e#10764#11177#0" />
-                <element signature="e#10764#11609#0" />
-                <element signature="e#11615#12047#0" />
-                <element signature="e#11615#12268#0" />
-                <element signature="e#17241#17242#0" expanded="true" />
-                <element signature="e#17283#17284#0" expanded="true" />
-                <element signature="e#17321#17322#0" expanded="true" />
-                <element signature="e#17364#17365#0" expanded="true" />
-                <element signature="e#17405#17406#0" expanded="true" />
-                <element signature="e#17451#17452#0" expanded="true" />
-                <element signature="e#17494#17495#0" expanded="true" />
-                <element signature="e#17542#17543#0" expanded="true" />
-                <element signature="e#17582#17583#0" expanded="true" />
-                <element signature="e#17648#17649#0" expanded="true" />
-                <element signature="e#17689#17690#0" expanded="true" />
-                <element signature="e#17757#17758#0" expanded="true" />
-                <element signature="e#12648#14633#0" />
-                <element signature="e#14639#15125#0" />
-                <element signature="e#14639#15993#0" />
-                <element signature="e#15999#16648#0" />
-                <element signature="e#15999#18671#0" />
-                <element signature="class#16981:17805" />
-                <element signature="method#getPairs#0;class#16981:17805" />
-                <element signature="e#18677#18888#0" />
+                <element signature="e#13703#13941#0" />
+                <element signature="e#13703#14334#0" />
+                <element signature="e#14340#14762#0" />
+                <element signature="e#14768#15379#0" />
+                <element signature="e#15658#17244#0" />
+                <element signature="e#17250#18033#0" />
+                <element signature="e#18039#18427#0" />
+                <element signature="e#24732#24733#0" expanded="true" />
                 <element signature="e#24775#24776#0" expanded="true" />
-                <element signature="e#18997#20779#0" />
-                <element signature="e#20786#21140#0" />
-                <element signature="e#20786#21907#0" />
-                <element signature="e#21914#22147#0" />
-                <element signature="e#21914#25667#0" />
-                <element signature="e#25673#26197#0" />
-                <element signature="e#25673#26471#0" />
-                <element signature="e#26477#26826#0" />
-                <element signature="e#26477#27048#0" />
-                <element signature="e#27054#27273#0" />
-                <element signature="e#27054#27444#0" />
-                <element signature="e#27450#27672#0" />
-                <element signature="e#27450#27852#0" />
-                <element signature="e#27858#28080#0" />
-                <element signature="e#27858#28259#0" />
-                <element signature="e#28265#28825#0" />
-                <element signature="e#28265#29110#0" />
-                <element signature="e#29116#29783#0" />
-                <element signature="e#29116#30062#0" />
-                <element signature="e#30068#30388#0" />
+                <element signature="e#36225#36226#0" expanded="true" />
                 <element signature="e#36292#36293#0" expanded="true" />
-                <element signature="e#30514#30867#0" />
-                <element signature="e#30514#31010#0" />
-                <element signature="e#31106#31232#0" />
-                <element signature="e#31898#32396#0" />
               </folding>
             </state>
           </provider>
@@ -141,6 +83,9 @@
       <find>TSTransition</find>
       <find>TransitionSystem</find>
       <find>getTransitionsFrom</find>
+      <find>assertNotEquals</find>
+      <find>binaryPermAsMap</find>
+      <find>main</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -156,9 +101,9 @@
         <option value="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/exceptions/InvalidTransitionException.java" />
         <option value="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/util/CollectionHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/TSTestUtils.java" />
-        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/sanity/Our_Test.java" />
-        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/sanity/ProgramGraphSanityTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/GraphvizSamples.java" />
+        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/sanity/ProgramGraphSanityTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/sanity/Our_Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" />
       </list>
     </option>
@@ -173,8 +118,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -227,7 +172,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576253120116" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576253718203" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -343,7 +288,8 @@
       <option name="presentableId" value="Default" />
       <updated>1575654750929</updated>
       <workItem from="1575654756431" duration="20872000" />
-      <workItem from="1576175298902" duration="14498000" />
+      <workItem from="1576175298902" duration="14520000" />
+      <workItem from="1576253257061" duration="458000" />
     </task>
     <servers />
   </component>
@@ -380,7 +326,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35370000" />
+    <option name="totallyTimeSpent" value="35850000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -395,7 +341,7 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19595142" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19919029" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -644,20 +590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/sanity/Our_Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/sanity/ProgramGraphSanityTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-87">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/GraphvizSamples.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -678,6 +610,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/sanity/ProgramGraphSanityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-488">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/sanity/Our_Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="295" column="45" lean-forward="true" selection-start-line="295" selection-start-column="45" selection-end-line="295" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/transitionsystem/AlternatingSequence.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -691,8 +640,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="380" column="28" lean-forward="true" selection-start-line="380" selection-start-column="28" selection-end-line="380" selection-end-column="28" />
+        <state relative-caret-position="89">
+          <caret line="343" column="22" selection-start-line="343" selection-start-column="22" selection-end-line="343" selection-end-column="22" />
           <folding>
             <element signature="e#1479#1532#0" />
             <element signature="e#1479#1681#0" />
@@ -701,77 +650,17 @@
             <element signature="e#2488#2874#0" />
             <element signature="e#2488#3599#0" />
             <element signature="e#3605#4069#0" />
-            <element signature="e#3605#4238#0" />
-            <element signature="e#4244#4760#0" />
-            <element signature="e#4300#5363#0" />
-            <element signature="e#4996#5528#0" />
-            <element signature="e#5665#6185#0" />
-            <element signature="e#6172#7009#0" />
-            <element signature="e#6904#7022#0" />
-            <element signature="e#6375#6783#0" />
-            <element signature="e#6375#7006#0" />
-            <element signature="e#6914#7211#0" />
-            <element signature="e#6914#7603#0" />
-            <element signature="e#7609#7953#0" />
-            <element signature="e#7609#8168#0" />
-            <element signature="e#8174#8579#0" />
-            <element signature="e#8174#9015#0" />
-            <element signature="e#9021#9364#0" />
-            <element signature="e#9021#9590#0" />
-            <element signature="e#9596#9811#0" />
-            <element signature="e#9596#10199#0" />
-            <element signature="e#10205#10548#0" />
-            <element signature="e#10385#11056#0" />
-            <element signature="e#10764#11177#0" />
-            <element signature="e#10764#11609#0" />
-            <element signature="e#11615#12047#0" />
-            <element signature="e#11615#12268#0" />
-            <element signature="e#17241#17242#0" expanded="true" />
-            <element signature="e#17283#17284#0" expanded="true" />
-            <element signature="e#17321#17322#0" expanded="true" />
-            <element signature="e#17364#17365#0" expanded="true" />
-            <element signature="e#17405#17406#0" expanded="true" />
-            <element signature="e#17451#17452#0" expanded="true" />
-            <element signature="e#17494#17495#0" expanded="true" />
-            <element signature="e#17542#17543#0" expanded="true" />
-            <element signature="e#17582#17583#0" expanded="true" />
-            <element signature="e#17648#17649#0" expanded="true" />
-            <element signature="e#17689#17690#0" expanded="true" />
-            <element signature="e#17757#17758#0" expanded="true" />
-            <element signature="e#12648#14633#0" />
-            <element signature="e#14639#15125#0" />
-            <element signature="e#14639#15993#0" />
-            <element signature="e#15999#16648#0" />
-            <element signature="e#15999#18671#0" />
-            <element signature="class#16981:17805" />
-            <element signature="method#getPairs#0;class#16981:17805" />
-            <element signature="e#18677#18888#0" />
+            <element signature="e#13703#13941#0" />
+            <element signature="e#13703#14334#0" />
+            <element signature="e#14340#14762#0" />
+            <element signature="e#14768#15379#0" />
+            <element signature="e#15658#17244#0" />
+            <element signature="e#17250#18033#0" />
+            <element signature="e#18039#18427#0" />
+            <element signature="e#24732#24733#0" expanded="true" />
             <element signature="e#24775#24776#0" expanded="true" />
-            <element signature="e#18997#20779#0" />
-            <element signature="e#20786#21140#0" />
-            <element signature="e#20786#21907#0" />
-            <element signature="e#21914#22147#0" />
-            <element signature="e#21914#25667#0" />
-            <element signature="e#25673#26197#0" />
-            <element signature="e#25673#26471#0" />
-            <element signature="e#26477#26826#0" />
-            <element signature="e#26477#27048#0" />
-            <element signature="e#27054#27273#0" />
-            <element signature="e#27054#27444#0" />
-            <element signature="e#27450#27672#0" />
-            <element signature="e#27450#27852#0" />
-            <element signature="e#27858#28080#0" />
-            <element signature="e#27858#28259#0" />
-            <element signature="e#28265#28825#0" />
-            <element signature="e#28265#29110#0" />
-            <element signature="e#29116#29783#0" />
-            <element signature="e#29116#30062#0" />
-            <element signature="e#30068#30388#0" />
+            <element signature="e#36225#36226#0" expanded="true" />
             <element signature="e#36292#36293#0" expanded="true" />
-            <element signature="e#30514#30867#0" />
-            <element signature="e#30514#31010#0" />
-            <element signature="e#31106#31232#0" />
-            <element signature="e#31898#32396#0" />
           </folding>
         </state>
       </provider>

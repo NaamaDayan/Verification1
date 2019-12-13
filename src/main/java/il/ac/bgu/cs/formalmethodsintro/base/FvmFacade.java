@@ -341,6 +341,7 @@ public class FvmFacade {
      * @param ts  Transition system of {@code s}.
      * @return All states reachable in {@code ts}.
      */
+    //TODO: test me!!!
     public <S, A> Set<S> reach(TransitionSystem<S, A, ?> ts) {
         Set<AlternatingSequence<S, A>> initialExecutionFragments = getInitialExecutionFragments(ts);
         Set<S> reach = new HashSet<>();
@@ -350,6 +351,8 @@ public class FvmFacade {
         }
         return reach;
     }
+
+    //****** Reach helpers START *******
 
     private <S, A> Set<AlternatingSequence<S, A>> getInitialExecutionFragments(TransitionSystem<S, A, ?> ts) {
         Set<AlternatingSequence<S, A>> res = new HashSet<>();
@@ -373,13 +376,6 @@ public class FvmFacade {
         Set<AlternatingSequence<S, A>> result = new HashSet<>();
         recurseGetExecutionFragmentsFromState(ts, state, isVisited, localPath, result);
         return result;
-    }
-
-    public static void main(String args[]) {
-        System.out.println("Hello World!");
-        List<String> lst = new ArrayList<>();
-        lst.add("Hello!!!");
-        AlternatingSequence<String, Integer> seq = new AlternatingSequence<>(lst, new ArrayList<>());
     }
 
     //TODO: i assume that the're are no circles because if there were, there would be infinite ExecutionFragments
@@ -416,6 +412,8 @@ public class FvmFacade {
         }
         isVisited.put(state, false);
     }
+
+    //****** Reach helpers END *******
 
     private class Path<S, A> {
         private List<S> states;
@@ -952,7 +950,7 @@ public class FvmFacade {
         generateAllBinaryStrings(n, arr, i + 1);
     }
 
-    private static Set<Map<String, Boolean>> binaryPermAsMap(Set<String> inputs) {
+    public static Set<Map<String, Boolean>> binaryPermAsMap(Set<String> inputs) {
         sets = new HashSet<>();
         generateAllBinaryStrings(inputs.size(), new boolean[inputs.size()], 0);
         Set<Map<String, Boolean>> allMaps = new HashSet<>();
