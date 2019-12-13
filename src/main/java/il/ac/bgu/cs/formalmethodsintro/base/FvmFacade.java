@@ -116,6 +116,7 @@ public class FvmFacade {
      * {@code ts}.
      */
     // TODO: עשיתי כאן הנחה שהמקטע ריצה מסתיים במצב ולא בפעולה (יעני שהוא תקין) - לבדוק אם מותר להניח זאת
+    //TODO: מקטע ריצה שיש בו מצב אחד ו0 פעולות (יעני פשוט מצב) הוא מקטע ריצה חוקי? לטפל בהתאם
     public <S, A, P> boolean isExecutionFragment(TransitionSystem<S, A, P> ts, AlternatingSequence<S, A> e) {
         if (e.size() == 0)
             return false;
@@ -341,7 +342,123 @@ public class FvmFacade {
      * @return All states reachable in {@code ts}.
      */
     public <S, A> Set<S> reach(TransitionSystem<S, A, ?> ts) {
-        throw new java.lang.UnsupportedOperationException();
+        Set<AlternatingSequence<S, A>> initialExecutionFragments = getInitialExecutionFragments(ts);
+        Set<S> reach = new HashSet<>();
+        for(AlternatingSequence<S, A> ief: initialExecutionFragments) {
+            S lastState = getLastState(ief);
+            reach.add(lastState);
+        }
+        return reach;
+    }
+
+    private <S, A> Set<AlternatingSequence<S, A>> getInitialExecutionFragments(TransitionSystem<S, A, ?> ts) {
+        Set<AlternatingSequence<S, A>> res = new HashSet<>();
+        Set<S> initials = ts.getInitialStates();
+        for(S iState: initials){
+            Set<AlternatingSequence<S, A>> exFrag = getExecutionFragmentsFromState(ts, iState);
+            res.addAll(exFrag); //union
+        }
+        return res;
+    }
+
+    private <S, A> Set<AlternatingSequence<S, A>> getExecutionFragmentsFromState(TransitionSystem<S, A, ?> ts, S state) {
+        Map<S, Boolean> isVisited = new HashMap<>();
+        //prepare the result path (finally will become an AlternatingSequence)
+        Path<S, A> localPath = new Path<>();
+        localPath.addState(state);
+        //prepare isVisited
+        for (S s: ts.getStates())
+            isVisited.put(s, false);
+
+        Set<AlternatingSequence<S, A>> result = new HashSet<>();
+        recurseGetExecutionFragmentsFromState(ts, state, isVisited, localPath, result);
+        return result;
+    }
+
+    public static void main(String args[]) {
+        System.out.println("Hello World!");
+        List<String> lst = new ArrayList<>();
+        lst.add("Hello!!!");
+        AlternatingSequence<String, Integer> seq = new AlternatingSequence<>(lst, new ArrayList<>());
+    }
+
+    //TODO: i assume that the're are no circles because if there were, there would be infinite ExecutionFragments
+    //a DFS implementation
+    //localPath saves the current computed path and then turns into AlternatingSequence and added to the result
+    private <S, A> void recurseGetExecutionFragmentsFromState(TransitionSystem<S, A, ?> ts, S state, Map<S, Boolean> isVisited, Path<S, A> localPath, Set<AlternatingSequence<S, A>> result) {
+        isVisited.put(state, true);
+
+        //save any path you've reached to
+        //make an AlternatingSequence from localPath
+        AlternatingSequence<S, A> patSeq = new AlternatingSequence(localPath.getStates(), localPath.getActions());
+        result.add(patSeq);
+
+        //end the recursion if the state is terminal
+        if (isStateTerminal(ts, state)) {
+            isVisited.put(state, false);
+            return;
+        }
+
+        Set<TSTransition<S, A>> transitionsFromState = getTransitionsFrom(ts, state);
+        for(TSTransition<S, A> trans: transitionsFromState) {
+            S neighbor = trans.getTo();
+            if (!isVisited.get(neighbor)) {
+                //store current state and action n localPath
+                localPath.addState(neighbor);
+                localPath.addAction(trans.getAction());
+
+                recurseGetExecutionFragmentsFromState(ts, neighbor, isVisited, localPath, result);
+
+                //remove current state and action
+                localPath.removeLastState();
+                localPath.removeLastAction();
+            }
+        }
+        isVisited.put(state, false);
+    }
+
+    private class Path<S, A> {
+        private List<S> states;
+        private List<A> actions;
+
+        public <S, A> Path() {
+            this.states = new ArrayList<>();
+            this.actions = new ArrayList<>();
+        }
+
+        public List<S> getStates(){
+            return this.states;
+        }
+
+        public List<A> getActions(){
+            return this.actions;
+        }
+
+        public void addState(S state) {
+            this.states.add(state);
+        }
+
+        public void addAction(A action) {
+            this.actions.add(action);
+        }
+
+        public void removeLastState(){
+            this.states.remove(this.states.size() - 1);
+        }
+
+        public void removeLastAction(){
+            this.actions.remove(this.actions.size() - 1);
+        }
+    }
+
+    private <S, A> Set<TSTransition<S, A>> getTransitionsFrom(TransitionSystem<S, A, ?> ts, S state) {
+        Set<TSTransition<S, A>> tsTransitions = ts.getTransitions();
+        Set<TSTransition<S, A>> res = new HashSet<>();
+        for (TSTransition trans : tsTransitions) {
+            if (trans.getFrom().equals(state))
+                res.add(trans);
+        }
+        return res;
     }
 
     private <S, S1, S2, A, P> TransitionSystem<Pair<S1, S2>, A, P> interleaveHelper(TransitionSystem<S1, A, P> ts1,
