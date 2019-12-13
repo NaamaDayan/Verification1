@@ -2,17 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02f42502-737d-47aa-afd6-61f272b83f42" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_6_0_M1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_6_0_M1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormalMethodsIntro-Base.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FormalMethodsIntro-Base.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
@@ -80,8 +69,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="124" column="11" lean-forward="true" selection-start-line="118" selection-start-column="10" selection-end-line="124" selection-end-column="11" />
+            <state relative-caret-position="144">
+              <caret line="117" column="105" selection-start-line="117" selection-start-column="105" selection-end-line="117" selection-end-column="105" />
               <folding>
                 <element signature="e#1479#1532#0" />
                 <element signature="e#1479#1681#0" />
@@ -110,14 +99,14 @@
                 <element signature="e#11615#12047#0" />
                 <element signature="e#11615#12268#0" />
                 <element signature="e#12274#12512#0" />
-                <element signature="e#13569#13570#0" expanded="true" />
+                <element signature="e#13976#13977#0" expanded="true" />
                 <element signature="e#12648#14633#0" />
                 <element signature="e#14639#15125#0" />
                 <element signature="e#14639#15993#0" />
                 <element signature="e#15999#16648#0" />
                 <element signature="e#15999#18671#0" />
                 <element signature="e#18677#18888#0" />
-                <element signature="e#19918#19919#0" expanded="true" />
+                <element signature="e#20325#20326#0" expanded="true" />
                 <element signature="e#18997#20779#0" />
                 <element signature="e#20786#21140#0" />
                 <element signature="e#20786#21907#0" />
@@ -138,7 +127,7 @@
                 <element signature="e#29116#29783#0" />
                 <element signature="e#29116#30062#0" />
                 <element signature="e#30068#30388#0" />
-                <element signature="e#31435#31436#0" expanded="true" />
+                <element signature="e#31842#31843#0" expanded="true" />
                 <element signature="e#30514#30867#0" />
                 <element signature="e#30514#31010#0" />
                 <element signature="e#31106#31232#0" />
@@ -266,7 +255,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576178037291" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576233257433" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -388,7 +377,7 @@
       <option name="presentableId" value="Default" />
       <updated>1575654750929</updated>
       <workItem from="1575654756431" duration="20872000" />
-      <workItem from="1576175298902" duration="2732000" />
+      <workItem from="1576175298902" duration="4640000" />
     </task>
     <servers />
   </component>
@@ -425,13 +414,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23604000" />
+    <option name="totallyTimeSpent" value="25512000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25182188" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19595142" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -714,8 +703,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="124" column="11" lean-forward="true" selection-start-line="118" selection-start-column="10" selection-end-line="124" selection-end-column="11" />
+        <state relative-caret-position="144">
+          <caret line="117" column="105" selection-start-line="117" selection-start-column="105" selection-end-line="117" selection-end-column="105" />
           <folding>
             <element signature="e#1479#1532#0" />
             <element signature="e#1479#1681#0" />
@@ -744,14 +733,14 @@
             <element signature="e#11615#12047#0" />
             <element signature="e#11615#12268#0" />
             <element signature="e#12274#12512#0" />
-            <element signature="e#13569#13570#0" expanded="true" />
+            <element signature="e#13976#13977#0" expanded="true" />
             <element signature="e#12648#14633#0" />
             <element signature="e#14639#15125#0" />
             <element signature="e#14639#15993#0" />
             <element signature="e#15999#16648#0" />
             <element signature="e#15999#18671#0" />
             <element signature="e#18677#18888#0" />
-            <element signature="e#19918#19919#0" expanded="true" />
+            <element signature="e#20325#20326#0" expanded="true" />
             <element signature="e#18997#20779#0" />
             <element signature="e#20786#21140#0" />
             <element signature="e#20786#21907#0" />
@@ -772,7 +761,7 @@
             <element signature="e#29116#29783#0" />
             <element signature="e#29116#30062#0" />
             <element signature="e#30068#30388#0" />
-            <element signature="e#31435#31436#0" expanded="true" />
+            <element signature="e#31842#31843#0" expanded="true" />
             <element signature="e#30514#30867#0" />
             <element signature="e#30514#31010#0" />
             <element signature="e#31106#31232#0" />

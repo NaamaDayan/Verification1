@@ -115,14 +115,20 @@ public class FvmFacade {
      * @return {@code true} iff {@code e} is an execution fragment of
      * {@code ts}.
      */
+    // TODO: עשיתי כאן הנחה שהמקטע ריצה מסתיים במצב ולא בפעולה (יעני שהוא תקין) - לבדוק אם מותר להניח זאת
     public <S, A, P> boolean isExecutionFragment(TransitionSystem<S, A, P> ts, AlternatingSequence<S, A> e) {
-//        S head = e.head();
-//        AlternatingSequence<A, S> tail = e.tail(); //action and then next state
-//        while (e.size() > 0) {
-//            //לבדוק אם קונטיינס של set מחזירה לפי הערכים או לפי הכתובת בזיכרון (אם לפי הערכים אז לבנות TSTransition חדש מהפעולה והמצב ולבדוק האם הוא בתוך הset
-//            //לא לשכוח לשים not
-//            if (ts.getStates().contains(head) && ts.getTransitions().contains(tail.head()))
-//        }
+        if (e.size() == 0)
+            return false;
+        while (e.size() > 0) {
+            S from = e.head();
+            AlternatingSequence<A, S> tail = e.tail(); //action and then next state
+            A action = tail.head();
+            e = tail.tail();
+            S to = e.head();
+            if (!(ts.getStates().contains(from) && ts.getStates().contains(to) && ts.getTransitions().contains(new TSTransition(from, action, to))))
+                return false;
+        }
+        return true;
     }
 
     /**
@@ -155,7 +161,14 @@ public class FvmFacade {
      * @return {@code true} iff {@code e} is a maximal fragment of {@code ts}.
      */
     public <S, A, P> boolean isMaximalExecutionFragment(TransitionSystem<S, A, P> ts, AlternatingSequence<S, A> e) {
-        return isExecutionFragment(ts, e) &&
+        return isExecutionFragment(ts, e) && isStateTerminal(ts, getLastState(e));
+    }
+
+    private <A, S> S getLastState(AlternatingSequence<S,A> e) {
+        while(e.size() > 1) {
+            e = e.tail().tail(); //skip the current state and action
+        }
+        return e.head();
     }
 
     /**
