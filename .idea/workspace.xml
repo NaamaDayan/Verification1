@@ -4,8 +4,6 @@
     <list default="true" id="02f42502-737d-47aa-afd6-61f272b83f42" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/sanity/Our_Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/sanity/Our_Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/sanity/ProgramGraphSanityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/sanity/ProgramGraphSanityTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -23,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="343" column="22" selection-start-line="343" selection-start-column="22" selection-end-line="343" selection-end-column="22" />
+            <state relative-caret-position="408">
+              <caret line="752" column="81" selection-start-line="752" selection-start-column="81" selection-end-line="752" selection-end-column="81" />
               <folding>
                 <element signature="e#1479#1532#0" />
                 <element signature="e#1479#1681#0" />
@@ -33,31 +31,92 @@
                 <element signature="e#2488#2874#0" />
                 <element signature="e#2488#3599#0" />
                 <element signature="e#3605#4069#0" />
+                <element signature="e#4300#4816#0" />
+                <element signature="e#4300#5635#0" />
+                <element signature="e#5641#6173#0" />
+                <element signature="e#5641#6383#0" />
+                <element signature="e#6389#6909#0" />
+                <element signature="e#6389#7115#0" />
+                <element signature="e#7121#7320#0" />
+                <element signature="e#7326#7734#0" />
+                <element signature="e#7326#7949#0" />
+                <element signature="e#7955#8252#0" />
+                <element signature="e#7955#8734#0" />
+                <element signature="e#8740#9084#0" />
+                <element signature="e#8740#9299#0" />
+                <element signature="e#9305#9710#0" />
+                <element signature="e#9305#10236#0" />
+                <element signature="e#10242#10585#0" />
+                <element signature="e#10242#10811#0" />
+                <element signature="e#10817#11032#0" />
+                <element signature="e#10817#11420#0" />
+                <element signature="e#11426#11769#0" />
+                <element signature="e#11426#12097#0" />
+                <element signature="e#12103#12516#0" />
+                <element signature="e#12103#13038#0" />
+                <element signature="e#13044#13476#0" />
+                <element signature="e#13044#13697#0" />
                 <element signature="e#13703#13941#0" />
-                <element signature="e#13703#14334#0" />
-                <element signature="e#14340#14762#0" />
-                <element signature="e#14768#15379#0" />
-                <element signature="e#15658#17244#0" />
-                <element signature="e#17250#18033#0" />
-                <element signature="e#18039#18427#0" />
-                <element signature="e#24732#24733#0" expanded="true" />
-                <element signature="e#24775#24776#0" expanded="true" />
-                <element signature="e#36225#36226#0" expanded="true" />
-                <element signature="e#36292#36293#0" expanded="true" />
+                <element signature="e#13703#14357#0" />
+                <element signature="e#14405#14827#0" />
+                <element signature="e#14833#15444#0" />
+                <element signature="e#15450#17036#0" />
+                <element signature="e#17042#17430#0" />
+                <element signature="e#17436#18219#0" />
+                <element signature="e#18265#20250#0" />
+                <element signature="e#20256#20742#0" />
+                <element signature="e#20256#21610#0" />
+                <element signature="e#21616#22265#0" />
+                <element signature="e#21616#24288#0" />
+                <element signature="class#22598:23422" />
+                <element signature="method#getPairs#0;class#23428:24251" />
+                <element signature="e#24294#24505#0" />
+                <element signature="e#24614#26396#0" />
+                <element signature="e#26403#26757#0" />
+                <element signature="e#26403#27524#0" />
+                <element signature="e#27531#27764#0" />
+                <element signature="e#27531#31284#0" />
+                <element signature="e#39150#39151#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/transitionsystem/AlternatingSequence.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/transitionsystem/TransitionSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="61" column="30" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="30" />
+            <state relative-caret-position="171">
+              <caret line="256" column="54" selection-start-line="256" selection-start-column="36" selection-end-line="256" selection-end-column="54" />
               <folding>
-                <element signature="e#3106#3107#0" expanded="true" />
-                <element signature="e#3186#3187#0" expanded="true" />
+                <element signature="e#6332#6333#0" expanded="true" />
+                <element signature="e#6395#6396#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/programgraph/ProgramGraph.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="111">
+              <caret line="44" column="39" lean-forward="true" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="39" />
+              <folding>
+                <element signature="e#1677#1678#0" expanded="true" />
+                <element signature="e#1715#1716#0" expanded="true" />
+                <element signature="e#3203#3204#0" expanded="true" />
+                <element signature="e#3264#3265#0" expanded="true" />
+                <element signature="e#3893#3894#0" expanded="true" />
+                <element signature="e#3920#3921#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/programgraph/ConditionDef.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -82,10 +141,16 @@
       <find>getExecutionFragmentsFromState</find>
       <find>TSTransition</find>
       <find>TransitionSystem</find>
-      <find>getTransitionsFrom</find>
       <find>assertNotEquals</find>
       <find>binaryPermAsMap</find>
       <find>main</find>
+      <find>getTransitionsFrom</find>
+      <find>atomic</find>
+      <find>addallatomic</find>
+      <find>grap</find>
+      <find>gra</find>
+      <find>tag</find>
+      <find>addAll</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -153,15 +218,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="base" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="FormalMethodsIntro-Base" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Verification1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-              <item name="transitionsystem" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -172,7 +228,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576253718203" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576342875038" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -289,7 +345,8 @@
       <updated>1575654750929</updated>
       <workItem from="1575654756431" duration="20872000" />
       <workItem from="1576175298902" duration="14520000" />
-      <workItem from="1576253257061" duration="458000" />
+      <workItem from="1576253257061" duration="1336000" />
+      <workItem from="1576337545326" duration="5313000" />
     </task>
     <servers />
   </component>
@@ -326,7 +383,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35850000" />
+    <option name="totallyTimeSpent" value="42041000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -341,7 +398,7 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19919029" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20242915" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -378,6 +435,16 @@
     <option name="version" value="1" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java</url>
+          <line>345</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
         <watch expression="transitionsByFirst" />
@@ -497,13 +564,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/programgraph/ProgramGraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3104">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/transitionsystem/TransitionSystemXmlFormat.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
@@ -527,13 +587,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2477">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/TSTestUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="83" column="11" selection-start-line="83" selection-start-column="11" selection-end-line="83" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -572,48 +625,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/transitionsystem/TransitionSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="243" column="86" selection-start-line="243" selection-start-column="70" selection-end-line="243" selection-end-column="86" />
-          <folding>
-            <element signature="e#6332#6333#0" expanded="true" />
-            <element signature="e#6395#6396#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/function/Function.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
           <caret line="48" column="6" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/GraphvizSamples.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="23" column="44" lean-forward="true" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/TSTestUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1664">
-          <caret line="113" column="73" selection-start-line="113" selection-start-column="73" selection-end-line="113" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/sanity/ProgramGraphSanityTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-488">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
@@ -629,7 +644,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/transitionsystem/AlternatingSequence.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="935">
           <caret line="61" column="30" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="30" />
           <folding>
             <element signature="e#3106#3107#0" expanded="true" />
@@ -638,10 +653,87 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/programgraph/ActionDef.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/sanity/ProgramGraphSanityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-233">
+          <caret line="20" column="20" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/GraphvizSamples.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="47" column="30" lean-forward="true" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/TSTestUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="87" column="40" selection-start-line="87" selection-start-column="40" selection-end-line="87" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/TSTestUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="67" column="45" selection-start-line="67" selection-start-column="45" selection-end-line="67" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/programgraph/ProgramGraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="44" column="39" lean-forward="true" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="39" />
+          <folding>
+            <element signature="e#1677#1678#0" expanded="true" />
+            <element signature="e#1715#1716#0" expanded="true" />
+            <element signature="e#3203#3204#0" expanded="true" />
+            <element signature="e#3264#3265#0" expanded="true" />
+            <element signature="e#3893#3894#0" expanded="true" />
+            <element signature="e#3920#3921#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/transitionsystem/TransitionSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="256" column="54" selection-start-line="256" selection-start-column="36" selection-end-line="256" selection-end-column="54" />
+          <folding>
+            <element signature="e#6332#6333#0" expanded="true" />
+            <element signature="e#6395#6396#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/programgraph/ConditionDef.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="343" column="22" selection-start-line="343" selection-start-column="22" selection-end-line="343" selection-end-column="22" />
+        <state relative-caret-position="408">
+          <caret line="752" column="81" selection-start-line="752" selection-start-column="81" selection-end-line="752" selection-end-column="81" />
           <folding>
             <element signature="e#1479#1532#0" />
             <element signature="e#1479#1681#0" />
@@ -650,17 +742,52 @@
             <element signature="e#2488#2874#0" />
             <element signature="e#2488#3599#0" />
             <element signature="e#3605#4069#0" />
+            <element signature="e#4300#4816#0" />
+            <element signature="e#4300#5635#0" />
+            <element signature="e#5641#6173#0" />
+            <element signature="e#5641#6383#0" />
+            <element signature="e#6389#6909#0" />
+            <element signature="e#6389#7115#0" />
+            <element signature="e#7121#7320#0" />
+            <element signature="e#7326#7734#0" />
+            <element signature="e#7326#7949#0" />
+            <element signature="e#7955#8252#0" />
+            <element signature="e#7955#8734#0" />
+            <element signature="e#8740#9084#0" />
+            <element signature="e#8740#9299#0" />
+            <element signature="e#9305#9710#0" />
+            <element signature="e#9305#10236#0" />
+            <element signature="e#10242#10585#0" />
+            <element signature="e#10242#10811#0" />
+            <element signature="e#10817#11032#0" />
+            <element signature="e#10817#11420#0" />
+            <element signature="e#11426#11769#0" />
+            <element signature="e#11426#12097#0" />
+            <element signature="e#12103#12516#0" />
+            <element signature="e#12103#13038#0" />
+            <element signature="e#13044#13476#0" />
+            <element signature="e#13044#13697#0" />
             <element signature="e#13703#13941#0" />
-            <element signature="e#13703#14334#0" />
-            <element signature="e#14340#14762#0" />
-            <element signature="e#14768#15379#0" />
-            <element signature="e#15658#17244#0" />
-            <element signature="e#17250#18033#0" />
-            <element signature="e#18039#18427#0" />
-            <element signature="e#24732#24733#0" expanded="true" />
-            <element signature="e#24775#24776#0" expanded="true" />
-            <element signature="e#36225#36226#0" expanded="true" />
-            <element signature="e#36292#36293#0" expanded="true" />
+            <element signature="e#13703#14357#0" />
+            <element signature="e#14405#14827#0" />
+            <element signature="e#14833#15444#0" />
+            <element signature="e#15450#17036#0" />
+            <element signature="e#17042#17430#0" />
+            <element signature="e#17436#18219#0" />
+            <element signature="e#18265#20250#0" />
+            <element signature="e#20256#20742#0" />
+            <element signature="e#20256#21610#0" />
+            <element signature="e#21616#22265#0" />
+            <element signature="e#21616#24288#0" />
+            <element signature="class#22598:23422" />
+            <element signature="method#getPairs#0;class#23428:24251" />
+            <element signature="e#24294#24505#0" />
+            <element signature="e#24614#26396#0" />
+            <element signature="e#26403#26757#0" />
+            <element signature="e#26403#27524#0" />
+            <element signature="e#27531#27764#0" />
+            <element signature="e#27531#31284#0" />
+            <element signature="e#39150#39151#0" expanded="true" />
           </folding>
         </state>
       </provider>
