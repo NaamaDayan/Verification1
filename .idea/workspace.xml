@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02f42502-737d-47aa-afd6-61f272b83f42" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
@@ -21,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="752" column="81" selection-start-line="752" selection-start-column="81" selection-end-line="752" selection-end-column="81" />
+            <state relative-caret-position="328">
+              <caret line="753" column="60" selection-start-line="753" selection-start-column="60" selection-end-line="753" selection-end-column="60" />
               <folding>
                 <element signature="e#1479#1532#0" />
                 <element signature="e#1479#1681#0" />
@@ -76,7 +75,7 @@
                 <element signature="e#26403#27524#0" />
                 <element signature="e#27531#27764#0" />
                 <element signature="e#27531#31284#0" />
-                <element signature="e#39150#39151#0" expanded="true" />
+                <element signature="e#39277#39278#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -228,7 +227,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576342875038" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576342952606" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -346,7 +345,7 @@
       <workItem from="1575654756431" duration="20872000" />
       <workItem from="1576175298902" duration="14520000" />
       <workItem from="1576253257061" duration="1336000" />
-      <workItem from="1576337545326" duration="5313000" />
+      <workItem from="1576337545326" duration="5390000" />
     </task>
     <servers />
   </component>
@@ -383,7 +382,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42041000" />
+    <option name="totallyTimeSpent" value="42118000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -732,8 +731,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="752" column="81" selection-start-line="752" selection-start-column="81" selection-end-line="752" selection-end-column="81" />
+        <state relative-caret-position="328">
+          <caret line="753" column="60" selection-start-line="753" selection-start-column="60" selection-end-line="753" selection-end-column="60" />
           <folding>
             <element signature="e#1479#1532#0" />
             <element signature="e#1479#1681#0" />
@@ -787,7 +786,7 @@
             <element signature="e#26403#27524#0" />
             <element signature="e#27531#27764#0" />
             <element signature="e#27531#31284#0" />
-            <element signature="e#39150#39151#0" expanded="true" />
+            <element signature="e#39277#39278#0" expanded="true" />
           </folding>
         </state>
       </provider>

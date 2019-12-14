@@ -718,39 +718,40 @@ public class FvmFacade {
     //TODO: i assume that each initialization is looks like "x := 15", "y:=9"
     public <L, A> TransitionSystem<Pair<L, Map<String, Object>>, A, String> transitionSystemFromProgramGraph(
             ProgramGraph<L, A> pg, Set<ActionDef> actionDefs, Set<ConditionDef> conditionDefs) {
-        TransitionSystem<Pair<L, Map<String, Object>>, A, String> ts = new TransitionSystem<>();
-        //Atomic Propositions
-        //TODO: maybe i dont neeed it because i add them on the fly with the states
-//        Set<String> aps = new HashSet<>();
-//        Set<L> locs = pg.getLocations();
-//        for(L loc : locs) {
-//            aps.add(loc.toString());
+//        TransitionSystem<Pair<L, Map<String, Object>>, A, String> ts = new TransitionSystem<>();
+//        //Atomic Propositions
+//        //TODO: maybe i dont neeed it because i add them on the fly with the states
+////        Set<String> aps = new HashSet<>();
+////        Set<L> locs = pg.getLocations();
+////        for(L loc : locs) {
+////            aps.add(loc.toString());
+////        }
+////        for(ConditionDef cond: conditionDefs) {
+////            aps.add(cond.toString());
+////        }
+////        ts.addAllAtomicPcoropositions(aps);
+//        //Atomic Propositions End
+//        //initial states
+//        Set<Pair<L, Map<String, Object>>> initStates = new HashSet<>();
+//        for(L initLoc: pg.getInitialLocations()) {
+//            for(List<String> initialization: pg.getInitalizations()) {
+//                Map<String, Object> evalFun = parseInitialization(initialization);
+//                Pair<L, Map<String, Object>> state = new Pair<>(initLoc, evalFun);
+//                initStates.add(state); //add to local set
+//                addStateToTS(ts, state, conditionDefs, true);
+//            }
 //        }
-//        for(ConditionDef cond: conditionDefs) {
-//            aps.add(cond.toString());
+//        //initial states End
+//        //TODO:הטקטיקה - newStates contains the states added in each level
+//        //TODO: We're adding new state and action as in BFS - iterating on the new added states at each level
+//        //TODO:and adding one state and action for each one
+//        //TODO: do not forget at the end of each iteration empty newStates and add just the current new states
+//        Set<Pair<L, Map<String, Object>>> newStates = new HashSet<>(initStates);
+//        for(Pair<L, Map<String, Object>> State: newStates) {
+//
 //        }
-//        ts.addAllAtomicPcoropositions(aps);
-        //Atomic Propositions End
-        //initial states
-        Set<Pair<L, Map<String, Object>>> initStates = new HashSet<>();
-        for(L initLoc: pg.getInitialLocations()) {
-            for(List<String> initialization: pg.getInitalizations()) {
-                Map<String, Object> evalFun = parseInitialization(initialization);
-                Pair<L, Map<String, Object>> state = new Pair<>(initLoc, evalFun);
-                initStates.add(state); //add to local set
-                addStateToTS(ts, state, conditionDefs, true);
-            }
-        }
-        //initial states End
-        //TODO:הטקטיקה - newStates contains the states added in each level
-        //TODO: We're adding new state and action as in BFS - iterating on the new added states at each level
-        //TODO:and adding one state and action for each one
-        //TODO: do not forget at the end of each iteration empty newStates and add just the current new states
-        Set<Pair<L, Map<String, Object>>> newStates = new HashSet<>(initStates);
-        for(Pair<L, Map<String, Object>> State: newStates) {
-
-        }
-        //TODO: לבדוק אם הלולאה הזאת עובדת גם למצב עם לולאה עצמית במערכת המעברים.
+//        //TODO: לבדוק אם הלולאה הזאת עובדת גם למצב עם לולאה עצמית במערכת המעברים.
+        throw new java.lang.UnsupportedOperationException();
     }
 
     //Add the state and the corresponding label to the TS
