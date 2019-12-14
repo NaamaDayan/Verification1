@@ -704,6 +704,7 @@ public class FvmFacade {
         return transitionSystem;
     }
 
+    //TODO: CHECK ME!!!
     /**
      * Creates a {@link TransitionSystem} from a program graph.
      *
@@ -718,40 +719,83 @@ public class FvmFacade {
     //TODO: i assume that each initialization is looks like "x := 15", "y:=9"
     public <L, A> TransitionSystem<Pair<L, Map<String, Object>>, A, String> transitionSystemFromProgramGraph(
             ProgramGraph<L, A> pg, Set<ActionDef> actionDefs, Set<ConditionDef> conditionDefs) {
-//        TransitionSystem<Pair<L, Map<String, Object>>, A, String> ts = new TransitionSystem<>();
-//        //Atomic Propositions
-//        //TODO: maybe i dont neeed it because i add them on the fly with the states
-////        Set<String> aps = new HashSet<>();
-////        Set<L> locs = pg.getLocations();
-////        for(L loc : locs) {
-////            aps.add(loc.toString());
-////        }
-////        for(ConditionDef cond: conditionDefs) {
-////            aps.add(cond.toString());
-////        }
-////        ts.addAllAtomicPcoropositions(aps);
-//        //Atomic Propositions End
-//        //initial states
-//        Set<Pair<L, Map<String, Object>>> initStates = new HashSet<>();
-//        for(L initLoc: pg.getInitialLocations()) {
-//            for(List<String> initialization: pg.getInitalizations()) {
-//                Map<String, Object> evalFun = parseInitialization(initialization);
-//                Pair<L, Map<String, Object>> state = new Pair<>(initLoc, evalFun);
-//                initStates.add(state); //add to local set
-//                addStateToTS(ts, state, conditionDefs, true);
-//            }
-//        }
-//        //initial states End
-//        //TODO:הטקטיקה - newStates contains the states added in each level
-//        //TODO: We're adding new state and action as in BFS - iterating on the new added states at each level
-//        //TODO:and adding one state and action for each one
-//        //TODO: do not forget at the end of each iteration empty newStates and add just the current new states
-//        Set<Pair<L, Map<String, Object>>> newStates = new HashSet<>(initStates);
-//        for(Pair<L, Map<String, Object>> State: newStates) {
-//
-//        }
-//        //TODO: לבדוק אם הלולאה הזאת עובדת גם למצב עם לולאה עצמית במערכת המעברים.
-        throw new java.lang.UnsupportedOperationException();
+        TransitionSystem<Pair<L, Map<String, Object>>, A, String> ts = new TransitionSystem<>();
+        //initial states
+        Set<Pair<L, Map<String, Object>>> initStates = new HashSet<>();
+        for(L initLoc: pg.getInitialLocations()) {
+            for(List<String> initialization: pg.getInitalizations()) {
+                Map<String, Object> evalFun = parseInitialization(initialization);
+                Pair<L, Map<String, Object>> state = new Pair<>(initLoc, evalFun);
+                initStates.add(state); //add to local set
+                addStateToTS(ts, state, conditionDefs, true);
+            }
+        }
+        //initial states End
+        //הטקטיקה - currStates contains the states added in each level
+        //We're adding new states and actions as in BFS - iterating on the new added states at each level (currStates)
+        //and adding one level of state and action for each one (adding all of its neighbors)
+        //do not forget at the end of each iteration empty currStates and add just the current new states
+        // אם לפני שמוסיפים מצב לניו סטייטס בודקים אם הוא כבר קיים במערכת ואם כן לא מוסיפים,
+        // זה יהיה יותר יעיל ונדמה לי שגם ימנע לולאה אינסופית במקרה של מעבר עצמי
+        Set<Pair<L, Map<String, Object>>> currStates = new HashSet<>(initStates); //the current BFS states from which we compute the next level states
+        Set<Pair<L, Map<String, Object>>> newStates = new HashSet<>(); //local next level states (neighbors of currStates)
+        while(true) {
+            for (Pair<L, Map<String, Object>> state : currStates) {
+                Set<PGTransition<L, A>> neighborsTrans = getNeighborsTransitionsPG(pg, state.getFirst());
+                for (PGTransition<L, A> trans : neighborsTrans) {
+                    ConditionDef cond = getCondition(conditionDefs, trans.getCondition());
+                    if (cond.evaluate(state.getSecond(), trans.getCondition())) {
+                        ActionDef action = getAction(actionDefs, trans.getAction());
+                        Map<String, Object> newEval = action.effect(state.getSecond(), action);
+                        Pair<L, Map<String, Object>> newState = new Pair<>(trans.getTo(), newEval);
+                        if (!ts.getStates().contains(newState)) {
+                            addStateToTS(ts, newState, conditionDefs, false);
+                            newStates.add(newState);
+                            ts.addTransitionFrom(state).action(trans.getAction()).to(newState);
+                        }
+                    }
+                }
+            }
+            currStates = new HashSet<>(newStates);
+            newStates = new HashSet<>();
+            if(currStates.isEmpty())
+                break;
+        }
+        return ts;
+    }
+
+    //return the appropriate actionDef corresponding to the given action
+    private <A> ActionDef getAction(Set<ActionDef> actionDefs, A action) {
+        for(ActionDef actionDef: actionDefs)
+            if(actionDef.equals(action))
+                return actionDef;
+        try {
+            throw new Exception("action not found");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //return the appropriate ConditionDef corresponding to the string condition
+    private ConditionDef getCondition(Set<ConditionDef> conditionDefs, String condition) {
+        for(ConditionDef condDef: conditionDefs)
+            if(condDef.toString().equals(condition)) //TODO: this is how i find a specific condition from set of ConditionDef????
+                return condDef;
+        try {
+            throw new Exception("condition not found");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private <L, A> Set<PGTransition<L,A>> getNeighborsTransitionsPG(ProgramGraph<L, A> pg, L location) {
+        Set<PGTransition<L,A>> ret = new HashSet<>();
+        for(PGTransition<L, A> transition: pg.getTransitions())
+            if (transition.getFrom().equals(location))
+                ret.add(transition);
+        return ret;
     }
 
     //Add the state and the corresponding label to the TS
