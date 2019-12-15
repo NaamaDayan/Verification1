@@ -470,11 +470,11 @@ public class FvmFacade {
         for (Pair<S1, S2> initialState : allInitialStates)
             interleaveTs.addInitialState(initialState);
 
-        Set<TSTransition<Pair<S1, S2>, A>> transitionsByFirst = getTransitions(ts1, interleaveTs.getStates(),
+        Set<TSTransition<Pair<S1, S2>, A>> transitionsByFirst1 = getTransitions(ts1, interleaveTs.getStates(),
                 handler1, true);
         Set<TSTransition<Pair<S1, S2>, A>> transitionsBySecond = getTransitions(ts2, interleaveTs.getStates(),
                 handler2, false);
-        for (TSTransition<Pair<S1, S2>, A> transition : transitionsByFirst)
+        for (TSTransition<Pair<S1, S2>, A> transition : transitionsByFirst1)
             interleaveTs.addTransition(transition);
         for (TSTransition<Pair<S1, S2>, A> transition : transitionsBySecond)
             interleaveTs.addTransition(transition);
@@ -594,11 +594,11 @@ public class FvmFacade {
         pg1Actions.addAll(pg2.getActions());
 
         //transitions
-        Set<PGTransition<Pair<L1, L2>, A>> transitionsByFirst = getTransitionsPG(pg1, interleaveGraph.getLocations(),
+        Set<PGTransition<Pair<L1, L2>, A>> transitionsByFirst1 = getTransitionsPG(pg1, interleaveGraph.getLocations(),
                 handler1, true);
         Set<PGTransition<Pair<L1, L2>, A>> transitionsBySecond = getTransitionsPG(pg2, interleaveGraph.getLocations(),
                 handler2, false);
-        for (PGTransition<Pair<L1, L2>, A> transition : transitionsByFirst)
+        for (PGTransition<Pair<L1, L2>, A> transition : transitionsByFirst1)
             interleaveGraph.addTransition(transition);
         for (PGTransition<Pair<L1, L2>, A> transition : transitionsBySecond)
             interleaveGraph.addTransition(transition);
