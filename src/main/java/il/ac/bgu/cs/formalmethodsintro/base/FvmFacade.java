@@ -99,7 +99,7 @@ public class FvmFacade {
      * @return {@code true} iff {@code e} is an execution of {@code ts}.
      */
     public <S, A, P> boolean isExecution(TransitionSystem<S, A, P> ts, AlternatingSequence<S, A> e) {
-        throw new java.lang.UnsupportedOperationException();
+        return isExecutionFragment(ts, e) && isInitialExecutionFragment(ts, e) && isMaximalExecutionFragment(ts, e);
     }
 
     /**
@@ -115,8 +115,21 @@ public class FvmFacade {
      * @return {@code true} iff {@code e} is an execution fragment of
      * {@code ts}.
      */
+    // TODO: עשיתי כאן הנחה שהמקטע ריצה מסתיים במצב ולא בפעולה (יעני שהוא תקין) - לבדוק אם מותר להניח זאת
+    //TODO: מקטע ריצה שיש בו מצב אחד ו0 פעולות (יעני פשוט מצב) הוא מקטע ריצה חוקי? לטפל בהתאם
     public <S, A, P> boolean isExecutionFragment(TransitionSystem<S, A, P> ts, AlternatingSequence<S, A> e) {
-        throw new java.lang.UnsupportedOperationException();
+        if (e.size() == 0)
+            return false;
+        while (e.size() > 0) {
+            S from = e.head();
+            AlternatingSequence<A, S> tail = e.tail(); //action and then next state
+            A action = tail.head();
+            e = tail.tail();
+            S to = e.head();
+            if (!(ts.getStates().contains(from) && ts.getStates().contains(to) && ts.getTransitions().contains(new TSTransition(from, action, to))))
+                return false;
+        }
+        return true;
     }
 
     /**
@@ -133,7 +146,7 @@ public class FvmFacade {
      * {@code ts}.
      */
     public <S, A, P> boolean isInitialExecutionFragment(TransitionSystem<S, A, P> ts, AlternatingSequence<S, A> e) {
-        throw new java.lang.UnsupportedOperationException();
+        return isExecutionFragment(ts, e) && ts.getInitialStates().contains(e.head());
     }
 
     /**
@@ -149,7 +162,14 @@ public class FvmFacade {
      * @return {@code true} iff {@code e} is a maximal fragment of {@code ts}.
      */
     public <S, A, P> boolean isMaximalExecutionFragment(TransitionSystem<S, A, P> ts, AlternatingSequence<S, A> e) {
-        throw new java.lang.UnsupportedOperationException();
+        return isExecutionFragment(ts, e) && isStateTerminal(ts, getLastState(e));
+    }
+
+    private <A, S> S getLastState(AlternatingSequence<S,A> e) {
+        while(e.size() > 1) {
+            e = e.tail().tail(); //skip the current state and action
+        }
+        return e.head();
     }
 
     /**
@@ -163,6 +183,8 @@ public class FvmFacade {
      * @throws StateNotFoundException if {@code s} is not a state of {@code ts}.
      */
     public <S, A> boolean isStateTerminal(TransitionSystem<S, A, ?> ts, S s) {
+        if (!ts.getStates().contains(s))
+            throw new StateNotFoundException(s);
         return post(ts, s).size() == 0;
     }
 
@@ -174,6 +196,8 @@ public class FvmFacade {
      * @throws StateNotFoundException if {@code s} is not a state of {@code ts}.
      */
     public <S> Set<S> post(TransitionSystem<S, ?, ?> ts, S s) {
+        if (!ts.getStates().contains(s))
+            throw new StateNotFoundException(s);
         Set<? extends TSTransition<S, ?>> transitions = ts.getTransitions();
         Set<S> post_states = new HashSet<>();
         for (TSTransition<S, ?> transition : transitions) {
@@ -209,6 +233,8 @@ public class FvmFacade {
      * @throws StateNotFoundException if {@code s} is not a state of {@code ts}.
      */
     public <S, A> Set<S> post(TransitionSystem<S, A, ?> ts, S s, A a) {
+        if (!ts.getStates().contains(s))
+            throw new StateNotFoundException(s);
         Set<? extends TSTransition<S, A>> transitions = ts.getTransitions();
         Set<S> post_states = new HashSet<>();
         for (TSTransition<S, A> transition : transitions) {
@@ -260,8 +286,11 @@ public class FvmFacade {
      */
     public <S> Set<S> pre(TransitionSystem<S, ?, ?> ts, Set<S> c) {
         Set<S> all_pre = new HashSet<>();
-        for (S state : c)
+        for (S state : c) {
+            if (!ts.getStates().contains(state))
+                throw new StateNotFoundException(state);
             all_pre.addAll(pre(ts, state));
+        }
         return all_pre;
     }
 
@@ -276,6 +305,8 @@ public class FvmFacade {
      * @throws StateNotFoundException if {@code s} is not a state of {@code ts}.
      */
     public <S, A> Set<S> pre(TransitionSystem<S, A, ?> ts, S s, A a) {
+        if (!ts.getStates().contains(s))
+            throw new StateNotFoundException(s);
         Set<? extends TSTransition<S, A>> transitions = ts.getTransitions();
         Set<S> pre_states = new HashSet<>();
         for (TSTransition<S, A> transition : transitions) {
@@ -310,9 +341,123 @@ public class FvmFacade {
      * @param ts  Transition system of {@code s}.
      * @return All states reachable in {@code ts}.
      */
+    //TODO: test me!!!
     public <S, A> Set<S> reach(TransitionSystem<S, A, ?> ts) {
-        throw new java.lang.UnsupportedOperationException();
+        Set<AlternatingSequence<S, A>> initialExecutionFragments = getInitialExecutionFragments(ts);
+        Set<S> reach = new HashSet<>();
+        for(AlternatingSequence<S, A> ief: initialExecutionFragments) {
+            S lastState = getLastState(ief);
+            reach.add(lastState);
+        }
+        return reach;
     }
+
+    //****** Reach helpers START *******
+
+    private <S, A> Set<AlternatingSequence<S, A>> getInitialExecutionFragments(TransitionSystem<S, A, ?> ts) {
+        Set<AlternatingSequence<S, A>> res = new HashSet<>();
+        Set<S> initials = ts.getInitialStates();
+        for(S iState: initials){
+            Set<AlternatingSequence<S, A>> exFrag = getExecutionFragmentsFromState(ts, iState);
+            res.addAll(exFrag); //union
+        }
+        return res;
+    }
+
+    private <S, A> Set<AlternatingSequence<S, A>> getExecutionFragmentsFromState(TransitionSystem<S, A, ?> ts, S state) {
+        Map<S, Boolean> isVisited = new HashMap<>();
+        //prepare the result path (finally will become an AlternatingSequence)
+        Path<S, A> localPath = new Path<>();
+        localPath.addState(state);
+        //prepare isVisited
+        for (S s: ts.getStates())
+            isVisited.put(s, false);
+
+        Set<AlternatingSequence<S, A>> result = new HashSet<>();
+        recurseGetExecutionFragmentsFromState(ts, state, isVisited, localPath, result);
+        return result;
+    }
+
+    //TODO: i assume that the're are no circles because if there were, there would be infinite ExecutionFragments
+    //a DFS implementation
+    //localPath saves the current computed path and then turns into AlternatingSequence and added to the result
+    private <S, A> void recurseGetExecutionFragmentsFromState(TransitionSystem<S, A, ?> ts, S state, Map<S, Boolean> isVisited, Path<S, A> localPath, Set<AlternatingSequence<S, A>> result) {
+        isVisited.put(state, true);
+
+        //save any path you've reached to
+        //make an AlternatingSequence from localPath
+        AlternatingSequence<S, A> patSeq = new AlternatingSequence(localPath.getStates(), localPath.getActions());
+        result.add(patSeq);
+
+        //end the recursion if the state is terminal
+        if (isStateTerminal(ts, state)) {
+            isVisited.put(state, false);
+            return;
+        }
+
+        Set<TSTransition<S, A>> transitionsFromState = getTransitionsFrom(ts, state);
+        for(TSTransition<S, A> trans: transitionsFromState) {
+            S neighbor = trans.getTo();
+            if (!isVisited.get(neighbor)) {
+                //store current state and action n localPath
+                localPath.addState(neighbor);
+                localPath.addAction(trans.getAction());
+
+                recurseGetExecutionFragmentsFromState(ts, neighbor, isVisited, localPath, result);
+
+                //remove current state and action
+                localPath.removeLastState();
+                localPath.removeLastAction();
+            }
+        }
+        isVisited.put(state, false);
+    }
+
+    private <S, A> Set<TSTransition<S, A>> getTransitionsFrom(TransitionSystem<S, A, ?> ts, S state) {
+        Set<TSTransition<S, A>> tsTransitions = ts.getTransitions();
+        Set<TSTransition<S, A>> res = new HashSet<>();
+        for (TSTransition trans : tsTransitions) {
+            if (trans.getFrom().equals(state))
+                res.add(trans);
+        }
+        return res;
+    }
+
+    private class Path<S, A> {
+        private List<S> states;
+        private List<A> actions;
+
+        public <S, A> Path() {
+            this.states = new ArrayList<>();
+            this.actions = new ArrayList<>();
+        }
+
+        public List<S> getStates(){
+            return this.states;
+        }
+
+        public List<A> getActions(){
+            return this.actions;
+        }
+
+        public void addState(S state) {
+            this.states.add(state);
+        }
+
+        public void addAction(A action) {
+            this.actions.add(action);
+        }
+
+        public void removeLastState(){
+            this.states.remove(this.states.size() - 1);
+        }
+
+        public void removeLastAction(){
+            this.actions.remove(this.actions.size() - 1);
+        }
+    }
+
+    //****** Reach helpers END *******
 
     private <S, S1, S2, A, P> TransitionSystem<Pair<S1, S2>, A, P> interleaveHelper(TransitionSystem<S1, A, P> ts1,
                                                                                     TransitionSystem<S2, A, P> ts2, Handler handler1, Handler handler2) {
@@ -559,6 +704,7 @@ public class FvmFacade {
         return transitionSystem;
     }
 
+    //TODO: CHECK ME!!!
     /**
      * Creates a {@link TransitionSystem} from a program graph.
      *
@@ -570,9 +716,114 @@ public class FvmFacade {
      *                      graph.
      * @return A transition system representing {@code pg}.
      */
+    //TODO: i assume that each initialization is looks like "x := 15", "y:=9"
     public <L, A> TransitionSystem<Pair<L, Map<String, Object>>, A, String> transitionSystemFromProgramGraph(
             ProgramGraph<L, A> pg, Set<ActionDef> actionDefs, Set<ConditionDef> conditionDefs) {
-        throw new java.lang.UnsupportedOperationException();
+        TransitionSystem<Pair<L, Map<String, Object>>, A, String> ts = new TransitionSystem<>();
+        //initial states
+        Set<Pair<L, Map<String, Object>>> initStates = new HashSet<>();
+        for(L initLoc: pg.getInitialLocations()) {
+            for(List<String> initialization: pg.getInitalizations()) {
+                Map<String, Object> evalFun = parseInitialization(initialization);
+                Pair<L, Map<String, Object>> state = new Pair<>(initLoc, evalFun);
+                initStates.add(state); //add to local set
+                addStateToTS(ts, state, conditionDefs, true);
+            }
+        }
+        //initial states End
+        //הטקטיקה - currStates contains the states added in each level
+        //We're adding new states and actions as in BFS - iterating on the new added states at each level (currStates)
+        //and adding one level of state and action for each one (adding all of its neighbors)
+        //do not forget at the end of each iteration empty currStates and add just the current new states
+        // אם לפני שמוסיפים מצב לניו סטייטס בודקים אם הוא כבר קיים במערכת ואם כן לא מוסיפים,
+        // זה יהיה יותר יעיל ונדמה לי שגם ימנע לולאה אינסופית במקרה של מעבר עצמי
+        Set<Pair<L, Map<String, Object>>> currStates = new HashSet<>(initStates); //the current BFS states from which we compute the next level states
+        Set<Pair<L, Map<String, Object>>> newStates = new HashSet<>(); //local next level states (neighbors of currStates)
+        while(true) {
+            for (Pair<L, Map<String, Object>> state : currStates) {
+                Set<PGTransition<L, A>> neighborsTrans = getNeighborsTransitionsPG(pg, state.getFirst());
+                for (PGTransition<L, A> trans : neighborsTrans) {
+                    ConditionDef cond = getCondition(conditionDefs, trans.getCondition());
+                    if (cond.evaluate(state.getSecond(), trans.getCondition())) {
+                        ActionDef action = getAction(actionDefs, trans.getAction());
+                        Map<String, Object> newEval = action.effect(state.getSecond(), action);
+                        Pair<L, Map<String, Object>> newState = new Pair<>(trans.getTo(), newEval);
+                        if (!ts.getStates().contains(newState)) {
+                            addStateToTS(ts, newState, conditionDefs, false);
+                            newStates.add(newState);
+                            ts.addTransitionFrom(state).action(trans.getAction()).to(newState);
+                        }
+                    }
+                }
+            }
+            currStates = new HashSet<>(newStates);
+            newStates = new HashSet<>();
+            if(currStates.isEmpty())
+                break;
+        }
+        return ts;
+    }
+
+    //return the appropriate actionDef corresponding to the given action
+    private <A> ActionDef getAction(Set<ActionDef> actionDefs, A action) {
+        for(ActionDef actionDef: actionDefs)
+            if(actionDef.equals(action))
+                return actionDef;
+        try {
+            throw new Exception("action not found");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //return the appropriate ConditionDef corresponding to the string condition
+    private ConditionDef getCondition(Set<ConditionDef> conditionDefs, String condition) {
+        for(ConditionDef condDef: conditionDefs)
+            if(condDef.toString().equals(condition)) //TODO: this is how i find a specific condition from set of ConditionDef????
+                return condDef;
+        try {
+            throw new Exception("condition not found");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private <L, A> Set<PGTransition<L,A>> getNeighborsTransitionsPG(ProgramGraph<L, A> pg, L location) {
+        Set<PGTransition<L,A>> ret = new HashSet<>();
+        for(PGTransition<L, A> transition: pg.getTransitions())
+            if (transition.getFrom().equals(location))
+                ret.add(transition);
+        return ret;
+    }
+
+    //Add the state and the corresponding label to the TS
+    private <L, A> void addStateToTS(TransitionSystem<Pair<L, Map<String, Object>>, A, String> ts, Pair<L, Map<String, Object>> state, Set<ConditionDef> conditionDefs, boolean isInitial) {
+        if (isInitial)
+            ts.addInitialState(state);
+        else
+            ts.addState(state);
+        //Add Labeling
+        ts.addToLabel(state, state.first.toString()); //location AP
+        //All the conditions that the eval holds
+        for(ConditionDef cond: conditionDefs)
+            if(cond.evaluate(state.second, cond.toString())) //TODO: check if this is how i get the condition as string
+                ts.addToLabel(state, cond.toString()); //relevant condition AP
+    }
+
+
+    //make each initialization list of strings (shaped: "x := 15", "y:=9") to a map of string and object
+    private Map<String, Object> parseInitialization(List<String> initialization) {
+        Map<String, Object> map = new HashMap<>();
+        for(String init: initialization) {
+            init = init.replaceAll("\\s+",""); //remove all whitespaces
+            String[] splitted = init.split(":");
+            String var = splitted[0];
+            String value = splitted[1];
+            map.put(var, value);
+        }
+        return map;
     }
 
     /**
@@ -805,7 +1056,7 @@ public class FvmFacade {
         generateAllBinaryStrings(n, arr, i + 1);
     }
 
-    private static Set<Map<String, Boolean>> binaryPermAsMap(Set<String> inputs) {
+    public static Set<Map<String, Boolean>> binaryPermAsMap(Set<String> inputs) {
         sets = new HashSet<>();
         generateAllBinaryStrings(inputs.size(), new boolean[inputs.size()], 0);
         Set<Map<String, Boolean>> allMaps = new HashSet<>();

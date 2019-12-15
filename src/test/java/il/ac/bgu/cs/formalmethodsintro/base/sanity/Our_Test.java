@@ -293,10 +293,10 @@ public class Our_Test {
 
     @Test(timeout = 2000)
     public void check(){
-        List<String> inputs = new LinkedList<>();
+        Set<String> inputs = new HashSet<>();
         inputs.add("k1");
         inputs.add("k2");
-        binaryPermAsMap(inputs);
+        fvmFacadeImpl.binaryPermAsMap(inputs);
 
     }
 
