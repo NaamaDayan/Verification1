@@ -2,20 +2,19 @@ package il.ac.bgu.cs.formalmethodsintro.base.TS;
 
 import il.ac.bgu.cs.formalmethodsintro.base.FvmFacade;
 import il.ac.bgu.cs.formalmethodsintro.base.TSTestUtils;
+import il.ac.bgu.cs.formalmethodsintro.base.TSTestUtils.APs;
+import il.ac.bgu.cs.formalmethodsintro.base.TSTestUtils.Actions;
+import il.ac.bgu.cs.formalmethodsintro.base.TSTestUtils.States;
 import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.TransitionSystem;
+import org.junit.Before;
+import org.junit.Test;
 
 import static il.ac.bgu.cs.formalmethodsintro.base.TSTestUtils.Actions.alpha;
 import static il.ac.bgu.cs.formalmethodsintro.base.TSTestUtils.Actions.beta;
 import static il.ac.bgu.cs.formalmethodsintro.base.TSTestUtils.States.*;
 import static il.ac.bgu.cs.formalmethodsintro.base.util.CollectionHelper.set;
 import static org.junit.Assert.assertEquals;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.assertNotEquals;
-
-import il.ac.bgu.cs.formalmethodsintro.base.TSTestUtils.*;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class PostTests {
 

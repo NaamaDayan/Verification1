@@ -7,6 +7,7 @@ import il.ac.bgu.cs.formalmethodsintro.base.automata.Automaton;
 import il.ac.bgu.cs.formalmethodsintro.base.automata.MultiColorAutomaton;
 import il.ac.bgu.cs.formalmethodsintro.base.channelsystem.ChannelSystem;
 import il.ac.bgu.cs.formalmethodsintro.base.circuits.Circuit;
+import il.ac.bgu.cs.formalmethodsintro.base.exceptions.ActionNotFoundException;
 import il.ac.bgu.cs.formalmethodsintro.base.exceptions.StateNotFoundException;
 import il.ac.bgu.cs.formalmethodsintro.base.ltl.LTL;
 import il.ac.bgu.cs.formalmethodsintro.base.programgraph.ActionDef;
@@ -123,10 +124,18 @@ public class FvmFacade {
         while (e.size() > 0) {
             S from = e.head();
             AlternatingSequence<A, S> tail = e.tail(); //action and then next state
+            if (tail.size() == 0) //only one state
+                return ts.getStates().contains(from);
             A action = tail.head();
             e = tail.tail();
             S to = e.head();
-            if (!(ts.getStates().contains(from) && ts.getStates().contains(to) && ts.getTransitions().contains(new TSTransition(from, action, to))))
+            if (!ts.getStates().contains(from))
+                throw new StateNotFoundException(from);
+            if (!ts.getStates().contains(to))
+                throw new StateNotFoundException(to);
+            if(!ts.getActions().contains(action))
+                throw new ActionNotFoundException(action);
+            if (!(ts.getTransitions().contains(new TSTransition(from, action, to))))
                 return false;
         }
         return true;
