@@ -572,6 +572,15 @@ public class FvmFacade {
                 }
             }
         });
+        Set<Pair<S1,S2>> reachableStates = reach(interleaveTs);
+        Set<Pair<S1,S2>> interleaveTSStates = new HashSet<>(interleaveTs.getStates());
+        for (Pair<S1,S2> state : interleaveTSStates)
+            if (!reachableStates.contains(state)) {
+                Set<TSTransition<Pair<S1,S2>,A>> transWithState = getAllTransitionaWithState(interleaveTs,state);
+                for (TSTransition<Pair<S1,S2>,A> trans : transWithState)
+                    interleaveTs.removeTransition(trans);
+                interleaveTs.removeState(state);
+            }
         return interleaveTs;
     }
 
@@ -693,7 +702,7 @@ public class FvmFacade {
             }
         }
         //atomic propositions
-        List atomicPropositions = new LinkedList();
+        List<Object> atomicPropositions = new LinkedList<Object>();
         atomicPropositions.addAll(c.getInputPortNames());
         atomicPropositions.addAll(c.getOutputPortNames());
         atomicPropositions.addAll(c.getRegisterNames());
@@ -708,7 +717,8 @@ public class FvmFacade {
             relevantAPs.addAll(getRelevantAPS(inputs));
             relevantAPs.addAll(getRelevantAPS(registers));
             relevantAPs.addAll(getRelevantAPS(outputs));
-            transitionSystem.addToLabel(state, relevantAPs);
+            for (String ap: relevantAPs)
+                transitionSystem.addToLabel(state, ap);
         }
         return transitionSystem;
     }
@@ -725,7 +735,7 @@ public class FvmFacade {
      *                      graph.
      * @return A transition system representing {@code pg}.
      */
-    //TODO: i assume that each initialization is looks like "x := 15", "y:=9"
+    //TODO: i assume that each initialization looks like "x := 15", "y:=9"
     public <L, A> TransitionSystem<Pair<L, Map<String, Object>>, A, String> transitionSystemFromProgramGraph(
             ProgramGraph<L, A> pg, Set<ActionDef> actionDefs, Set<ConditionDef> conditionDefs) {
         TransitionSystem<Pair<L, Map<String, Object>>, A, String> ts = new TransitionSystem<>();
@@ -829,7 +839,7 @@ public class FvmFacade {
             init = init.replaceAll("\\s+",""); //remove all whitespaces
             String[] splitted = init.split(":");
             String var = splitted[0];
-            String value = splitted[1];
+            String value = splitted[1]; // TODO: the remove the '='!!!!!! splitted[1] = '=4' - NOT GOOD
             map.put(var, value);
         }
         return map;
@@ -845,7 +855,38 @@ public class FvmFacade {
      */
     public <L, A> TransitionSystem<Pair<List<L>, Map<String, Object>>, A, String> transitionSystemFromChannelSystem(
             ChannelSystem<L, A> cs) {
-        throw new java.lang.UnsupportedOperationException();
+        TransitionSystem<Pair<List<L>, Map<String, Object>>, A, String> transitionSystem = new TransitionSystem<>();
+        //states
+
+        //actions
+        Set<A> actions = new HashSet<>();
+        for (ProgramGraph<L,A> programGraph : cs.getProgramGraphs())
+            actions.addAll(programGraph.getActions());
+        transitionSystem.addAllActions(actions);
+
+        //atomic propositions
+        List<String> atomicPropositions = new LinkedList<>();
+        for (ProgramGraph<L,A> programGraph : cs.getProgramGraphs())
+            actions.addAll(programGraph.getActions());
+
+        //labeling function
+        for (Pair<List<L>, Map<String, Object>> state : transitionSystem.getStates()) {
+            Set<String> currentAtomicPropositions = mapToString(state);
+            for (String ap : currentAtomicPropositions)
+                transitionSystem.addToLabel(state, ap);
+        }
+        return transitionSystem;
+    }
+
+
+    private <L> Set<String> mapToString(Pair<List<L>, Map<String, Object>> state){
+        Set<String> equalityStrings = new HashSet<>();
+        for (Map.Entry entry : state.getSecond().entrySet()){
+            equalityStrings.add(entry.getKey()+ " = "+entry.getValue().toString());
+        }
+        for (L location : state.getFirst())
+            equalityStrings.add(location.toString());
+        return equalityStrings;
     }
 
     /**
@@ -1023,8 +1064,9 @@ public class FvmFacade {
         Set<List<String>> cartesianSet = new HashSet<List<String>>();
         for (List<String> initial1 : inits1)
             for (List<String> initial2 : inits2) {
-                initial1.addAll(initial2);
-                cartesianSet.add(initial1);
+                List<String> newList = new ArrayList<>(initial1);
+                newList.addAll(initial2);
+                cartesianSet.add(newList);
             }
         return cartesianSet;
     }
@@ -1046,6 +1088,14 @@ public class FvmFacade {
             sets.add(set);
         }
         return sets;
+    }
+
+    private <S1,S2,A> Set<TSTransition<Pair<S1,S2>,A>> getAllTransitionaWithState(TransitionSystem<Pair<S1,S2>, A, ?> ts, Pair<S1,S2> state){
+        Set<TSTransition<Pair<S1,S2>,A>> transWithState = new HashSet<>();
+        for (TSTransition<Pair<S1,S2>,A> transition : ts.getTransitions())
+            if (transition.getFrom().equals(state) || transition.getTo().equals(state))
+                transWithState.add(transition);
+        return transWithState;
     }
 
 

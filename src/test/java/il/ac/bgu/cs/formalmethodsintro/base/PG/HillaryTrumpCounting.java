@@ -1,4 +1,4 @@
-package il.ac.bgu.cs.formalmethodsintro.base.michael.PG;
+package il.ac.bgu.cs.formalmethodsintro.base.PG;
 
 import static il.ac.bgu.cs.formalmethodsintro.base.util.CollectionHelper.*;
 import static java.util.Arrays.asList;

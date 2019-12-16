@@ -1,4 +1,4 @@
-package il.ac.bgu.cs.formalmethodsintro.base.michael.PG;
+package il.ac.bgu.cs.formalmethodsintro.base.PG;
 
 import static il.ac.bgu.cs.formalmethodsintro.base.util.CollectionHelper.*;
 import static org.junit.Assert.assertEquals;
@@ -8,7 +8,7 @@ import java.util.Set;
 
 import il.ac.bgu.cs.formalmethodsintro.base.FvmFacade;
 
-import static il.ac.bgu.cs.formalmethodsintro.base.michael.PG.BookingSystemBuilder.*;
+import static il.ac.bgu.cs.formalmethodsintro.base.PG.BookingSystemBuilder.*;
 
 import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.TSTransition;
 import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.TransitionSystem;

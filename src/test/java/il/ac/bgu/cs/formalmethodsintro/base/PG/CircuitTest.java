@@ -1,4 +1,4 @@
-package il.ac.bgu.cs.formalmethodsintro.base.michael.PG;
+package il.ac.bgu.cs.formalmethodsintro.base.PG;
 
 import il.ac.bgu.cs.formalmethodsintro.base.FvmFacade;
 import il.ac.bgu.cs.formalmethodsintro.base.circuits.Circuit;
@@ -70,6 +70,6 @@ public class CircuitTest {
         Assert.assertTrue(ts.getStates().size()==4);
         Assert.assertTrue(ts.getActions().size()==2);
         Assert.assertTrue(ts.getTransitions().size()==8);
-        Assert.assertTrue(ts.getAtomicPropositions().size()==2);
+        Assert.assertTrue(ts.getAtomicPropositions().size()==2); //I think it should be 3!!!
     }
 }

@@ -1,4 +1,4 @@
-package il.ac.bgu.cs.formalmethodsintro.base.michael.PG;
+package il.ac.bgu.cs.formalmethodsintro.base.PG;
 
 import static il.ac.bgu.cs.formalmethodsintro.base.util.CollectionHelper.map;
 import static il.ac.bgu.cs.formalmethodsintro.base.util.CollectionHelper.p;
@@ -12,9 +12,9 @@ import java.util.Map;
 import java.util.Set;
 
 import il.ac.bgu.cs.formalmethodsintro.base.FvmFacade;
-import il.ac.bgu.cs.formalmethodsintro.base.michael.PG.CollatzProgramGraphBuilder;
-import il.ac.bgu.cs.formalmethodsintro.base.michael.PG.ExtendedVendingMachineBuilder;
-import il.ac.bgu.cs.formalmethodsintro.base.michael.PG.HillaryTrumpCounting;
+import il.ac.bgu.cs.formalmethodsintro.base.PG.CollatzProgramGraphBuilder;
+import il.ac.bgu.cs.formalmethodsintro.base.PG.ExtendedVendingMachineBuilder;
+import il.ac.bgu.cs.formalmethodsintro.base.PG.HillaryTrumpCounting;
 import il.ac.bgu.cs.formalmethodsintro.base.programgraph.*;
 import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.TransitionSystem;
 import il.ac.bgu.cs.formalmethodsintro.base.util.Pair;
