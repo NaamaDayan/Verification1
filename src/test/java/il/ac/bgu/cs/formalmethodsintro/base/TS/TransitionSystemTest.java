@@ -1,12 +1,12 @@
-package il.ac.bgu.cs.formalmethodsintro.base.TS;
+package il.ac.bgu.cs.formalmethodsintro.base.michael.TS;
 
 import il.ac.bgu.cs.formalmethodsintro.base.exceptions.*;
 import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.TSTransition;
 import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.TransitionSystem;
 
-import static il.ac.bgu.cs.formalmethodsintro.base.TS.TransitionSystemTest.Actions.*;
-import static il.ac.bgu.cs.formalmethodsintro.base.TS.TransitionSystemTest.States.*;
-import static il.ac.bgu.cs.formalmethodsintro.base.TS.TransitionSystemTest.AP.*;
+import static il.ac.bgu.cs.formalmethodsintro.base.michael.TS.TransitionSystemTest.Actions.*;
+import static il.ac.bgu.cs.formalmethodsintro.base.michael.TS.TransitionSystemTest.States.*;
+import static il.ac.bgu.cs.formalmethodsintro.base.michael.TS.TransitionSystemTest.AP.*;
 
 import static il.ac.bgu.cs.formalmethodsintro.base.util.CollectionHelper.set;
 

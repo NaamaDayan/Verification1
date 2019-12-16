@@ -1,4 +1,4 @@
-package il.ac.bgu.cs.formalmethodsintro.base.PG;
+package il.ac.bgu.cs.formalmethodsintro.base.michael.PG;
 
 import static il.ac.bgu.cs.formalmethodsintro.base.util.CollectionHelper.map;
 import static il.ac.bgu.cs.formalmethodsintro.base.util.CollectionHelper.p;

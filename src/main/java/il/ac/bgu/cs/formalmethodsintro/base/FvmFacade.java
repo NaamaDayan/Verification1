@@ -75,7 +75,7 @@ public class FvmFacade {
         for (Set<P> set : powerSet(ts.getAtomicPropositions())) { // for A in AP
             Set<S> s_followers = new HashSet<>();
             for (S state : ts.getStates()) {  // for s in S
-                if (ts.getLabelingFunction().get(state).equals(set))
+                if ((ts.getLabelingFunction().containsKey(state) && (ts.getLabelingFunction().get(state).equals(set))) || (set.size()==0 && ts.getLabelingFunction().size()==0))
                     s_followers.add(state);
             }
             for (S state : ts.getStates()) {

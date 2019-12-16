@@ -1,4 +1,4 @@
-package il.ac.bgu.cs.formalmethodsintro.base.TS;
+package il.ac.bgu.cs.formalmethodsintro.base.michael.TS;
 
 import static il.ac.bgu.cs.formalmethodsintro.base.TSTestUtils.makeLinearTs;
 import static org.junit.Assert.fail;

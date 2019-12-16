@@ -1,4 +1,4 @@
-package il.ac.bgu.cs.formalmethodsintro.base.PG;
+package il.ac.bgu.cs.formalmethodsintro.base.michael.PG;
 
 import il.ac.bgu.cs.formalmethodsintro.base.FvmFacade;
 import il.ac.bgu.cs.formalmethodsintro.base.programgraph.ProgramGraph;

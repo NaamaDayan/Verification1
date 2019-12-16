@@ -1,4 +1,4 @@
-package il.ac.bgu.cs.formalmethodsintro.base.PG;
+package il.ac.bgu.cs.formalmethodsintro.base.michael.PG;
 
 import static il.ac.bgu.cs.formalmethodsintro.base.util.CollectionHelper.map;
 import static il.ac.bgu.cs.formalmethodsintro.base.util.CollectionHelper.p;
@@ -765,6 +765,7 @@ public class NanoPromelaTest {
                 "x:=4;if::x>3->do::x<5->x:=x+3::x>6->x:=x-4odfi"), pg.getLocations());
         assertEquals(set("x:=4;if::x>3->do::x<5->x:=x+3::x>6->x:=x-4odfi"), pg.getInitialLocations());
         assertEquals(set(), pg.getInitalizations());
+
         assertEquals(set(
                 pgtransition("if::x>3->do::x<5->x:=x+3::x>6->x:=x-4odfi", "(x>3) && ((x<5))", "x:=x+3",
                         "do::x<5->x:=x+3::x>6->x:=x-4od"),
@@ -788,7 +789,9 @@ public class NanoPromelaTest {
                 p("do::x<5->x:=x+3::x>6->x:=x-4od", map(p("x", 3))),
                 p("do::x<5->x:=x+3::x>6->x:=x-4od", map(p("x", 6))),
                 p("do::x<5->x:=x+3::x>6->x:=x-4od", map(p("x", 7))),
-                p("if::x>3->do::x<5->x:=x+3::x>6->x:=x-4odfi", map(p("x", 4)))), ts.getStates());
+                p("if::x>3->do::x<5->x:=x+3::x>6->x:=x-4odfi",
+                        map(p("x", 4)))),
+                ts.getStates());
         assertEquals(set(p("x:=4;if::x>3->do::x<5->x:=x+3::x>6->x:=x-4odfi", map())), ts.getInitialStates());
         assertEquals(set("x:=x-4", "", "x:=x+3", "x:=4"), ts.getActions());
         assertEquals(

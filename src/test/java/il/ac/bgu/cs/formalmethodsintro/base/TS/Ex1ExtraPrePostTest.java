@@ -1,4 +1,4 @@
-package il.ac.bgu.cs.formalmethodsintro.base.TS;
+package il.ac.bgu.cs.formalmethodsintro.base.michael.TS;
 
 import il.ac.bgu.cs.formalmethodsintro.base.FvmFacade;
 import il.ac.bgu.cs.formalmethodsintro.base.TSTestUtils;
