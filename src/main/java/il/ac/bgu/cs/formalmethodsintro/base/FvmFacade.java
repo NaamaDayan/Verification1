@@ -117,7 +117,6 @@ public class FvmFacade {
      * {@code ts}.
      */
     // TODO: עשיתי כאן הנחה שהמקטע ריצה מסתיים במצב ולא בפעולה (יעני שהוא תקין) - לבדוק אם מותר להניח זאת
-    //TODO: מקטע ריצה שיש בו מצב אחד ו0 פעולות (יעני פשוט מצב) הוא מקטע ריצה חוקי? לטפל בהתאם
     public <S, A, P> boolean isExecutionFragment(TransitionSystem<S, A, P> ts, AlternatingSequence<S, A> e) {
         if (e.size() == 0)
             return false;
