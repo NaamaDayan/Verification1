@@ -38,7 +38,8 @@ public class ExtendedVendingMachineBuilder {
         pg.addTransition(new PGTransition<>(select, "nbeer > 0", "bget", start));
         pg.addTransition(new PGTransition<>(select, "nbeer = 0 && nsoda = 0", "ret_coin", start));
 
-        pg.addInitalization(asList("refill"));
+        //pg.addInitalization(asList("refill"));
+        pg.addInitalization(asList("nbeer:=2", "nsoda:=0"));
 
         return pg;
 

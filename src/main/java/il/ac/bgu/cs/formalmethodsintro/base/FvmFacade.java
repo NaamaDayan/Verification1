@@ -116,7 +116,6 @@ public class FvmFacade {
      * {@code ts}.
      */
     // TODO: עשיתי כאן הנחה שהמקטע ריצה מסתיים במצב ולא בפעולה (יעני שהוא תקין) - לבדוק אם מותר להניח זאת
-    //TODO: מקטע ריצה שיש בו מצב אחד ו0 פעולות (יעני פשוט מצב) הוא מקטע ריצה חוקי? לטפל בהתאם
     public <S, A, P> boolean isExecutionFragment(TransitionSystem<S, A, P> ts, AlternatingSequence<S, A> e) {
         if (e.size() == 0)
             return false;
@@ -761,16 +760,15 @@ public class FvmFacade {
             for (Pair<L, Map<String, Object>> state : currStates) {
                 Set<PGTransition<L, A>> neighborsTrans = getNeighborsTransitionsPG(pg, state.getFirst());
                 for (PGTransition<L, A> trans : neighborsTrans) {
-                    ConditionDef cond = getCondition(conditionDefs, trans.getCondition());
-                    if (cond.evaluate(state.getSecond(), trans.getCondition())) {
+                    if (isHoldingCondition(state.getSecond(), trans.getCondition(), conditionDefs)) {
                         ActionDef action = getAction(actionDefs, trans.getAction());
-                        Map<String, Object> newEval = action.effect(state.getSecond(), action);
+                        Map<String, Object> newEval = action.effect(state.getSecond(), trans.getAction());
                         Pair<L, Map<String, Object>> newState = new Pair<>(trans.getTo(), newEval);
                         if (!ts.getStates().contains(newState)) {
                             addStateToTS(ts, newState, conditionDefs, false);
                             newStates.add(newState);
-                            ts.addTransitionFrom(state).action(trans.getAction()).to(newState);
                         }
+                        ts.addTransitionFrom(state).action(trans.getAction()).to(newState);
                     }
                 }
             }
@@ -782,26 +780,25 @@ public class FvmFacade {
         return ts;
     }
 
+    //searching the appropriate condition (if a condition doesn't match evaluate returns false and the iteration
+    // continues to the next CondDef (that defines a condition "shape")).
+    // When founds the appropriate condition, evaluates it and returns its result
+    private boolean isHoldingCondition(Map<String, Object> eval, String condition, Set<ConditionDef> conditionDefs) {
+        for(ConditionDef cond: conditionDefs) {
+            if(cond.evaluate(eval, condition))
+                return true;
+        }
+        return false;
+    }
+
+
     //return the appropriate actionDef corresponding to the given action
     private <A> ActionDef getAction(Set<ActionDef> actionDefs, A action) {
         for(ActionDef actionDef: actionDefs)
-            if(actionDef.equals(action))
+            if(actionDef.isMatchingAction(action))
                 return actionDef;
         try {
             throw new Exception("action not found");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    //return the appropriate ConditionDef corresponding to the string condition
-    private ConditionDef getCondition(Set<ConditionDef> conditionDefs, String condition) {
-        for(ConditionDef condDef: conditionDefs)
-            if(condDef.toString().equals(condition)) //TODO: this is how i find a specific condition from set of ConditionDef????
-                return condDef;
-        try {
-            throw new Exception("condition not found");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -825,20 +822,24 @@ public class FvmFacade {
         //Add Labeling
         ts.addToLabel(state, state.first.toString()); //location AP
         //All the conditions that the eval holds
-        for(ConditionDef cond: conditionDefs)
-            if(cond.evaluate(state.second, cond.toString())) //TODO: check if this is how i get the condition as string
-                ts.addToLabel(state, cond.toString()); //relevant condition AP
+        //TODO: לפי הטסטים התיוג ציריך להיות המקום + המשתנים והערכים שלהם, לפי ההרצאה התנאים
+        // מה לעשות?
+//        for(ConditionDef cond: conditionDefs) {
+//            if (cond.evaluate(state.second, cond.toString())) //TODO: check if this is how i get the condition as string
+//                ts.addToLabel(state, cond.toString()); //relevant condition AP
+//        }
     }
 
 
     //make each initialization list of strings (shaped: "x := 15", "y:=9") to a map of string and object
+    //TODO: i assume that each initialization is num := integer -> is is true that only integers????
     private Map<String, Object> parseInitialization(List<String> initialization) {
         Map<String, Object> map = new HashMap<>();
         for(String init: initialization) {
             init = init.replaceAll("\\s+",""); //remove all whitespaces
             String[] splitted = init.split(":");
             String var = splitted[0];
-            String value = splitted[1]; // TODO: the remove the '='!!!!!! splitted[1] = '=4' - NOT GOOD
+            int value = Integer.parseInt(splitted[1].substring(1)); // removing the '='
             map.put(var, value);
         }
         return map;
