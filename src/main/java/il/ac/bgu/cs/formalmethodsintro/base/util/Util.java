@@ -1,8 +1,6 @@
 package il.ac.bgu.cs.formalmethodsintro.base.util;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -43,12 +41,36 @@ public class Util {
     }
 
     /**
-     * @param gnba
+//     * @param gnba
      */
     public static <S, L> void printAutomatonTransitions(Automaton<S, L> nba) {
         nba.getTransitions().entrySet().stream()
                 .forEach((s1) -> s1.getValue().entrySet().stream().forEach(s2 -> s2.getValue().stream()
                 .forEach(s3 -> System.out.println(s1.getKey() + "----" + s2.getKey() + "---->" + s3))));
+    }
+
+    public static <S> List<Set<S>> cartesianProduct(List<Set<S>> sets) {
+        if (sets.size() < 2)
+            throw new IllegalArgumentException(
+                    "Can't have a product of fewer than two sets (got " +
+                            sets.size() + ")");
+
+        return _cartesianProduct(0, sets);
+    }
+
+    private static <S> List<Set<S>> _cartesianProduct(int index, List<Set<S>> sets) {
+        List<Set<S>> ret = new LinkedList<Set<S>>();
+        if (index == sets.size()) {
+            ret.add(new HashSet<S>());
+        } else {
+            for (S obj : sets.get(index)) {
+                for (Set<S> set : _cartesianProduct(index+1, sets)) {
+                    set.add(obj);
+                    ret.add(set);
+                }
+            }
+        }
+        return ret;
     }
 
 }

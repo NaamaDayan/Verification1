@@ -10,14 +10,13 @@ import il.ac.bgu.cs.formalmethodsintro.base.circuits.Circuit;
 import il.ac.bgu.cs.formalmethodsintro.base.exceptions.ActionNotFoundException;
 import il.ac.bgu.cs.formalmethodsintro.base.exceptions.StateNotFoundException;
 import il.ac.bgu.cs.formalmethodsintro.base.ltl.LTL;
-import il.ac.bgu.cs.formalmethodsintro.base.programgraph.ActionDef;
-import il.ac.bgu.cs.formalmethodsintro.base.programgraph.ConditionDef;
-import il.ac.bgu.cs.formalmethodsintro.base.programgraph.PGTransition;
-import il.ac.bgu.cs.formalmethodsintro.base.programgraph.ProgramGraph;
+import il.ac.bgu.cs.formalmethodsintro.base.programgraph.*;
 import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.AlternatingSequence;
 import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.TSTransition;
 import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.TransitionSystem;
+import il.ac.bgu.cs.formalmethodsintro.base.util.CollectionHelper;
 import il.ac.bgu.cs.formalmethodsintro.base.util.Pair;
+import il.ac.bgu.cs.formalmethodsintro.base.util.Util;
 import il.ac.bgu.cs.formalmethodsintro.base.verification.VerificationResult;
 
 /**
@@ -845,6 +844,8 @@ public class FvmFacade {
         return map;
     }
 
+
+
     /**
      * Creates a transition system representing channel system {@code cs}.
      *
@@ -853,21 +854,42 @@ public class FvmFacade {
      * @param cs  The channel system to be translated into a transition system.
      * @return A transition system representing {@code cs}.
      */
+
     public <L, A> TransitionSystem<Pair<List<L>, Map<String, Object>>, A, String> transitionSystemFromChannelSystem(
-            ChannelSystem<L, A> cs) {
+            ChannelSystem<L, A> cs ) {
+
+        Set<ActionDef> actions = Collections.singleton(new ParserBasedActDef());
+        Set<ConditionDef> conditions = Collections.singleton(new ParserBasedCondDef());
+        return transitionSystemFromChannelSystem(cs, actions, conditions);
+    }
+
+
+    public <L, A> TransitionSystem<Pair<List<L>, Map<String, Object>>, A, String> transitionSystemFromChannelSystem(
+            ChannelSystem<L, A> cs, Set<ActionDef> actions, Set<ConditionDef> conditions) {
         TransitionSystem<Pair<List<L>, Map<String, Object>>, A, String> transitionSystem = new TransitionSystem<>();
         //states
+        List<Set<Pair<L, Map<String, Object>>>> allStatesPG = new LinkedList<>();
+        for (ProgramGraph<L,A> programGraph : cs.getProgramGraphs()) {
+            Set<Pair<L, Map<String, Object>>> statesPG = transitionSystemFromProgramGraph(programGraph, CollectionHelper.set(new ParserBasedActDef()), CollectionHelper.set(new ParserBasedCondDef())).getStates();
+            allStatesPG.add(statesPG);
+        }
+        List<Set<Pair<L, Map<String, Object>>>> allStates = Util.cartesianProduct(allStatesPG);
+        for (Set<Pair<L, Map<String, Object>>> stateValues : allStates){
+            List<L> locations = new LinkedList<>();
+            Map<String,Object> valuesMapping = new HashMap<>();
+            for (Pair<L, Map<String, Object>> state : stateValues) {
+                locations.add(state.getFirst());
+                valuesMapping.putAll(state.getSecond());
+            }
+            transitionSystem.addState(new Pair<List<L>, Map<String,Object>>(locations, valuesMapping));
+        }
 
         //actions
-        Set<A> actions = new HashSet<>();
+        Set<A> actionsTS = new HashSet<>();
         for (ProgramGraph<L,A> programGraph : cs.getProgramGraphs())
-            actions.addAll(programGraph.getActions());
-        transitionSystem.addAllActions(actions);
+            actionsTS.addAll(programGraph.getActions());
+        transitionSystem.addAllActions(actionsTS);
 
-        //atomic propositions
-        List<String> atomicPropositions = new LinkedList<>();
-        for (ProgramGraph<L,A> programGraph : cs.getProgramGraphs())
-            actions.addAll(programGraph.getActions());
 
         //labeling function
         for (Pair<List<L>, Map<String, Object>> state : transitionSystem.getStates()) {
@@ -877,6 +899,14 @@ public class FvmFacade {
         }
         return transitionSystem;
     }
+
+
+//    private <L,A> Set<List<String>> initializations(ChannelSystem<L, A> cs){
+//        List<Set<List<String>>> allInitializations = new LinkedList<>();
+//        for (ProgramGraph<L, A> pg : cs.getProgramGraphs())
+//            allInitializations.add(pg.getInitalizations());
+//        List<Set<List<String>>> ret = Util.cartesianProduct(allInitializations);
+//    }
 
 
     private <L> Set<String> mapToString(Pair<List<L>, Map<String, Object>> state){
@@ -1003,7 +1033,6 @@ public class FvmFacade {
         }
         return tsRelevantTransitions;
     }
-
 
     private static <S, S1, S2> Set<Pair<S1, S2>> getAllRelevantPairStates(S from, Set<Pair<S1, S2>> states, boolean isFirst) {
         Set<Pair<S1, S2>> relevantPairStates = new HashSet<>();
