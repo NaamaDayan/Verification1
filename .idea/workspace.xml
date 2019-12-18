@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="02f42502-737d-47aa-afd6-61f272b83f42" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ExtendedVendingMachineBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ExtendedVendingMachineBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ProgramGraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ProgramGraphTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="02f42502-737d-47aa-afd6-61f272b83f42" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="33">
-              <caret line="798" selection-start-line="798" selection-end-line="798" />
+            <state relative-caret-position="-238">
+              <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
               <folding>
                 <element signature="e#18144#18145#0" expanded="true" />
                 <element signature="e#18186#18187#0" expanded="true" />
@@ -54,6 +48,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< Updated upstream
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ProgramGraphTest.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -77,11 +72,13 @@
           </provider>
         </entry>
       </file>
+=======
+>>>>>>> Stashed changes
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ExtendedVendingMachineBuilder.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/TransitionSystemsProductTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="79">
-              <caret line="88" column="33" selection-start-line="88" selection-start-column="33" selection-end-line="88" selection-end-column="33" />
+            <state relative-caret-position="124">
+              <caret line="34" column="89" selection-start-line="34" selection-start-column="89" selection-end-line="34" selection-end-column="89" />
             </state>
           </provider>
         </entry>
@@ -97,6 +94,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+<<<<<<< Updated upstream
       <find>addallatomic</find>
       <find>grap</find>
       <find>gra</find>
@@ -105,6 +103,8 @@
       <find>programGra</find>
       <find>getNeighbors</find>
       <find>state</find>
+=======
+>>>>>>> Stashed changes
       <find>addTransition</find>
       <find>addTransitionFrom</find>
       <find>addStateToTS</find>
@@ -126,6 +126,15 @@
       <find>getC</find>
       <find>effect</find>
       <find>ExtendedVendingMachineBuilder</find>
+      <find>channek</find>
+      <find>label</find>
+      <find>channek`</find>
+      <find>interleaveHelper</find>
+      <find>interleave</find>
+      <find>handShakingActions</find>
+      <find>interle</find>
+      <find>interleave(</find>
+      <find>HandlerPG</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -171,7 +180,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-12" />
     <option name="width" value="981" />
     <option name="height" value="1032" />
@@ -215,36 +224,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="base" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="FormalMethodsIntro-Base" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Verification1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FormalMethodsIntro-Base" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Verification1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FormalMethodsIntro-Base" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Verification1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FormalMethodsIntro-Base" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Verification1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-              <item name="PG" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -256,7 +235,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576576096392" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576604423867" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -283,7 +262,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ProgramGraphTest.soda">
+  <component name="RunManager" selected="JUnit.ProgramGraphTest">
     <configuration name="ProgramGraphTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FormalMethodsIntro-Base" />
       <extension name="coverage">
@@ -364,11 +343,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ProgramGraphTest" />
         <item itemvalue="JUnit.ProgramGraphTest.soda" />
         <item itemvalue="JUnit.ProgramGraphTest.runningCounter" />
         <item itemvalue="JUnit.ProgramGraphTest.collatz" />
         <item itemvalue="JUnit.ProgramGraphTest.debug" />
-        <item itemvalue="JUnit.ProgramGraphTest" />
       </list>
     </recent_temporary>
   </component>
@@ -386,17 +365,11 @@
       <workItem from="1576175298902" duration="14520000" />
       <workItem from="1576253257061" duration="1336000" />
       <workItem from="1576337545326" duration="12670000" />
-      <workItem from="1576483614839" duration="9778000" />
+      <workItem from="1576483614839" duration="13686000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ProgramGraphTest_collatz - 2019.12.17 at 11h 35m 21s.xml">
-      <configuration name="ProgramGraphTest.collatz" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ProgramGraphTest_collatz - 2019.12.17 at 11h 35m 55s.xml">
-      <configuration name="ProgramGraphTest.collatz" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ProgramGraphTest_collatz - 2019.12.17 at 11h 36m 51s.xml">
       <configuration name="ProgramGraphTest.collatz" configurationId="JUnit" />
     </history-entry>
@@ -421,9 +394,15 @@
     <history-entry file="ProgramGraphTest_soda - 2019.12.17 at 11h 45m 40s.xml">
       <configuration name="ProgramGraphTest.soda" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ProgramGraphTest_soda - 2019.12.17 at 12h 03m 40s.xml">
+      <configuration name="ProgramGraphTest.soda" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ProgramGraphTest - 2019.12.17 at 12h 03m 52s.xml">
+      <configuration name="ProgramGraphTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59180000" />
+    <option name="totallyTimeSpent" value="63088000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -435,10 +414,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17408907" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17408907" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -448,7 +427,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.29129663" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.41385436" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.41207814" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.41207814" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3285968" />
@@ -764,13 +743,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/TransitionSystemsProductTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-493">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/VendingmachineInNanopromela.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-66">
@@ -884,10 +856,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ExtendedVendingMachineBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="88" column="33" selection-start-line="88" selection-start-column="33" selection-end-line="88" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ProgramGraphTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3782#3826#0" expanded="true" />
+            <element signature="e#13033#13087#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/TransitionSystemsProductTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="34" column="89" selection-start-line="34" selection-start-column="89" selection-end-line="34" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="798" selection-start-line="798" selection-end-line="798" />
+        <state relative-caret-position="-238">
+          <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
           <folding>
             <element signature="e#18144#18145#0" expanded="true" />
             <element signature="e#18186#18187#0" expanded="true" />
@@ -915,6 +913,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ExtendedVendingMachineBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="79">
@@ -941,6 +940,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> Stashed changes
   </component>
   <component name="masterDetails">
     <states>
