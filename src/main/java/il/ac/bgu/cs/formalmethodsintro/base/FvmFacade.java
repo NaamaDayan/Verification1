@@ -77,7 +77,7 @@ public class FvmFacade {
         for (Set<P> set : powerSet(ts.getAtomicPropositions())) { // for A in AP
             Set<S> s_followers = new HashSet<>();
             for (S state : ts.getStates()) {  // for s in S
-                if ((ts.getLabelingFunction().containsKey(state) && (ts.getLabelingFunction().get(state).equals(set))) || (set.size()==0 && ts.getLabelingFunction().size()==0))
+                if ((ts.getLabelingFunction().containsKey(state) && (ts.getLabelingFunction().get(state).equals(set))) || (set.size() == 0 && ts.getLabelingFunction().size() == 0))
                     s_followers.add(state);
             }
             for (S state : ts.getStates()) {
@@ -134,7 +134,7 @@ public class FvmFacade {
                 throw new StateNotFoundException(from);
             if (!ts.getStates().contains(to))
                 throw new StateNotFoundException(to);
-            if(!ts.getActions().contains(action))
+            if (!ts.getActions().contains(action))
                 throw new ActionNotFoundException(action);
             if (!(ts.getTransitions().contains(new TSTransition(from, action, to))))
                 return false;
@@ -175,8 +175,8 @@ public class FvmFacade {
         return isExecutionFragment(ts, e) && isStateTerminal(ts, getLastState(e));
     }
 
-    private <A, S> S getLastState(AlternatingSequence<S,A> e) {
-        while(e.size() > 1) {
+    private <A, S> S getLastState(AlternatingSequence<S, A> e) {
+        while (e.size() > 1) {
             e = e.tail().tail(); //skip the current state and action
         }
         return e.head();
@@ -351,11 +351,10 @@ public class FvmFacade {
      * @param ts  Transition system of {@code s}.
      * @return All states reachable in {@code ts}.
      */
-    //TODO: test me!!!
     public <S, A> Set<S> reach(TransitionSystem<S, A, ?> ts) {
         Set<AlternatingSequence<S, A>> initialExecutionFragments = getInitialExecutionFragments(ts);
         Set<S> reach = new HashSet<>();
-        for(AlternatingSequence<S, A> ief: initialExecutionFragments) {
+        for (AlternatingSequence<S, A> ief : initialExecutionFragments) {
             S lastState = getLastState(ief);
             reach.add(lastState);
         }
@@ -367,7 +366,7 @@ public class FvmFacade {
     private <S, A> Set<AlternatingSequence<S, A>> getInitialExecutionFragments(TransitionSystem<S, A, ?> ts) {
         Set<AlternatingSequence<S, A>> res = new HashSet<>();
         Set<S> initials = ts.getInitialStates();
-        for(S iState: initials){
+        for (S iState : initials) {
             Set<AlternatingSequence<S, A>> exFrag = getExecutionFragmentsFromState(ts, iState);
             res.addAll(exFrag); //union
         }
@@ -380,7 +379,7 @@ public class FvmFacade {
         Path<S, A> localPath = new Path<>();
         localPath.addState(state);
         //prepare isVisited
-        for (S s: ts.getStates())
+        for (S s : ts.getStates())
             isVisited.put(s, false);
 
         Set<AlternatingSequence<S, A>> result = new HashSet<>();
@@ -406,7 +405,7 @@ public class FvmFacade {
         }
 
         Set<TSTransition<S, A>> transitionsFromState = getTransitionsFrom(ts, state);
-        for(TSTransition<S, A> trans: transitionsFromState) {
+        for (TSTransition<S, A> trans : transitionsFromState) {
             S neighbor = trans.getTo();
             if (!isVisited.get(neighbor)) {
                 //store current state and action n localPath
@@ -442,11 +441,11 @@ public class FvmFacade {
             this.actions = new ArrayList<>();
         }
 
-        public List<S> getStates(){
+        public List<S> getStates() {
             return this.states;
         }
 
-        public List<A> getActions(){
+        public List<A> getActions() {
             return this.actions;
         }
 
@@ -458,11 +457,11 @@ public class FvmFacade {
             this.actions.add(action);
         }
 
-        public void removeLastState(){
+        public void removeLastState() {
             this.states.remove(this.states.size() - 1);
         }
 
-        public void removeLastAction(){
+        public void removeLastAction() {
             this.actions.remove(this.actions.size() - 1);
         }
     }
@@ -573,12 +572,12 @@ public class FvmFacade {
                 }
             }
         });
-        Set<Pair<S1,S2>> reachableStates = reach(interleaveTs);
-        Set<Pair<S1,S2>> interleaveTSStates = new HashSet<>(interleaveTs.getStates());
-        for (Pair<S1,S2> state : interleaveTSStates)
+        Set<Pair<S1, S2>> reachableStates = reach(interleaveTs);
+        Set<Pair<S1, S2>> interleaveTSStates = new HashSet<>(interleaveTs.getStates());
+        for (Pair<S1, S2> state : interleaveTSStates)
             if (!reachableStates.contains(state)) {
-                Set<TSTransition<Pair<S1,S2>,A>> transWithState = getAllTransitionaWithState(interleaveTs,state);
-                for (TSTransition<Pair<S1,S2>,A> trans : transWithState)
+                Set<TSTransition<Pair<S1, S2>, A>> transWithState = getAllTransitionaWithState(interleaveTs, state);
+                for (TSTransition<Pair<S1, S2>, A> trans : transWithState)
                     interleaveTs.removeTransition(trans);
                 interleaveTs.removeState(state);
             }
@@ -713,18 +712,19 @@ public class FvmFacade {
         for (Pair<Map<String, Boolean>, Map<String, Boolean>> state : transitionSystem.getStates()) {
             Map<String, Boolean> inputs = state.getSecond();
             Map<String, Boolean> registers = state.getFirst();
-            Map<String, Boolean> outputs = c.computeOutputs(inputs,registers);
+            Map<String, Boolean> outputs = c.computeOutputs(inputs, registers);
             List<String> relevantAPs = new LinkedList<String>();
             relevantAPs.addAll(getRelevantAPS(inputs));
             relevantAPs.addAll(getRelevantAPS(registers));
             relevantAPs.addAll(getRelevantAPS(outputs));
-            for (String ap: relevantAPs)
+            for (String ap : relevantAPs)
                 transitionSystem.addToLabel(state, ap);
         }
         return transitionSystem;
     }
 
     //TODO: CHECK ME!!!
+
     /**
      * Creates a {@link TransitionSystem} from a program graph.
      *
@@ -742,8 +742,8 @@ public class FvmFacade {
         TransitionSystem<Pair<L, Map<String, Object>>, A, String> ts = new TransitionSystem<>();
         //initial states
         Set<Pair<L, Map<String, Object>>> initStates = new HashSet<>();
-        for(L initLoc: pg.getInitialLocations()) {
-            for(List<String> initialization: pg.getInitalizations()) {
+        for (L initLoc : pg.getInitialLocations()) {
+            for (List<String> initialization : pg.getInitalizations()) {
                 Map<String, Object> evalFun = parseInitialization(initialization);
                 Pair<L, Map<String, Object>> state = new Pair<>(initLoc, evalFun);
                 initStates.add(state); //add to local set
@@ -759,7 +759,7 @@ public class FvmFacade {
         // זה יהיה יותר יעיל ונדמה לי שגם ימנע לולאה אינסופית במקרה של מעבר עצמי
         Set<Pair<L, Map<String, Object>>> currStates = new HashSet<>(initStates); //the current BFS states from which we compute the next level states
         Set<Pair<L, Map<String, Object>>> newStates = new HashSet<>(); //local next level states (neighbors of currStates)
-        while(true) {
+        while (true) {
             for (Pair<L, Map<String, Object>> state : currStates) {
                 Set<PGTransition<L, A>> neighborsTrans = getNeighborsTransitionsPG(pg, state.getFirst());
                 for (PGTransition<L, A> trans : neighborsTrans) {
@@ -777,7 +777,7 @@ public class FvmFacade {
             }
             currStates = new HashSet<>(newStates);
             newStates = new HashSet<>();
-            if(currStates.isEmpty())
+            if (currStates.isEmpty())
                 break;
         }
         return ts;
@@ -787,8 +787,8 @@ public class FvmFacade {
     // continues to the next CondDef (that defines a condition "shape")).
     // When founds the appropriate condition, evaluates it and returns its result
     private boolean isHoldingCondition(Map<String, Object> eval, String condition, Set<ConditionDef> conditionDefs) {
-        for(ConditionDef cond: conditionDefs) {
-            if(cond.evaluate(eval, condition))
+        for (ConditionDef cond : conditionDefs) {
+            if (cond.evaluate(eval, condition))
                 return true;
         }
         return false;
@@ -797,8 +797,8 @@ public class FvmFacade {
 
     //return the appropriate actionDef corresponding to the given action
     private <A> ActionDef getAction(Set<ActionDef> actionDefs, A action) {
-        for(ActionDef actionDef: actionDefs)
-            if(actionDef.isMatchingAction(action))
+        for (ActionDef actionDef : actionDefs)
+            if (actionDef.isMatchingAction(action))
                 return actionDef;
         try {
             throw new Exception("action not found");
@@ -808,9 +808,9 @@ public class FvmFacade {
         return null;
     }
 
-    private <L, A> Set<PGTransition<L,A>> getNeighborsTransitionsPG(ProgramGraph<L, A> pg, L location) {
-        Set<PGTransition<L,A>> ret = new HashSet<>();
-        for(PGTransition<L, A> transition: pg.getTransitions())
+    private <L, A> Set<PGTransition<L, A>> getNeighborsTransitionsPG(ProgramGraph<L, A> pg, L location) {
+        Set<PGTransition<L, A>> ret = new HashSet<>();
+        for (PGTransition<L, A> transition : pg.getTransitions())
             if (transition.getFrom().equals(location))
                 ret.add(transition);
         return ret;
@@ -838,8 +838,8 @@ public class FvmFacade {
     //TODO: i assume that each initialization is num := integer -> is is true that only integers????
     private Map<String, Object> parseInitialization(List<String> initialization) {
         Map<String, Object> map = new HashMap<>();
-        for(String init: initialization) {
-            init = init.replaceAll("\\s+",""); //remove all whitespaces
+        for (String init : initialization) {
+            init = init.replaceAll("\\s+", ""); //remove all whitespaces
             String[] splitted = init.split(":");
             String var = splitted[0];
             int value = Integer.parseInt(splitted[1].substring(1)); // removing the '='
@@ -847,7 +847,6 @@ public class FvmFacade {
         }
         return map;
     }
-
 
 
     /**
@@ -860,7 +859,7 @@ public class FvmFacade {
      */
 
     public <L, A> TransitionSystem<Pair<List<L>, Map<String, Object>>, A, String> transitionSystemFromChannelSystem(
-            ChannelSystem<L, A> cs ) {
+            ChannelSystem<L, A> cs) {
 
         Set<ActionDef> actions = Collections.singleton(new ParserBasedActDef());
         Set<ConditionDef> conditions = Collections.singleton(new ParserBasedCondDef());
@@ -873,24 +872,24 @@ public class FvmFacade {
         TransitionSystem<Pair<List<L>, Map<String, Object>>, A, String> transitionSystem = new TransitionSystem<>();
         //states
         List<Set<Pair<L, Map<String, Object>>>> allStatesPG = new LinkedList<>();
-        for (ProgramGraph<L,A> programGraph : cs.getProgramGraphs()) {
+        for (ProgramGraph<L, A> programGraph : cs.getProgramGraphs()) {
             Set<Pair<L, Map<String, Object>>> statesPG = transitionSystemFromProgramGraph(programGraph, CollectionHelper.set(new ParserBasedActDef()), CollectionHelper.set(new ParserBasedCondDef())).getStates();
             allStatesPG.add(statesPG);
         }
         List<Set<Pair<L, Map<String, Object>>>> allStates = Util.cartesianProduct(allStatesPG);
-        for (Set<Pair<L, Map<String, Object>>> stateValues : allStates){
+        for (Set<Pair<L, Map<String, Object>>> stateValues : allStates) {
             List<L> locations = new LinkedList<>();
-            Map<String,Object> valuesMapping = new HashMap<>();
+            Map<String, Object> valuesMapping = new HashMap<>();
             for (Pair<L, Map<String, Object>> state : stateValues) {
                 locations.add(state.getFirst());
                 valuesMapping.putAll(state.getSecond());
             }
-            transitionSystem.addState(new Pair<List<L>, Map<String,Object>>(locations, valuesMapping));
+            transitionSystem.addState(new Pair<List<L>, Map<String, Object>>(locations, valuesMapping));
         }
 
         //actions
         Set<A> actionsTS = new HashSet<>();
-        for (ProgramGraph<L,A> programGraph : cs.getProgramGraphs())
+        for (ProgramGraph<L, A> programGraph : cs.getProgramGraphs())
             actionsTS.addAll(programGraph.getActions());
         transitionSystem.addAllActions(actionsTS);
 
@@ -913,10 +912,10 @@ public class FvmFacade {
 //    }
 
 
-    private <L> Set<String> mapToString(Pair<List<L>, Map<String, Object>> state){
+    private <L> Set<String> mapToString(Pair<List<L>, Map<String, Object>> state) {
         Set<String> equalityStrings = new HashSet<>();
-        for (Map.Entry entry : state.getSecond().entrySet()){
-            equalityStrings.add(entry.getKey()+ " = "+entry.getValue().toString());
+        for (Map.Entry entry : state.getSecond().entrySet()) {
+            equalityStrings.add(entry.getKey() + " = " + entry.getValue().toString());
         }
         for (L location : state.getFirst())
             equalityStrings.add(location.toString());
@@ -960,39 +959,122 @@ public class FvmFacade {
     }
 
     public ProgramGraph<String, String> programGraphFromNanoPromela(StmtContext root) {
-        Set<String> sub = sub(root);
-        return null; //TODO
+        ProgramGraph<String, String> pg = createProgramGraph();
+        Set<String> sub = sub(root, pg);
+        pg.setInitial(root.getText(), true);
+        //TODO: Remove unreachables???
+        return pg;
     }
 
-    private Set<String> sub(StmtContext root) {
+    private Set<String> sub(StmtContext root, ProgramGraph<String, String> pg) {
         Set<String> sub = new HashSet<>();
-        subRec(root, sub);
+        subRec(root, sub, pg);
         return sub;
     }
 
-    private void subRec(StmtContext root, Set<String> sub) {
+    private static final String EXIT_STATE = ""; //TODO: "" or "exit" ???????
+
+
+    private void subRec(StmtContext root, Set<String> sub, ProgramGraph<String, String> pg) {
         if (root.assstmt() != null || root.chanreadstmt() != null || root.chanwritestmt() != null
-                || root.atomicstmt() != null || root.skipstmt() != null){
+                || root.atomicstmt() != null || root.skipstmt() != null) {
             sub.add(root.getText());
-            sub.add("exit");
+            sub.add(EXIT_STATE);
+            addBaseCaseToPG(root, pg);
         } else if (root.ifstmt() != null) {
             sub.add(root.getText());
-            sub.add("exit");
-            for (OptionContext op: root.ifstmt().option())
-                sub.addAll(sub(op.stmt()));
+            sub.add(EXIT_STATE);
+            for (OptionContext op : root.ifstmt().option())
+                sub.addAll(sub(op.stmt(), pg));
+            addIfStmtToPG(root.ifstmt(), pg);
         } else if (root.dostmt() != null) {
             sub.add(root.getText());
-            sub.add("exit");
-            for (OptionContext op: root.dostmt().option()) {
-                Set<String> op_sub = sub(op.stmt());
-                op_sub.remove("exit");
-                for(String op_sub_i: op_sub) {
+            sub.add(EXIT_STATE);
+            for (OptionContext op : root.dostmt().option()) {
+                Set<String> op_sub = sub(op.stmt(), pg);
+                op_sub.remove(EXIT_STATE);
+                for (String op_sub_i : op_sub) {
                     sub.add(op_sub_i + ';' + root.getText());
+                    addConcatenationToPG(op_sub_i, root.getText(), pg); //TODO: i think it should be here either
                 }
             }
+            addDoStmtToPG(root.dostmt(), pg);
         } else { // ;
-
+            sub.addAll(sub(root.stmt(1), pg));
+            Set<String> sub_stmt_0 = sub(root.stmt(0), pg);
+            sub_stmt_0.remove(EXIT_STATE);
+            for (String sub_stmt_0_i : sub_stmt_0) {
+                sub.add(sub_stmt_0_i + ';' + root.stmt(1).getText());
+                addConcatenationToPG(sub_stmt_0_i, root.stmt(1).getText(), pg);
+            }
         }
+    }
+
+    private void addDoStmtToPG(DostmtContext dostmt, ProgramGraph<String, String> pg) {
+        //TODO: add a single transition to exit
+        for (OptionContext option : dostmt.option()) {
+            StmtContext subStmt = option.stmt();
+            String gi = option.boolexpr().getText();
+            Set<PGTransition<String, String>> subStmtTransitions = getTransitionsFrom(subStmt.getText(), pg);
+            assertNotEmptyTransitionSet(subStmtTransitions);
+            for (PGTransition<String, String> trans : subStmtTransitions) {
+                String h = trans.getCondition();
+                if (trans.getTo().equals(EXIT_STATE))
+                    //TODO: and? &&? ) && ( ??????
+                    pg.addTransition(new PGTransition<>(dostmt.getText(), gi + " and " + h, trans.getAction(), dostmt.getText()));
+                else
+                    pg.addTransition(new PGTransition<>(dostmt.getText(), gi + " and " + h, trans.getAction(), trans.getTo() + ";" + dostmt.getText()));
+                //TODO: if there's a problem with FROM, maybe we need the getText() of the root(from the caller function)
+                // and not of the doStmt.getText()
+            }
+        }
+    }
+
+    private void addIfStmtToPG(IfstmtContext ifStmt, ProgramGraph<String, String> pg) {
+        for (OptionContext option : ifStmt.option()) {
+            StmtContext subStmt = option.stmt();
+            String gi = option.boolexpr().getText();
+            Set<PGTransition<String, String>> subStmtTransitions = getTransitionsFrom(subStmt.getText(), pg);
+            assertNotEmptyTransitionSet(subStmtTransitions);
+            for (PGTransition<String, String> trans : subStmtTransitions) {
+                String h = trans.getCondition();
+                //TODO: and? &&? ) && ( ??????
+                pg.addTransition(new PGTransition<>(ifStmt.getText(), gi + " and " + h, trans.getAction(), trans.getTo()));
+                //TODO: if there's a problem with FROM, maybe we need the getText() of the root(from the caller function)
+                // and not of the ifStmt.getText()
+            }
+        }
+    }
+
+    private void addConcatenationToPG(String stmt1, String stmt2, ProgramGraph<String, String> pg) {
+        Set<PGTransition<String, String>> stmt1Transitions = getTransitionsFrom(stmt1, pg);
+        assertNotEmptyTransitionSet(stmt1Transitions);
+        for (PGTransition<String, String> trans : stmt1Transitions) {
+            if (trans.getTo().equals(EXIT_STATE))
+                pg.addTransition(new PGTransition<>(stmt1 + ';' + stmt2, trans.getCondition(), trans.getAction(), stmt2));
+            else
+                pg.addTransition(new PGTransition<>(stmt1 + ';' + stmt2, trans.getCondition(), trans.getAction(), trans.getTo() + ';' + stmt2));
+        }
+    }
+
+    private Set<PGTransition<String, String>> getTransitionsFrom(String stmt, ProgramGraph<String, String> pg) {
+        Set<PGTransition<String, String>> res = new HashSet<>();
+        if (!pg.getLocations().contains(stmt))
+            throw new StateNotFoundException(stmt);
+        Set<PGTransition<String, String>> transitions = pg.getTransitions();
+        for (PGTransition<String, String> trans : transitions) {
+            if (trans.getFrom().equals(stmt))
+                res.add(trans);
+        }
+        return res;
+    }
+
+    private void addBaseCaseToPG(StmtContext root, ProgramGraph<String, String> pg) {
+        String rootText = root.getText();
+        String action = root.skipstmt() != null ? "nothing"
+                : root.atomicstmt() != null ? rootText.substring(rootText.indexOf('{') + 1, rootText.indexOf('}'))
+                : rootText;
+        pg.addTransition(new PGTransition<>(root.getText(), "true", action, EXIT_STATE));
     }
 
     /**
@@ -1116,9 +1198,9 @@ public class FvmFacade {
         return transitions;
     }
 
-    private List<String> getRelevantAPS(Map<String, Boolean> values){
+    private List<String> getRelevantAPS(Map<String, Boolean> values) {
         List<String> relevantAPs = new LinkedList<String>();
-        for (Map.Entry<String,Boolean> input : values.entrySet())
+        for (Map.Entry<String, Boolean> input : values.entrySet())
             if (input.getValue())
                 relevantAPs.add(input.getKey());
         return relevantAPs;
@@ -1162,9 +1244,9 @@ public class FvmFacade {
         return sets;
     }
 
-    private <S1,S2,A> Set<TSTransition<Pair<S1,S2>,A>> getAllTransitionaWithState(TransitionSystem<Pair<S1,S2>, A, ?> ts, Pair<S1,S2> state){
-        Set<TSTransition<Pair<S1,S2>,A>> transWithState = new HashSet<>();
-        for (TSTransition<Pair<S1,S2>,A> transition : ts.getTransitions())
+    private <S1, S2, A> Set<TSTransition<Pair<S1, S2>, A>> getAllTransitionaWithState(TransitionSystem<Pair<S1, S2>, A, ?> ts, Pair<S1, S2> state) {
+        Set<TSTransition<Pair<S1, S2>, A>> transWithState = new HashSet<>();
+        for (TSTransition<Pair<S1, S2>, A> transition : ts.getTransitions())
             if (transition.getFrom().equals(state) || transition.getTo().equals(state))
                 transWithState.add(transition);
         return transWithState;
@@ -1201,5 +1283,14 @@ public class FvmFacade {
             allMaps.add(map);
         }
         return allMaps;
+    }
+
+    private void assertNotEmptyTransitionSet(Set<PGTransition<String, String>> transitions) {
+        if (transitions.isEmpty())
+            try {
+                throw new Exception("No transitions from a specific stmt. debug me to learn more");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
     }
 }
