@@ -10,6 +10,7 @@ import il.ac.bgu.cs.formalmethodsintro.base.circuits.Circuit;
 import il.ac.bgu.cs.formalmethodsintro.base.exceptions.ActionNotFoundException;
 import il.ac.bgu.cs.formalmethodsintro.base.exceptions.StateNotFoundException;
 import il.ac.bgu.cs.formalmethodsintro.base.ltl.LTL;
+import il.ac.bgu.cs.formalmethodsintro.base.nanopromela.NanoPromelaParser.*;
 import il.ac.bgu.cs.formalmethodsintro.base.programgraph.*;
 import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.AlternatingSequence;
 import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.TSTransition;
@@ -18,6 +19,8 @@ import il.ac.bgu.cs.formalmethodsintro.base.util.CollectionHelper;
 import il.ac.bgu.cs.formalmethodsintro.base.util.Pair;
 import il.ac.bgu.cs.formalmethodsintro.base.util.Util;
 import il.ac.bgu.cs.formalmethodsintro.base.verification.VerificationResult;
+
+import static il.ac.bgu.cs.formalmethodsintro.base.nanopromela.NanoPromelaFileReader.*;
 
 /**
  * Interface for the entry point class to the HW in this class. Our
@@ -928,7 +931,8 @@ public class FvmFacade {
      * @throws Exception If the code is invalid.
      */
     public ProgramGraph<String, String> programGraphFromNanoPromela(String filename) throws Exception {
-        throw new java.lang.UnsupportedOperationException();
+        StmtContext stmt = pareseNanoPromelaFile(filename);
+        return programGraphFromNanoPromela(stmt);
     }
 
     /**
@@ -939,7 +943,8 @@ public class FvmFacade {
      * @throws Exception If the code is invalid.
      */
     public ProgramGraph<String, String> programGraphFromNanoPromelaString(String nanopromela) throws Exception {
-        throw new java.lang.UnsupportedOperationException();
+        StmtContext stmt = pareseNanoPromelaString(nanopromela);
+        return programGraphFromNanoPromela(stmt);
     }
 
     /**
@@ -950,7 +955,44 @@ public class FvmFacade {
      * @throws Exception If the code is invalid.
      */
     public ProgramGraph<String, String> programGraphFromNanoPromela(InputStream inputStream) throws Exception {
-        throw new java.lang.UnsupportedOperationException();
+        StmtContext stmt = parseNanoPromelaStream(inputStream);
+        return programGraphFromNanoPromela(stmt);
+    }
+
+    public ProgramGraph<String, String> programGraphFromNanoPromela(StmtContext root) {
+        Set<String> sub = sub(root);
+        return null; //TODO
+    }
+
+    private Set<String> sub(StmtContext root) {
+        Set<String> sub = new HashSet<>();
+        subRec(root, sub);
+        return sub;
+    }
+
+    private void subRec(StmtContext root, Set<String> sub) {
+        if (root.assstmt() != null || root.chanreadstmt() != null || root.chanwritestmt() != null
+                || root.atomicstmt() != null || root.skipstmt() != null){
+            sub.add(root.getText());
+            sub.add("exit");
+        } else if (root.ifstmt() != null) {
+            sub.add(root.getText());
+            sub.add("exit");
+            for (OptionContext op: root.ifstmt().option())
+                sub.addAll(sub(op.stmt()));
+        } else if (root.dostmt() != null) {
+            sub.add(root.getText());
+            sub.add("exit");
+            for (OptionContext op: root.dostmt().option()) {
+                Set<String> op_sub = sub(op.stmt());
+                op_sub.remove("exit");
+                for(String op_sub_i: op_sub) {
+                    sub.add(op_sub_i + ';' + root.getText());
+                }
+            }
+        } else { // ;
+
+        }
     }
 
     /**
