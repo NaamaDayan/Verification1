@@ -58,9 +58,7 @@ public class ProgramGraphTest {
 
         assertEquals(set("x:=(x+y) % 5", "z:=(z-y) % 5"), ts.getActions());
 
-        //TODO: fix corresponding to their answer in the forum to my Ques!!!!
-        //assertEquals(set("y = 2", "z = 0", "x = 3", "z = 3", "x = 1", "L1", "L2"), ts.getAtomicPropositions());
-        assertEquals(set("L1", "L2"), ts.getAtomicPropositions()); //JUST FOR NOW!!!
+        assertEquals(set("y = 2", "z = 0", "x = 3", "z = 3", "x = 1", "L1", "L2"), ts.getAtomicPropositions());
 
 
         assertEquals(set(
@@ -70,21 +68,15 @@ public class ProgramGraphTest {
                         p("L1", map(p("x", 3), p("y", 2), p("z", 3))))),
                 ts.getTransitions());
 
-        //TODO: fix corresponding to their answer in the forum to my Ques!!!!
-        // (as above)
-//        assertEquals(set("y = 2", "z = 0", "x = 1", "L1"), ts.getLabel(p("L1", map(p("x", 1), p("y", 2), p("z", 0)))));
-//        assertEquals(set("y = 2", "x = 3", "z = 3", "L1"), ts.getLabel(p("L1", map(p("x", 3), p("y", 2), p("z", 3)))));
-//        assertEquals(set("y = 2", "z = 0", "x = 3", "L2"), ts.getLabel(p("L2", map(p("x", 3), p("y", 2), p("z", 0)))));
-        assertEquals(set("L1"), ts.getLabel(p("L1", map(p("x", 1), p("y", 2), p("z", 0)))));
-        assertEquals(set("L1"), ts.getLabel(p("L1", map(p("x", 3), p("y", 2), p("z", 3)))));
-        assertEquals(set("L2"), ts.getLabel(p("L2", map(p("x", 3), p("y", 2), p("z", 0)))));
-
+        assertEquals(set("y = 2", "z = 0", "x = 1","L1"), ts.getLabel(p("L1", map(p("x", 1), p("y", 2), p("z", 0)))));
+        assertEquals(set("y = 2", "x = 3", "z = 3","L1"), ts.getLabel(p("L1", map(p("x", 3), p("y", 2), p("z", 3)))));
+        assertEquals(set("y = 2", "z = 0", "x = 3","L2"), ts.getLabel(p("L2", map(p("x", 3), p("y", 2), p("z", 0)))));
 
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @Test
-     public void soda() throws Exception {
+    public void soda() throws Exception {
         ProgramGraph pg = ExtendedVendingMachineBuilder.build();
 
         Set<ActionDef> actionDefs = ExtendedVendingMachineBuilder.getActionDefs();
@@ -92,15 +84,15 @@ public class ProgramGraphTest {
 
         TransitionSystem ts = fvmFacadeImpl.transitionSystemFromProgramGraph(pg, actionDefs, conditionDefs);
 
-        assertEquals(set(p("select", map(p("nbeer", 2), p("nsoda", 0))), p("select", map(p("nbeer", 0), p("nsoda", 2))),
+        assertEquals(set(p("select", map(p("nbeer", 2), p("nsoda", 0))), p("select",map(p("nbeer", 0), p("nsoda", 2))),
                 p("select", map(p("nbeer", 1), p("nsoda", 2))), p("select", map(p("nbeer", 0), p("nsoda", 1))),
                 p("select", map(p("nbeer", 1), p("nsoda", 1))), p("select", map(p("nbeer", 0), p("nsoda", 0))),
                 p("select", map(p("nbeer", 1), p("nsoda", 0))), p("select", map(p("nbeer", 2), p("nsoda", 2))),
-                p("select", map(p("nbeer", 2), p("nsoda", 1))), p("start", map(p("nbeer", 1), p("nsoda", 0))),
-                p("start", map(p("nbeer", 1), p("nsoda", 1))), p("start", map(p("nbeer", 0), p("nsoda", 0))),
-                p("start", map(p("nbeer", 2), p("nsoda", 1))), p("start", map(p("nbeer", 2), p("nsoda", 2))),
-                p("start", map(p("nbeer", 1), p("nsoda", 2))), p("start", map(p("nbeer", 0), p("nsoda", 1))),
-                p("start", map(p("nbeer", 2), p("nsoda", 0))), p("start", map(p("nbeer", 0), p("nsoda", 2)))),
+                p("select", map(p("nbeer", 2), p("nsoda", 1))), p("start",  map(p("nbeer", 1), p("nsoda", 0))),
+                p("start", map(p("nbeer", 1), p("nsoda", 1))), p("start",   map(p("nbeer", 0), p("nsoda", 0))),
+                p("start", map(p("nbeer", 2), p("nsoda", 1))), p("start",   map(p("nbeer", 2), p("nsoda", 2))),
+                p("start", map(p("nbeer", 1), p("nsoda", 2))), p("start",   map(p("nbeer", 0), p("nsoda", 1))),
+                p("start", map(p("nbeer", 2), p("nsoda", 0))), p("start",   map(p("nbeer", 0), p("nsoda", 2)))),
                 ts.getStates());
 
         assertEquals(set(p("start", map(p("nbeer", 2), p("nsoda", 2)))), ts.getInitialStates());
@@ -214,7 +206,7 @@ public class ProgramGraphTest {
 
     }
 
-    @SuppressWarnings({"serial", "unchecked", "rawtypes"})
+    @SuppressWarnings({ "serial", "unchecked", "rawtypes" })
     @Test
     public void collatz() throws Exception {
         ProgramGraph pg = CollatzProgramGraphBuilder.build();
@@ -241,9 +233,7 @@ public class ProgramGraphTest {
 
         assertEquals(set("", "x:= (3 * x) + 1", "x:= x / 2"), ts.getActions());
 
-        //TODO: fix corresponding to their answer in the forum to my Ques!!!!
-        // as above
-        assertEquals(set("running", "finished"),
+        assertEquals(set("running", "finished", "x = 5", "x = 6", "x = 3", "x = 4", "x = 16", "x = 8", "x = 1", "x = 2", "x = 10"),
                 ts.getAtomicPropositions());
 
         assertEquals(
@@ -258,31 +248,19 @@ public class ProgramGraphTest {
                         transition(p("running", map(p("x", 16))), "x:= x / 2", p("running", map(p("x", 8))))),
                 ts.getTransitions());
 
-        //TODO: fix corresponding to their answer in the forum to my Ques!!!!
-        // as above
-//        assertEquals(set("running", "x = 10"), ts.getLabel(p("running", map(p("x", 10)))));
-//        assertEquals(set("finished", "x = 1"), ts.getLabel(p("finished", map(p("x", 1)))));
-//        assertEquals(set("running", "x = 8"), ts.getLabel(p("running", map(p("x", 8)))));
-//        assertEquals(set("running", "x = 6"), ts.getLabel(p("running", map(p("x", 6)))));
-//        assertEquals(set("running", "x = 5"), ts.getLabel(p("running", map(p("x", 5)))));
-//        assertEquals(set("running", "x = 4"), ts.getLabel(p("running", map(p("x", 4)))));
-//        assertEquals(set("running", "x = 3"), ts.getLabel(p("running", map(p("x", 3)))));
-//        assertEquals(set("running", "x = 2"), ts.getLabel(p("running", map(p("x", 2)))));
-//        assertEquals(set("running", "x = 1"), ts.getLabel(p("running", map(p("x", 1)))));
-//        assertEquals(set("running", "x = 16"), ts.getLabel(p("running", map(p("x", 16)))));
-        assertEquals(set("running"), ts.getLabel(p("running", map(p("x", 10)))));
-        assertEquals(set("finished"), ts.getLabel(p("finished", map(p("x", 1)))));
-        assertEquals(set("running"), ts.getLabel(p("running", map(p("x", 8)))));
-        assertEquals(set("running"), ts.getLabel(p("running", map(p("x", 6)))));
-        assertEquals(set("running"), ts.getLabel(p("running", map(p("x", 5)))));
-        assertEquals(set("running"), ts.getLabel(p("running", map(p("x", 4)))));
-        assertEquals(set("running"), ts.getLabel(p("running", map(p("x", 3)))));
-        assertEquals(set("running"), ts.getLabel(p("running", map(p("x", 2)))));
-        assertEquals(set("running"), ts.getLabel(p("running", map(p("x", 1)))));
-        assertEquals(set("running"), ts.getLabel(p("running", map(p("x", 16)))));
+        assertEquals(set("running","x = 10"), ts.getLabel(p("running", map(p("x", 10)))));
+        assertEquals(set("finished","x = 1"), ts.getLabel(p("finished", map(p("x", 1)))));
+        assertEquals(set("running","x = 8"), ts.getLabel(p("running", map(p("x", 8)))));
+        assertEquals(set("running","x = 6"), ts.getLabel(p("running", map(p("x", 6)))));
+        assertEquals(set("running","x = 5"), ts.getLabel(p("running", map(p("x", 5)))));
+        assertEquals(set("running","x = 4"), ts.getLabel(p("running", map(p("x", 4)))));
+        assertEquals(set("running","x = 3"), ts.getLabel(p("running", map(p("x", 3)))));
+        assertEquals(set("running","x = 2"), ts.getLabel(p("running", map(p("x", 2)))));
+        assertEquals(set("running","x = 1"), ts.getLabel(p("running", map(p("x", 1)))));
+        assertEquals(set("running","x = 16"), ts.getLabel(p("running", map(p("x", 16)))));
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @Test
     public void runningCounter() throws Exception {
         ProgramGraph<String, String> pg = fvmFacadeImpl.createProgramGraph();
@@ -340,20 +318,17 @@ public class ProgramGraphTest {
 
         assertEquals(set(p("S", map(p("x", 1)))), ts.getInitialStates());
         assertEquals(set("x:=x+1"), ts.getActions());
-        //TODO: fix corresponding to their answer in the forum to my Ques!!!!
-        // as above
-//        assertEquals(set("S", "x = 23", "x = 24", "x = 25", "x = 26", "x = 20", "x = 21", "x = 22", "x = 27", "x = 28",
-//                "x = 29", "x = 100", "x = 92", "x = 93", "x = 94", "x = 95", "x = 90", "x = 91", "x = 12", "x = 13",
-//                "x = 14", "x = 15", "x = 96", "x = 97", "x = 98", "x = 10", "x = 99", "x = 11", "x = 16", "x = 17",
-//                "x = 18", "x = 19", "x = 40", "x = 45", "x = 46", "x = 47", "x = 48", "x = 41", "x = 42", "x = 43",
-//                "x = 44", "x = 49", "x = 34", "x = 35", "x = 36", "x = 37", "x = 30", "x = 31", "x = 32", "x = 33",
-//                "x = 38", "x = 39", "x = 60", "x = 61", "x = 62", "x = 67", "x = 68", "x = 69", "x = 63", "x = 64",
-//                "x = 65", "x = 66", "x = 50", "x = 51", "x = 56", "x = 57", "x = 58", "x = 59", "x = 52", "x = 53",
-//                "x = 54", "x = 55", "x = 5", "x = 81", "x = 6", "x = 82", "x = 83", "x = 3", "x = 84", "x = 4", "x = 9",
-//                "x = 7", "x = 8", "x = 80", "x = 89", "x = 85", "x = 1", "x = 2", "x = 86", "x = 87", "x = 88",
-//                "x = 70", "x = 71", "x = 72", "x = 73", "x = 78", "x = 79", "x = 74", "x = 75", "x = 76", "x = 77"),
-//                ts.getAtomicPropositions());
-        assertEquals(set("S"), ts.getAtomicPropositions());
+        assertEquals(set("S","x = 23", "x = 24", "x = 25", "x = 26", "x = 20", "x = 21", "x = 22", "x = 27", "x = 28",
+                "x = 29", "x = 100", "x = 92", "x = 93", "x = 94", "x = 95", "x = 90", "x = 91", "x = 12", "x = 13",
+                "x = 14", "x = 15", "x = 96", "x = 97", "x = 98", "x = 10", "x = 99", "x = 11", "x = 16", "x = 17",
+                "x = 18", "x = 19", "x = 40", "x = 45", "x = 46", "x = 47", "x = 48", "x = 41", "x = 42", "x = 43",
+                "x = 44", "x = 49", "x = 34", "x = 35", "x = 36", "x = 37", "x = 30", "x = 31", "x = 32", "x = 33",
+                "x = 38", "x = 39", "x = 60", "x = 61", "x = 62", "x = 67", "x = 68", "x = 69", "x = 63", "x = 64",
+                "x = 65", "x = 66", "x = 50", "x = 51", "x = 56", "x = 57", "x = 58", "x = 59", "x = 52", "x = 53",
+                "x = 54", "x = 55", "x = 5", "x = 81", "x = 6", "x = 82", "x = 83", "x = 3", "x = 84", "x = 4", "x = 9",
+                "x = 7", "x = 8", "x = 80", "x = 89", "x = 85", "x = 1", "x = 2", "x = 86", "x = 87", "x = 88",
+                "x = 70", "x = 71", "x = 72", "x = 73", "x = 78", "x = 79", "x = 74", "x = 75", "x = 76", "x = 77"),
+                ts.getAtomicPropositions());
         assertEquals(set(transition(p("S", map(p("x", 13))), "x:=x+1", p("S", map(p("x", 14)))),
                 transition(p("S", map(p("x", 5))), "x:=x+1", p("S", map(p("x", 6)))),
                 transition(p("S", map(p("x", 53))), "x:=x+1", p("S", map(p("x", 54)))),
@@ -453,208 +428,106 @@ public class ProgramGraphTest {
                 transition(p("S", map(p("x", 20))), "x:=x+1", p("S", map(p("x", 21)))),
                 transition(p("S", map(p("x", 36))), "x:=x+1", p("S", map(p("x", 37)))),
                 transition(p("S", map(p("x", 28))), "x:=x+1", p("S", map(p("x", 29))))), ts.getTransitions());
-        //TODO: fix corresponding to their answer in the forum to my Ques!!!!
-        // as above
-//        assertEquals(set("S", "x = 96"), ts.getLabel(p("S", map(p("x", 96)))));
-//        assertEquals(set("S", "x = 97"), ts.getLabel(p("S", map(p("x", 97)))));
-//        assertEquals(set("S", "x = 98"), ts.getLabel(p("S", map(p("x", 98)))));
-//        assertEquals(set("S", "x = 99"), ts.getLabel(p("S", map(p("x", 99)))));
-//        assertEquals(set("S", "x = 100"), ts.getLabel(p("S", map(p("x", 100)))));
-//        assertEquals(set("S", "x = 88"), ts.getLabel(p("S", map(p("x", 88)))));
-//        assertEquals(set("S", "x = 89"), ts.getLabel(p("S", map(p("x", 89)))));
-//        assertEquals(set("S", "x = 90"), ts.getLabel(p("S", map(p("x", 90)))));
-//        assertEquals(set("S", "x = 91"), ts.getLabel(p("S", map(p("x", 91)))));
-//        assertEquals(set("S", "x = 92"), ts.getLabel(p("S", map(p("x", 92)))));
-//        assertEquals(set("S", "x = 93"), ts.getLabel(p("S", map(p("x", 93)))));
-//        assertEquals(set("S", "x = 94"), ts.getLabel(p("S", map(p("x", 94)))));
-//        assertEquals(set("S", "x = 95"), ts.getLabel(p("S", map(p("x", 95)))));
-//        assertEquals(set("S", "x = 80"), ts.getLabel(p("S", map(p("x", 80)))));
-//        assertEquals(set("S", "x = 81"), ts.getLabel(p("S", map(p("x", 81)))));
-//        assertEquals(set("S", "x = 82"), ts.getLabel(p("S", map(p("x", 82)))));
-//        assertEquals(set("S", "x = 83"), ts.getLabel(p("S", map(p("x", 83)))));
-//        assertEquals(set("S", "x = 84"), ts.getLabel(p("S", map(p("x", 84)))));
-//        assertEquals(set("S", "x = 85"), ts.getLabel(p("S", map(p("x", 85)))));
-//        assertEquals(set("S", "x = 86"), ts.getLabel(p("S", map(p("x", 86)))));
-//        assertEquals(set("S", "x = 87"), ts.getLabel(p("S", map(p("x", 87)))));
-//        assertEquals(set("S", "x = 72"), ts.getLabel(p("S", map(p("x", 72)))));
-//        assertEquals(set("S", "x = 73"), ts.getLabel(p("S", map(p("x", 73)))));
-//        assertEquals(set("S", "x = 74"), ts.getLabel(p("S", map(p("x", 74)))));
-//        assertEquals(set("S", "x = 75"), ts.getLabel(p("S", map(p("x", 75)))));
-//        assertEquals(set("S", "x = 76"), ts.getLabel(p("S", map(p("x", 76)))));
-//        assertEquals(set("S", "x = 77"), ts.getLabel(p("S", map(p("x", 77)))));
-//        assertEquals(set("S", "x = 78"), ts.getLabel(p("S", map(p("x", 78)))));
-//        assertEquals(set("S", "x = 79"), ts.getLabel(p("S", map(p("x", 79)))));
-//        assertEquals(set("S", "x = 64"), ts.getLabel(p("S", map(p("x", 64)))));
-//        assertEquals(set("S", "x = 65"), ts.getLabel(p("S", map(p("x", 65)))));
-//        assertEquals(set("S", "x = 66"), ts.getLabel(p("S", map(p("x", 66)))));
-//        assertEquals(set("S", "x = 67"), ts.getLabel(p("S", map(p("x", 67)))));
-//        assertEquals(set("S", "x = 68"), ts.getLabel(p("S", map(p("x", 68)))));
-//        assertEquals(set("S", "x = 69"), ts.getLabel(p("S", map(p("x", 69)))));
-//        assertEquals(set("S", "x = 70"), ts.getLabel(p("S", map(p("x", 70)))));
-//        assertEquals(set("S", "x = 71"), ts.getLabel(p("S", map(p("x", 71)))));
-//        assertEquals(set("S", "x = 56"), ts.getLabel(p("S", map(p("x", 56)))));
-//        assertEquals(set("S", "x = 57"), ts.getLabel(p("S", map(p("x", 57)))));
-//        assertEquals(set("S", "x = 58"), ts.getLabel(p("S", map(p("x", 58)))));
-//        assertEquals(set("S", "x = 59"), ts.getLabel(p("S", map(p("x", 59)))));
-//        assertEquals(set("S", "x = 60"), ts.getLabel(p("S", map(p("x", 60)))));
-//        assertEquals(set("S", "x = 61"), ts.getLabel(p("S", map(p("x", 61)))));
-//        assertEquals(set("S", "x = 62"), ts.getLabel(p("S", map(p("x", 62)))));
-//        assertEquals(set("S", "x = 63"), ts.getLabel(p("S", map(p("x", 63)))));
-//        assertEquals(set("S", "x = 48"), ts.getLabel(p("S", map(p("x", 48)))));
-//        assertEquals(set("S", "x = 49"), ts.getLabel(p("S", map(p("x", 49)))));
-//        assertEquals(set("S", "x = 50"), ts.getLabel(p("S", map(p("x", 50)))));
-//        assertEquals(set("S", "x = 51"), ts.getLabel(p("S", map(p("x", 51)))));
-//        assertEquals(set("S", "x = 52"), ts.getLabel(p("S", map(p("x", 52)))));
-//        assertEquals(set("S", "x = 53"), ts.getLabel(p("S", map(p("x", 53)))));
-//        assertEquals(set("S", "x = 54"), ts.getLabel(p("S", map(p("x", 54)))));
-//        assertEquals(set("S", "x = 55"), ts.getLabel(p("S", map(p("x", 55)))));
-//        assertEquals(set("S", "x = 40"), ts.getLabel(p("S", map(p("x", 40)))));
-//        assertEquals(set("S", "x = 41"), ts.getLabel(p("S", map(p("x", 41)))));
-//        assertEquals(set("S", "x = 42"), ts.getLabel(p("S", map(p("x", 42)))));
-//        assertEquals(set("S", "x = 43"), ts.getLabel(p("S", map(p("x", 43)))));
-//        assertEquals(set("S", "x = 44"), ts.getLabel(p("S", map(p("x", 44)))));
-//        assertEquals(set("S", "x = 45"), ts.getLabel(p("S", map(p("x", 45)))));
-//        assertEquals(set("S", "x = 46"), ts.getLabel(p("S", map(p("x", 46)))));
-//        assertEquals(set("S", "x = 47"), ts.getLabel(p("S", map(p("x", 47)))));
-//        assertEquals(set("S", "x = 32"), ts.getLabel(p("S", map(p("x", 32)))));
-//        assertEquals(set("S", "x = 33"), ts.getLabel(p("S", map(p("x", 33)))));
-//        assertEquals(set("S", "x = 34"), ts.getLabel(p("S", map(p("x", 34)))));
-//        assertEquals(set("S", "x = 35"), ts.getLabel(p("S", map(p("x", 35)))));
-//        assertEquals(set("S", "x = 36"), ts.getLabel(p("S", map(p("x", 36)))));
-//        assertEquals(set("S", "x = 37"), ts.getLabel(p("S", map(p("x", 37)))));
-//        assertEquals(set("S", "x = 38"), ts.getLabel(p("S", map(p("x", 38)))));
-//        assertEquals(set("S", "x = 39"), ts.getLabel(p("S", map(p("x", 39)))));
-//        assertEquals(set("S", "x = 24"), ts.getLabel(p("S", map(p("x", 24)))));
-//        assertEquals(set("S", "x = 25"), ts.getLabel(p("S", map(p("x", 25)))));
-//        assertEquals(set("S", "x = 26"), ts.getLabel(p("S", map(p("x", 26)))));
-//        assertEquals(set("S", "x = 27"), ts.getLabel(p("S", map(p("x", 27)))));
-//        assertEquals(set("S", "x = 28"), ts.getLabel(p("S", map(p("x", 28)))));
-//        assertEquals(set("S", "x = 29"), ts.getLabel(p("S", map(p("x", 29)))));
-//        assertEquals(set("S", "x = 30"), ts.getLabel(p("S", map(p("x", 30)))));
-//        assertEquals(set("S", "x = 31"), ts.getLabel(p("S", map(p("x", 31)))));
-//        assertEquals(set("S", "x = 16"), ts.getLabel(p("S", map(p("x", 16)))));
-//        assertEquals(set("S", "x = 17"), ts.getLabel(p("S", map(p("x", 17)))));
-//        assertEquals(set("S", "x = 18"), ts.getLabel(p("S", map(p("x", 18)))));
-//        assertEquals(set("S", "x = 19"), ts.getLabel(p("S", map(p("x", 19)))));
-//        assertEquals(set("S", "x = 20"), ts.getLabel(p("S", map(p("x", 20)))));
-//        assertEquals(set("S", "x = 21"), ts.getLabel(p("S", map(p("x", 21)))));
-//        assertEquals(set("S", "x = 22"), ts.getLabel(p("S", map(p("x", 22)))));
-//        assertEquals(set("S", "x = 23"), ts.getLabel(p("S", map(p("x", 23)))));
-//        assertEquals(set("S", "x = 8"), ts.getLabel(p("S", map(p("x", 8)))));
-//        assertEquals(set("S", "x = 9"), ts.getLabel(p("S", map(p("x", 9)))));
-//        assertEquals(set("S", "x = 10"), ts.getLabel(p("S", map(p("x", 10)))));
-//        assertEquals(set("S", "x = 11"), ts.getLabel(p("S", map(p("x", 11)))));
-//        assertEquals(set("S", "x = 12"), ts.getLabel(p("S", map(p("x", 12)))));
-//        assertEquals(set("S", "x = 13"), ts.getLabel(p("S", map(p("x", 13)))));
-//        assertEquals(set("S", "x = 14"), ts.getLabel(p("S", map(p("x", 14)))));
-//        assertEquals(set("S", "x = 15"), ts.getLabel(p("S", map(p("x", 15)))));
-//        assertEquals(set("S", "x = 1"), ts.getLabel(p("S", map(p("x", 1)))));
-//        assertEquals(set("S", "x = 2"), ts.getLabel(p("S", map(p("x", 2)))));
-//        assertEquals(set("S", "x = 3"), ts.getLabel(p("S", map(p("x", 3)))));
-//        assertEquals(set("S", "x = 4"), ts.getLabel(p("S", map(p("x", 4)))));
-//        assertEquals(set("S", "x = 5"), ts.getLabel(p("S", map(p("x", 5)))));
-//        assertEquals(set("S", "x = 6"), ts.getLabel(p("S", map(p("x", 6)))));
-//        assertEquals(set("S", "x = 7"), ts.getLabel(p("S", map(p("x", 7)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 96)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 97)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 98)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 99)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 100)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 88)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 89)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 90)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 91)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 92)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 93)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 94)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 95)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 80)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 81)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 82)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 83)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 84)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 85)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 86)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 87)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 72)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 73)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 74)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 75)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 76)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 77)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 78)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 79)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 64)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 65)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 66)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 67)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 68)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 69)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 70)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 71)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 56)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 57)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 58)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 59)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 60)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 61)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 62)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 63)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 48)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 49)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 50)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 51)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 52)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 53)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 54)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 55)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 40)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 41)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 42)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 43)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 44)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 45)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 46)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 47)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 32)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 33)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 34)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 35)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 36)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 37)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 38)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 39)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 24)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 25)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 26)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 27)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 28)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 29)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 30)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 31)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 16)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 17)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 18)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 19)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 20)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 21)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 22)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 23)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 8)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 9)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 10)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 11)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 12)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 13)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 14)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 15)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 1)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 2)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 3)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 4)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 5)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 6)))));
-        assertEquals(set("S"), ts.getLabel(p("S", map(p("x", 7)))));
+        assertEquals(set("S","x = 96"), ts.getLabel(p("S", map(p("x", 96)))));
+        assertEquals(set("S","x = 97"), ts.getLabel(p("S", map(p("x", 97)))));
+        assertEquals(set("S","x = 98"), ts.getLabel(p("S", map(p("x", 98)))));
+        assertEquals(set("S","x = 99"), ts.getLabel(p("S", map(p("x", 99)))));
+        assertEquals(set("S","x = 100"), ts.getLabel(p("S", map(p("x", 100)))));
+        assertEquals(set("S","x = 88"), ts.getLabel(p("S", map(p("x", 88)))));
+        assertEquals(set("S","x = 89"), ts.getLabel(p("S", map(p("x", 89)))));
+        assertEquals(set("S","x = 90"), ts.getLabel(p("S", map(p("x", 90)))));
+        assertEquals(set("S","x = 91"), ts.getLabel(p("S", map(p("x", 91)))));
+        assertEquals(set("S","x = 92"), ts.getLabel(p("S", map(p("x", 92)))));
+        assertEquals(set("S","x = 93"), ts.getLabel(p("S", map(p("x", 93)))));
+        assertEquals(set("S","x = 94"), ts.getLabel(p("S", map(p("x", 94)))));
+        assertEquals(set("S","x = 95"), ts.getLabel(p("S", map(p("x", 95)))));
+        assertEquals(set("S","x = 80"), ts.getLabel(p("S", map(p("x", 80)))));
+        assertEquals(set("S","x = 81"), ts.getLabel(p("S", map(p("x", 81)))));
+        assertEquals(set("S","x = 82"), ts.getLabel(p("S", map(p("x", 82)))));
+        assertEquals(set("S","x = 83"), ts.getLabel(p("S", map(p("x", 83)))));
+        assertEquals(set("S","x = 84"), ts.getLabel(p("S", map(p("x", 84)))));
+        assertEquals(set("S","x = 85"), ts.getLabel(p("S", map(p("x", 85)))));
+        assertEquals(set("S","x = 86"), ts.getLabel(p("S", map(p("x", 86)))));
+        assertEquals(set("S","x = 87"), ts.getLabel(p("S", map(p("x", 87)))));
+        assertEquals(set("S","x = 72"), ts.getLabel(p("S", map(p("x", 72)))));
+        assertEquals(set("S","x = 73"), ts.getLabel(p("S", map(p("x", 73)))));
+        assertEquals(set("S","x = 74"), ts.getLabel(p("S", map(p("x", 74)))));
+        assertEquals(set("S","x = 75"), ts.getLabel(p("S", map(p("x", 75)))));
+        assertEquals(set("S","x = 76"), ts.getLabel(p("S", map(p("x", 76)))));
+        assertEquals(set("S","x = 77"), ts.getLabel(p("S", map(p("x", 77)))));
+        assertEquals(set("S","x = 78"), ts.getLabel(p("S", map(p("x", 78)))));
+        assertEquals(set("S","x = 79"), ts.getLabel(p("S", map(p("x", 79)))));
+        assertEquals(set("S","x = 64"), ts.getLabel(p("S", map(p("x", 64)))));
+        assertEquals(set("S","x = 65"), ts.getLabel(p("S", map(p("x", 65)))));
+        assertEquals(set("S","x = 66"), ts.getLabel(p("S", map(p("x", 66)))));
+        assertEquals(set("S","x = 67"), ts.getLabel(p("S", map(p("x", 67)))));
+        assertEquals(set("S","x = 68"), ts.getLabel(p("S", map(p("x", 68)))));
+        assertEquals(set("S","x = 69"), ts.getLabel(p("S", map(p("x", 69)))));
+        assertEquals(set("S","x = 70"), ts.getLabel(p("S", map(p("x", 70)))));
+        assertEquals(set("S","x = 71"), ts.getLabel(p("S", map(p("x", 71)))));
+        assertEquals(set("S","x = 56"), ts.getLabel(p("S", map(p("x", 56)))));
+        assertEquals(set("S","x = 57"), ts.getLabel(p("S", map(p("x", 57)))));
+        assertEquals(set("S","x = 58"), ts.getLabel(p("S", map(p("x", 58)))));
+        assertEquals(set("S","x = 59"), ts.getLabel(p("S", map(p("x", 59)))));
+        assertEquals(set("S","x = 60"), ts.getLabel(p("S", map(p("x", 60)))));
+        assertEquals(set("S","x = 61"), ts.getLabel(p("S", map(p("x", 61)))));
+        assertEquals(set("S","x = 62"), ts.getLabel(p("S", map(p("x", 62)))));
+        assertEquals(set("S","x = 63"), ts.getLabel(p("S", map(p("x", 63)))));
+        assertEquals(set("S","x = 48"), ts.getLabel(p("S", map(p("x", 48)))));
+        assertEquals(set("S","x = 49"), ts.getLabel(p("S", map(p("x", 49)))));
+        assertEquals(set("S","x = 50"), ts.getLabel(p("S", map(p("x", 50)))));
+        assertEquals(set("S","x = 51"), ts.getLabel(p("S", map(p("x", 51)))));
+        assertEquals(set("S","x = 52"), ts.getLabel(p("S", map(p("x", 52)))));
+        assertEquals(set("S","x = 53"), ts.getLabel(p("S", map(p("x", 53)))));
+        assertEquals(set("S","x = 54"), ts.getLabel(p("S", map(p("x", 54)))));
+        assertEquals(set("S","x = 55"), ts.getLabel(p("S", map(p("x", 55)))));
+        assertEquals(set("S","x = 40"), ts.getLabel(p("S", map(p("x", 40)))));
+        assertEquals(set("S","x = 41"), ts.getLabel(p("S", map(p("x", 41)))));
+        assertEquals(set("S","x = 42"), ts.getLabel(p("S", map(p("x", 42)))));
+        assertEquals(set("S","x = 43"), ts.getLabel(p("S", map(p("x", 43)))));
+        assertEquals(set("S","x = 44"), ts.getLabel(p("S", map(p("x", 44)))));
+        assertEquals(set("S","x = 45"), ts.getLabel(p("S", map(p("x", 45)))));
+        assertEquals(set("S","x = 46"), ts.getLabel(p("S", map(p("x", 46)))));
+        assertEquals(set("S","x = 47"), ts.getLabel(p("S", map(p("x", 47)))));
+        assertEquals(set("S","x = 32"), ts.getLabel(p("S", map(p("x", 32)))));
+        assertEquals(set("S","x = 33"), ts.getLabel(p("S", map(p("x", 33)))));
+        assertEquals(set("S","x = 34"), ts.getLabel(p("S", map(p("x", 34)))));
+        assertEquals(set("S","x = 35"), ts.getLabel(p("S", map(p("x", 35)))));
+        assertEquals(set("S","x = 36"), ts.getLabel(p("S", map(p("x", 36)))));
+        assertEquals(set("S","x = 37"), ts.getLabel(p("S", map(p("x", 37)))));
+        assertEquals(set("S","x = 38"), ts.getLabel(p("S", map(p("x", 38)))));
+        assertEquals(set("S","x = 39"), ts.getLabel(p("S", map(p("x", 39)))));
+        assertEquals(set("S","x = 24"), ts.getLabel(p("S", map(p("x", 24)))));
+        assertEquals(set("S","x = 25"), ts.getLabel(p("S", map(p("x", 25)))));
+        assertEquals(set("S","x = 26"), ts.getLabel(p("S", map(p("x", 26)))));
+        assertEquals(set("S","x = 27"), ts.getLabel(p("S", map(p("x", 27)))));
+        assertEquals(set("S","x = 28"), ts.getLabel(p("S", map(p("x", 28)))));
+        assertEquals(set("S","x = 29"), ts.getLabel(p("S", map(p("x", 29)))));
+        assertEquals(set("S","x = 30"), ts.getLabel(p("S", map(p("x", 30)))));
+        assertEquals(set("S","x = 31"), ts.getLabel(p("S", map(p("x", 31)))));
+        assertEquals(set("S","x = 16"), ts.getLabel(p("S", map(p("x", 16)))));
+        assertEquals(set("S","x = 17"), ts.getLabel(p("S", map(p("x", 17)))));
+        assertEquals(set("S","x = 18"), ts.getLabel(p("S", map(p("x", 18)))));
+        assertEquals(set("S","x = 19"), ts.getLabel(p("S", map(p("x", 19)))));
+        assertEquals(set("S","x = 20"), ts.getLabel(p("S", map(p("x", 20)))));
+        assertEquals(set("S","x = 21"), ts.getLabel(p("S", map(p("x", 21)))));
+        assertEquals(set("S","x = 22"), ts.getLabel(p("S", map(p("x", 22)))));
+        assertEquals(set("S","x = 23"), ts.getLabel(p("S", map(p("x", 23)))));
+        assertEquals(set("S","x = 8"), ts.getLabel(p("S", map(p("x", 8)))));
+        assertEquals(set("S","x = 9"), ts.getLabel(p("S", map(p("x", 9)))));
+        assertEquals(set("S","x = 10"), ts.getLabel(p("S", map(p("x", 10)))));
+        assertEquals(set("S","x = 11"), ts.getLabel(p("S", map(p("x", 11)))));
+        assertEquals(set("S","x = 12"), ts.getLabel(p("S", map(p("x", 12)))));
+        assertEquals(set("S","x = 13"), ts.getLabel(p("S", map(p("x", 13)))));
+        assertEquals(set("S","x = 14"), ts.getLabel(p("S", map(p("x", 14)))));
+        assertEquals(set("S","x = 15"), ts.getLabel(p("S", map(p("x", 15)))));
+        assertEquals(set("S","x = 1"), ts.getLabel(p("S", map(p("x", 1)))));
+        assertEquals(set("S","x = 2"), ts.getLabel(p("S", map(p("x", 2)))));
+        assertEquals(set("S","x = 3"), ts.getLabel(p("S", map(p("x", 3)))));
+        assertEquals(set("S","x = 4"), ts.getLabel(p("S", map(p("x", 4)))));
+        assertEquals(set("S","x = 5"), ts.getLabel(p("S", map(p("x", 5)))));
+        assertEquals(set("S","x = 6"), ts.getLabel(p("S", map(p("x", 6)))));
+        assertEquals(set("S","x = 7"), ts.getLabel(p("S", map(p("x", 7)))));
 
     }
 

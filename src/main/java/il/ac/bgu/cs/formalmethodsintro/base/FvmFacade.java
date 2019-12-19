@@ -747,7 +747,7 @@ public class FvmFacade {
                 Map<String, Object> evalFun = parseInitialization(initialization);
                 Pair<L, Map<String, Object>> state = new Pair<>(initLoc, evalFun);
                 initStates.add(state); //add to local set
-                addStateToTS(ts, state, conditionDefs, true);
+                addStateToTS(ts, state, true);
             }
         }
         //initial states End
@@ -768,7 +768,7 @@ public class FvmFacade {
                         Map<String, Object> newEval = action.effect(state.getSecond(), trans.getAction());
                         Pair<L, Map<String, Object>> newState = new Pair<>(trans.getTo(), newEval);
                         if (!ts.getStates().contains(newState)) {
-                            addStateToTS(ts, newState, conditionDefs, false);
+                            addStateToTS(ts, newState, false);
                             newStates.add(newState);
                         }
                         ts.addTransitionFrom(state).action(trans.getAction()).to(newState);
@@ -817,20 +817,17 @@ public class FvmFacade {
     }
 
     //Add the state and the corresponding label to the TS
-    private <L, A> void addStateToTS(TransitionSystem<Pair<L, Map<String, Object>>, A, String> ts, Pair<L, Map<String, Object>> state, Set<ConditionDef> conditionDefs, boolean isInitial) {
+    private <L, A> void addStateToTS(TransitionSystem<Pair<L, Map<String, Object>>, A, String> ts, Pair<L, Map<String, Object>> state, boolean isInitial) {
         if (isInitial)
             ts.addInitialState(state);
         else
             ts.addState(state);
         //Add Labeling
         ts.addToLabel(state, state.first.toString()); //location AP
-        //All the conditions that the eval holds
-        //TODO: לפי הטסטים התיוג ציריך להיות המקום + המשתנים והערכים שלהם, לפי ההרצאה התנאים
-        // מה לעשות?
-//        for(ConditionDef cond: conditionDefs) {
-//            if (cond.evaluate(state.second, cond.toString())) //TODO: check if this is how i get the condition as string
-//                ts.addToLabel(state, cond.toString()); //relevant condition AP
-//        }
+        Map<String, Object> eval = state.getSecond();
+        for(String var: eval.keySet()) {
+            ts.addToLabel(state, var + " = " + eval.get(var));
+        }
     }
 
 
