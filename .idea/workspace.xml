@@ -4,7 +4,8 @@
     <list default="true" id="a3fdb15c-2dc8-45c4-930d-74704924ba91" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ProgramGraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ProgramGraphTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/CircuitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/CircuitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/NanoPromelaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/NanoPromelaTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="766" selection-start-line="766" selection-end-line="766" />
+            <state relative-caret-position="94">
+              <caret line="1048" column="5" lean-forward="true" selection-start-line="1048" selection-start-column="5" selection-end-line="1048" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#18204#18205#0" expanded="true" />
@@ -30,30 +31,17 @@
                 <element signature="e#18613#18614#0" expanded="true" />
                 <element signature="e#18655#18656#0" expanded="true" />
                 <element signature="e#18723#18724#0" expanded="true" />
-                <element signature="e#51399#51400#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ProgramGraphTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="77" column="2" lean-forward="true" selection-start-line="77" selection-start-column="2" selection-end-line="77" selection-end-column="2" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#15730#15776#0" expanded="true" />
+                <element signature="e#52263#52264#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ExtendedVendingMachineBuilder.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/tst1.np">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+            <state relative-caret-position="17">
+              <caret line="1" column="61" lean-forward="true" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -61,17 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/NanoPromelaTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="44" column="38" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/programgraph/PGTransition.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
+            <state relative-caret-position="77">
+              <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -79,9 +58,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/NanoPromelaParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7021">
-              <caret line="510" column="66" selection-start-line="510" selection-start-column="54" selection-end-line="510" selection-end-column="66" />
+            <state relative-caret-position="96">
+              <caret line="448" selection-start-line="448" selection-end-line="448" />
               <folding>
+                <element signature="e#15182#15183#0" expanded="true" />
                 <element signature="e#15225#15226#0" expanded="true" />
                 <element signature="e#15295#15296#0" expanded="true" />
                 <element signature="e#15348#15349#0" expanded="true" />
@@ -97,27 +77,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/NanoPromelaFileReader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>stmt</find>
-      <find>getTra</find>
-      <find>getTransitions(</find>
-      <find>getTransitions()</find>
-      <find>getTransitionsFrom</find>
       <find>sub.add</find>
       <find>cir</find>
       <find>circu</find>
@@ -143,6 +106,11 @@
       <find>parseInitialization</find>
       <find>actionDefs</find>
       <find>coin</find>
+      <find>fromnanopro</find>
+      <find>buildC</find>
+      <find>build</find>
+      <find>sub</find>
+      <find>true</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -154,9 +122,10 @@
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/NanoPromelaParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/tst1.np" />
-        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/NanoPromelaTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" />
         <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ProgramGraphTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/CircuitTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" />
+        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/NanoPromelaTest.java" />
       </list>
     </option>
   </component>
@@ -207,6 +176,15 @@
               <item name="FormalMethodsIntro-Base" type="b2602c69:ProjectViewProjectNode" />
               <item name="Verification1" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="nanopromela" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FormalMethodsIntro-Base" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Verification1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -244,7 +222,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576837468666" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576848775692" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunDashboard">
@@ -259,8 +237,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ProgramGraphTest">
-    <configuration name="NanoPromelaTest.soda" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.NanoPromelaTest.test1">
+    <configuration name="NanoPromelaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FormalMethodsIntro-Base" />
       <extension name="coverage">
         <pattern>
@@ -270,8 +248,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.PG" />
       <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.PG.NanoPromelaTest" />
-      <option name="METHOD_NAME" value="soda" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -308,7 +284,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NanoPromelaTest.test3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProgramGraphProductTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FormalMethodsIntro-Base" />
       <extension name="coverage">
         <pattern>
@@ -317,14 +293,12 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.PG" />
-      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.PG.NanoPromelaTest" />
-      <option name="METHOD_NAME" value="test3" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.PG.ProgramGraphProductTest" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProgramGraphTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TransitionSystemsProductTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FormalMethodsIntro-Base" />
       <extension name="coverage">
         <pattern>
@@ -333,18 +307,18 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.PG" />
-      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.PG.ProgramGraphTest" />
+      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.PG.TransitionSystemsProductTests" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProgramGraphTest" />
-        <item itemvalue="JUnit.NanoPromelaTest.soda" />
-        <item itemvalue="JUnit.NanoPromelaTest.test3" />
-        <item itemvalue="JUnit.NanoPromelaTest.test2" />
         <item itemvalue="JUnit.NanoPromelaTest.test1" />
+        <item itemvalue="JUnit.NanoPromelaTest.test2" />
+        <item itemvalue="JUnit.NanoPromelaTest" />
+        <item itemvalue="JUnit.TransitionSystemsProductTests" />
+        <item itemvalue="JUnit.ProgramGraphProductTest" />
       </list>
     </recent_temporary>
   </component>
@@ -363,44 +337,44 @@
       <workItem from="1576253257061" duration="1336000" />
       <workItem from="1576337545326" duration="12670000" />
       <workItem from="1576483614839" duration="37651000" />
-      <workItem from="1576834661523" duration="2794000" />
+      <workItem from="1576834661523" duration="10039000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ProgramGraphTest - 2019.12.19 at 15h 24m 56s.xml">
-      <configuration name="ProgramGraphTest" configurationId="JUnit" />
+    <history-entry file="NanoPromelaTest_test1 - 2019.12.20 at 15h 22m 29s.xml">
+      <configuration name="NanoPromelaTest.test1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProgramGraphTest - 2019.12.19 at 15h 25m 18s.xml">
-      <configuration name="ProgramGraphTest" configurationId="JUnit" />
+    <history-entry file="NanoPromelaTest_test1 - 2019.12.20 at 15h 23m 53s.xml">
+      <configuration name="NanoPromelaTest.test1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProgramGraphTest - 2019.12.19 at 15h 27m 48s.xml">
-      <configuration name="ProgramGraphTest" configurationId="JUnit" />
+    <history-entry file="NanoPromelaTest_test1 - 2019.12.20 at 15h 23m 58s.xml">
+      <configuration name="NanoPromelaTest.test1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProgramGraphTest - 2019.12.20 at 11h 40m 40s.xml">
-      <configuration name="ProgramGraphTest" configurationId="JUnit" />
+    <history-entry file="NanoPromelaTest_test1 - 2019.12.20 at 15h 24m 39s.xml">
+      <configuration name="NanoPromelaTest.test1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProgramGraphTest - 2019.12.20 at 11h 59m 26s.xml">
-      <configuration name="ProgramGraphTest" configurationId="JUnit" />
+    <history-entry file="NanoPromelaTest_test1 - 2019.12.20 at 15h 27m 31s.xml">
+      <configuration name="NanoPromelaTest.test1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProgramGraphTest - 2019.12.20 at 11h 59m 53s.xml">
-      <configuration name="ProgramGraphTest" configurationId="JUnit" />
+    <history-entry file="NanoPromelaTest_test2 - 2019.12.20 at 15h 27m 41s.xml">
+      <configuration name="NanoPromelaTest.test2" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProgramGraphTest - 2019.12.20 at 12h 00m 09s.xml">
-      <configuration name="ProgramGraphTest" configurationId="JUnit" />
+    <history-entry file="NanoPromelaTest_test2 - 2019.12.20 at 15h 28m 06s.xml">
+      <configuration name="NanoPromelaTest.test2" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProgramGraphTest - 2019.12.20 at 12h 14m 46s.xml">
-      <configuration name="ProgramGraphTest" configurationId="JUnit" />
+    <history-entry file="NanoPromelaTest_test1 - 2019.12.20 at 15h 28m 16s.xml">
+      <configuration name="NanoPromelaTest.test1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProgramGraphTest - 2019.12.20 at 12h 14m 51s.xml">
-      <configuration name="ProgramGraphTest" configurationId="JUnit" />
+    <history-entry file="NanoPromelaTest_test1 - 2019.12.20 at 15h 30m 53s.xml">
+      <configuration name="NanoPromelaTest.test1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProgramGraphTest - 2019.12.20 at 12h 23m 37s.xml">
-      <configuration name="ProgramGraphTest" configurationId="JUnit" />
+    <history-entry file="NanoPromelaTest_test1 - 2019.12.20 at 15h 32m 36s.xml">
+      <configuration name="NanoPromelaTest.test1" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26759000" />
+    <option name="totallyTimeSpent" value="34004000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -415,8 +389,8 @@
       <window_info id="Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.29129663" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49878544" weight="0.29840142" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.44227353" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49878544" weight="0.41030195" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.38543516" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3285968" />
@@ -484,6 +458,12 @@
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java</url>
+          <line>957</line>
+          <properties />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -497,27 +477,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
           <caret line="87" column="40" selection-start-line="87" selection-start-column="40" selection-end-line="87" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ChannelSystemTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-689">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ProgramGraphProductTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="24" column="50" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/VendingmachineInNanopromela.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-66">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -557,24 +516,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/CircuitTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="57" column="42" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/programgraph/ConditionDef.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-50">
           <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/CollatzProgramGraphBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="18" column="30" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -596,13 +541,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
           <caret line="41" selection-start-line="41" selection-end-line="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/TransitionSystemsProductTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="34" column="89" selection-start-line="34" selection-start-column="89" selection-end-line="34" selection-end-column="89" />
         </state>
       </provider>
     </entry>
@@ -668,22 +606,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/HillaryTrumpCounting.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="17" column="58" lean-forward="true" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/tst3.np">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4/4.5.1/antlr4-4.5.1.jar!/org/antlr/v4/runtime/ParserRuleContext.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="92" column="35" selection-start-line="92" selection-start-column="35" selection-end-line="92" selection-end-column="35" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/tst2.np">
       <provider selected="true" editor-type-id="text-editor" />
@@ -748,16 +672,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/TSTestUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="115" column="16" selection-start-line="115" selection-start-column="16" selection-end-line="115" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/sanity/Our_Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
@@ -773,13 +687,6 @@
             <element signature="e#2652#2653#0" expanded="true" />
             <element signature="e#2684#2685#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/tst1.np">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="2" lean-forward="true" selection-end-line="2" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -800,11 +707,108 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ExtendedVendingMachineBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71">
+          <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/NanoPromelaFileReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/TSTestUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="115" column="16" selection-start-line="115" selection-start-column="16" selection-end-line="115" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/CircuitTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="72" column="82" selection-start-line="72" selection-start-column="82" selection-end-line="72" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ChannelSystemTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-548">
+          <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/CollatzProgramGraphBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="18" column="30" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/HillaryTrumpCounting.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="17" column="58" lean-forward="true" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ProgramGraphProductTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3288">
+          <caret line="24" column="50" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ProgramGraphTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1309">
+          <caret line="77" column="2" lean-forward="true" selection-start-line="77" selection-start-column="2" selection-end-line="77" selection-end-column="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/TransitionSystemsProductTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2795">
+          <caret line="34" column="89" selection-start-line="34" selection-start-column="89" selection-end-line="34" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/VendingmachineInNanopromela.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-27">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4/4.5.1/antlr4-4.5.1.jar!/org/antlr/v4/runtime/ParserRuleContext.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="169" selection-start-line="169" selection-end-line="169" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/NanoPromelaParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7021">
-          <caret line="510" column="66" selection-start-line="510" selection-start-column="54" selection-end-line="510" selection-end-column="66" />
+        <state relative-caret-position="96">
+          <caret line="448" selection-start-line="448" selection-end-line="448" />
           <folding>
+            <element signature="e#15182#15183#0" expanded="true" />
             <element signature="e#15225#15226#0" expanded="true" />
             <element signature="e#15295#15296#0" expanded="true" />
             <element signature="e#15348#15349#0" expanded="true" />
@@ -819,27 +823,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/NanoPromelaFileReader.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/tst1.np">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="17">
+          <caret line="1" column="61" lean-forward="true" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="61" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/NanoPromelaTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="44" column="38" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="38" />
+        <state relative-caret-position="77">
+          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="766" selection-start-line="766" selection-end-line="766" />
+        <state relative-caret-position="94">
+          <caret line="1048" column="5" lean-forward="true" selection-start-line="1048" selection-start-column="5" selection-end-line="1048" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#18204#18205#0" expanded="true" />
@@ -850,25 +851,7 @@
             <element signature="e#18613#18614#0" expanded="true" />
             <element signature="e#18655#18656#0" expanded="true" />
             <element signature="e#18723#18724#0" expanded="true" />
-            <element signature="e#51399#51400#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ExtendedVendingMachineBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ProgramGraphTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="77" column="2" lean-forward="true" selection-start-line="77" selection-start-column="2" selection-end-line="77" selection-end-column="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#15730#15776#0" expanded="true" />
+            <element signature="e#52263#52264#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -955,6 +955,8 @@ public class FvmFacade {
         ProgramGraph<String, String> pg = createProgramGraph();
         Set<String> sub = sub(root, pg);
         pg.setInitial(root.getText(), true);
+        for (String s: toRem)
+            pg.removeLocation(s);
         //TODO: Remove unreachables???
         return pg;
     }
@@ -966,7 +968,9 @@ public class FvmFacade {
     }
 
     private static final String EXIT_STATE = ""; //TODO: "" or "exit" ???????
+    private static final String TRUE_CONDITION = ""; //TODO: "" or "true" ???????
 
+    private static Set<String> toRem = new HashSet<>();
 
     private void subRec(StmtContext root, Set<String> sub, ProgramGraph<String, String> pg) {
         if (root.assstmt() != null || root.chanreadstmt() != null || root.chanwritestmt() != null
@@ -977,8 +981,10 @@ public class FvmFacade {
         } else if (root.ifstmt() != null) {
             sub.add(root.getText());
             sub.add(EXIT_STATE);
-            for (OptionContext op : root.ifstmt().option())
+            for (OptionContext op : root.ifstmt().option()) {
                 sub.addAll(sub(op.stmt(), pg));
+                toRem.add(op.stmt().getText());
+            }
             addIfStmtToPG(root.ifstmt(), pg);
         } else if (root.dostmt() != null) {
             sub.add(root.getText());
@@ -989,7 +995,9 @@ public class FvmFacade {
                 for (String op_sub_i : op_sub) {
                     sub.add(op_sub_i + ';' + root.getText());
                     addConcatenationToPG(op_sub_i, root.getText(), pg); //TODO: i think it should be here either
+                    toRem.add(op_sub_i + ';' + root.getText());
                 }
+                toRem.add(op.stmt().getText());
             }
             addDoStmtToPG(root.dostmt(), pg);
         } else { // ;
@@ -999,6 +1007,7 @@ public class FvmFacade {
             for (String sub_stmt_0_i : sub_stmt_0) {
                 sub.add(sub_stmt_0_i + ';' + root.stmt(1).getText());
                 addConcatenationToPG(sub_stmt_0_i, root.stmt(1).getText(), pg);
+                toRem.add(sub_stmt_0_i);
             }
         }
     }
@@ -1012,11 +1021,11 @@ public class FvmFacade {
             assertNotEmptyTransitionSet(subStmtTransitions);
             for (PGTransition<String, String> trans : subStmtTransitions) {
                 String h = trans.getCondition();
+                String condition = buildCondition(gi, h);
                 if (trans.getTo().equals(EXIT_STATE))
-                    //TODO: and? &&? ) && ( ??????
-                    pg.addTransition(new PGTransition<>(dostmt.getText(), gi + " and " + h, trans.getAction(), dostmt.getText()));
+                    pg.addTransition(new PGTransition<>(dostmt.getText(), condition, trans.getAction(), dostmt.getText()));
                 else
-                    pg.addTransition(new PGTransition<>(dostmt.getText(), gi + " and " + h, trans.getAction(), trans.getTo() + ";" + dostmt.getText()));
+                    pg.addTransition(new PGTransition<>(dostmt.getText(), condition, trans.getAction(), trans.getTo() + ";" + dostmt.getText()));
                 //TODO: if there's a problem with FROM, maybe we need the getText() of the root(from the caller function)
                 // and not of the doStmt.getText()
             }
@@ -1031,11 +1040,23 @@ public class FvmFacade {
             assertNotEmptyTransitionSet(subStmtTransitions);
             for (PGTransition<String, String> trans : subStmtTransitions) {
                 String h = trans.getCondition();
-                //TODO: and? &&? ) && ( ??????
-                pg.addTransition(new PGTransition<>(ifStmt.getText(), gi + " and " + h, trans.getAction(), trans.getTo()));
+                String condition = buildCondition(gi, h);
+                pg.addTransition(new PGTransition<>(ifStmt.getText(), condition, trans.getAction(), trans.getTo()));
                 //TODO: if there's a problem with FROM, maybe we need the getText() of the root(from the caller function)
                 // and not of the ifStmt.getText()
             }
+        }
+    }
+
+    private String buildCondition(String gi, String h) {
+        if (gi.equals(TRUE_CONDITION)) {
+            if (h.equals(TRUE_CONDITION))
+                return TRUE_CONDITION;
+            return h;
+        } else {
+            if (h.equals(TRUE_CONDITION))
+                return gi;
+            return '(' + gi + ") && (" + h + ')';
         }
     }
 
@@ -1043,10 +1064,11 @@ public class FvmFacade {
         Set<PGTransition<String, String>> stmt1Transitions = getTransitionsFrom(stmt1, pg);
         assertNotEmptyTransitionSet(stmt1Transitions);
         for (PGTransition<String, String> trans : stmt1Transitions) {
+            String condition = trans.getCondition().equals("true") ? TRUE_CONDITION : trans.getCondition();
             if (trans.getTo().equals(EXIT_STATE))
-                pg.addTransition(new PGTransition<>(stmt1 + ';' + stmt2, trans.getCondition(), trans.getAction(), stmt2));
+                pg.addTransition(new PGTransition<>(stmt1 + ';' + stmt2, condition, trans.getAction(), stmt2));
             else
-                pg.addTransition(new PGTransition<>(stmt1 + ';' + stmt2, trans.getCondition(), trans.getAction(), trans.getTo() + ';' + stmt2));
+                pg.addTransition(new PGTransition<>(stmt1 + ';' + stmt2, condition, trans.getAction(), trans.getTo() + ';' + stmt2));
         }
     }
 
@@ -1067,7 +1089,7 @@ public class FvmFacade {
         String action = root.skipstmt() != null ? "nothing"
                 : root.atomicstmt() != null ? rootText.substring(rootText.indexOf('{') + 1, rootText.indexOf('}'))
                 : rootText;
-        pg.addTransition(new PGTransition<>(root.getText(), "true", action, EXIT_STATE));
+        pg.addTransition(new PGTransition<>(root.getText(), TRUE_CONDITION, action, EXIT_STATE));
     }
 
     /**
