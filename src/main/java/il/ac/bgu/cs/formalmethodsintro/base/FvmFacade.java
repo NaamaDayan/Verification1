@@ -744,7 +744,7 @@ public class FvmFacade {
         Set<Pair<L, Map<String, Object>>> initStates = new HashSet<>();
         for (L initLoc : pg.getInitialLocations()) {
             for (List<String> initialization : pg.getInitalizations()) {
-                Map<String, Object> evalFun = parseInitialization(initialization);
+                Map<String, Object> evalFun = parseInitialization(initialization, actionDefs);
                 Pair<L, Map<String, Object>> state = new Pair<>(initLoc, evalFun);
                 initStates.add(state); //add to local set
                 addStateToTS(ts, state, true);
@@ -801,7 +801,7 @@ public class FvmFacade {
             if (actionDef.isMatchingAction(action))
                 return actionDef;
         try {
-            throw new Exception("action not found");
+            throw new Exception("action not found - not supposed to happen");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -831,16 +831,12 @@ public class FvmFacade {
     }
 
 
-    //make each initialization list of strings (shaped: "x := 15", "y:=9") to a map of string and object
-    //TODO: i assume that each initialization is num := integer -> is is true that only integers????
-    private Map<String, Object> parseInitialization(List<String> initialization) {
+    private Map<String, Object> parseInitialization(List<String> initialization, Set<ActionDef> actionDef) {
         Map<String, Object> map = new HashMap<>();
-        for (String init : initialization) {
-            init = init.replaceAll("\\s+", ""); //remove all whitespaces
-            String[] splitted = init.split(":");
-            String var = splitted[0];
-            int value = Integer.parseInt(splitted[1].substring(1)); // removing the '='
-            map.put(var, value);
+        for (String initAction : initialization) {
+            for(ActionDef action: actionDef)
+                if(action.isMatchingAction(initAction))
+                    map = action.effect(map, initAction);
         }
         return map;
     }
