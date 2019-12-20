@@ -9,10 +9,7 @@ import static il.ac.bgu.cs.formalmethodsintro.base.util.CollectionHelper.transit
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import il.ac.bgu.cs.formalmethodsintro.base.FvmFacade;
 import il.ac.bgu.cs.formalmethodsintro.base.channelsystem.ChannelSystem;
@@ -29,9 +26,23 @@ public class ChannelSystemTest {
 
 
 
+    private List recurse(int n){
+        return recurse2(n, new LinkedList<>());
+    }
+
+    private List recurse2(int n, LinkedList<Integer> objects) {
+        if (n==0)
+            return objects;
+        objects.add(n);
+       return recurse2(n-1,objects);
+    }
+
     @SuppressWarnings("unchecked")
     @Test
     public void debug() throws Exception {
+        List lst = recurse(5);
+        System.out.println((lst));
+
 //        TransitionSystem<Pair<List<String>, Map<String, Object>>, String, String> ts = fvmFacadeImpl.transitionSystemFromChannelSystem(AlternatingBitProtocolBuilder.build());
 //
 //        assertTrue(fvmFacadeImpl.isInitialExecutionFragment(ts,

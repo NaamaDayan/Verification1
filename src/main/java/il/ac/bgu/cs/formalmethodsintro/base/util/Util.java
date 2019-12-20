@@ -51,9 +51,7 @@ public class Util {
 
     public static <S> List<Set<S>> cartesianProduct(List<Set<S>> sets) {
         if (sets.size() < 2)
-            throw new IllegalArgumentException(
-                    "Can't have a product of fewer than two sets (got " +
-                            sets.size() + ")");
+            return sets;
 
         return _cartesianProduct(0, sets);
     }
@@ -73,4 +71,22 @@ public class Util {
         return ret;
     }
 
+    public static <L> Pair<List<L>, Map<String, Object>> stateCopy(Pair<List<L>, Map<String, Object>> state){
+        List<L> copyL = new LinkedList<>(state.getFirst());
+        Map<String, Object> copyM = new HashMap<>(state.getSecond());
+        return new Pair<List<L>, Map<String, Object>>(copyL, copyM);
+    }
+
+    public static Map<String, Object> deepCopyM(Map<String, Object> toCopy){
+        Map<String,Object> toRet = new HashMap<>();
+        for (Map.Entry etry : toCopy.entrySet())
+            if (etry.getValue() instanceof Queue)
+                toRet.put((String)etry.getKey(), new LinkedList((Queue)etry.getValue()));
+            else
+                toRet.put((String) etry.getKey(), etry.getValue());
+            return toRet;
+    }
+
 }
+
+
