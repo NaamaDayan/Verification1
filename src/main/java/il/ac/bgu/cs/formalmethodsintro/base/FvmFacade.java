@@ -744,7 +744,7 @@ public class FvmFacade {
         Set<Pair<L, Map<String, Object>>> initStates = new HashSet<>();
         for (L initLoc : pg.getInitialLocations()) {
             for (List<String> initialization : pg.getInitalizations()) {
-                Map<String, Object> evalFun = parseInitialization(initialization);
+                Map<String, Object> evalFun = parseInitialization(initialization, actionDefs);
                 Pair<L, Map<String, Object>> state = new Pair<>(initLoc, evalFun);
                 initStates.add(state); //add to local set
                 addStateToTS(ts, state, conditionDefs, true);
@@ -845,20 +845,30 @@ public class FvmFacade {
 
     //make each initialization list of strings (shaped: "x := 15", "y:=9") to a map of string and object
     //TODO: i assume that each initialization is num := integer -> is is true that only integers????
-    private Map<String, Object> parseInitialization(List<String> initialization) {
+    private Pair<String, Object> parseChannel(String initialization) {
+        String[] splitted = initialization.split(":");
+        String var = splitted[0];
+        String val = splitted[1];
+        Queue<String> lst = stringToQueue(val.substring(1));
+        return new Pair<>(var, lst);
+    }
+
+
+    private Map<String, Object> parseInitialization(List<String> initialization, Set<ActionDef> actionDef) {
         Map<String, Object> map = new HashMap<>();
-        for (String init : initialization) {
-            init = init.replaceAll("\\s+", ""); //remove all whitespaces
-            String[] splitted = init.split(":");
-            String var = splitted[0];
-            String val = splitted[1];
-            if (val.startsWith("=[")) {
-                Queue<String> lst = stringToQueue(val.substring(1));
-                map.put(var, lst);
-            } else {
-                int value = Integer.parseInt(splitted[1].substring(1)); // removing the '='
-                map.put(var, value);
-            }
+        List<String> noChannelInitializations = new LinkedList<>();
+        for (String initAction : initialization) {
+            if (!initAction.contains("["))
+                noChannelInitializations.add(initAction);
+        }
+        for (String initAction : noChannelInitializations) {
+            for (ActionDef action : actionDef)
+                if (action.isMatchingAction(initAction))
+                    map = action.effect(map, initAction);
+        }
+        for (String initAction : initialization) {
+            if (initAction.contains("["))
+                map.put(parseChannel(initAction).getFirst(), parseChannel(initAction).getSecond());
         }
         return map;
     }
@@ -873,7 +883,7 @@ public class FvmFacade {
      * @return A transition system representing {@code cs}.
      */
 
-    private <L, A> Set<Pair<List<L>, Map<String, Object>>> getInitialStates(ChannelSystem<L, A> cs) {
+    private <L, A> Set<Pair<List<L>, Map<String, Object>>> getInitialStates(ChannelSystem<L, A> cs, Set<ActionDef> actionDefs) {
         Set<Pair<List<L>, Map<String, Object>>> initStates = new HashSet<>();
         List<Set<Pair<L, Map<String, Object>>>> toCartesian = new LinkedList<>();
         for (ProgramGraph<L, A> pg : cs.getProgramGraphs()) {
@@ -882,7 +892,7 @@ public class FvmFacade {
                 if (pg.getInitalizations().size() == 0)
                     statesWithInitialization.add(new Pair<L, Map<String, Object>>(initLoc, new HashMap<>()));
                 for (List<String> initialization : pg.getInitalizations()) {
-                    Map<String, Object> evalFun = parseInitialization(initialization);
+                    Map<String, Object> evalFun = parseInitialization(initialization, actionDefs);
                     Pair<L, Map<String, Object>> state = new Pair<>(initLoc, evalFun);
                     statesWithInitialization.add(state);
                 }
@@ -1036,32 +1046,13 @@ public class FvmFacade {
             }
             //TODO:: add else - add {C=[]} to {y=0, y=1} --> {y=0, c=[]}, {y=1, c=[]}
         }
-        Set<Pair<List<L>, Map<String, Object>>> initialStates = getInitialStates(cs);
+        Set<Pair<List<L>, Map<String, Object>>> initialStates = getInitialStates(cs, actions);
+
+        for (Pair<List<L>, Map<String, Object>> state : initialStates)
+            transitionSystem.addInitialState(state);
         Set<TSTransition<Pair<List<L>, Map<String, Object>>, A>> allTransitions = bfsStates(cs, initialStates, actions, conditions, new HashSet<>(), new HashSet<>());
         for (TSTransition<Pair<List<L>, Map<String, Object>>, A> trans : allTransitions)
             transitionSystem.addTransition(trans);
-
-//        List<Set<Pair<L, Map<String, Object>>>> allStatesPG = new LinkedList<>();
-//
-//            Set<Pair<L, Map<String, Object>>> statesPG = transitionSystemFromProgramGraph(programGraph, actions, conditions).getStates();
-//            allStatesPG.add(statesPG);
-//
-//        List<Set<Pair<L, Map<String, Object>>>> allStates = Util.cartesianProduct(allStatesPG);
-//        for (Set<Pair<L, Map<String, Object>>> stateValues : allStates) {
-//            List<L> locations = new LinkedList<>();
-//            Map<String, Object> valuesMapping = new HashMap<>();
-//            for (Pair<L, Map<String, Object>> state : stateValues) {
-//                locations.add(state.getFirst());
-//                valuesMapping.putAll(state.getSecond());
-//            }
-//            transitionSystem.addState(new Pair<List<L>, Map<String, Object>>(locations, valuesMapping));
-//        }
-//
-//        //actions
-//        Set<A> actionsTS = new HashSet<>();
-//        for (ProgramGraph<L, A> programGraph : cs.getProgramGraphs())
-//            actionsTS.addAll(programGraph.getActions());
-//        transitionSystem.addAllActions(actionsTS);
 
         //labeling function
         for (Pair<List<L>, Map<String, Object>> state : transitionSystem.getStates()) {
