@@ -1112,8 +1112,8 @@ public class FvmFacade {
         ProgramGraph<String, String> pg = createProgramGraph();
         Set<String> sub = sub(root, pg);
         pg.setInitial(root.getText(), true);
-        for (String s: toRem)
-            pg.removeLocation(s);
+//        for (String s: toRem)
+//            pg.removeLocation(s);
         //TODO: Remove unreachables???
         return pg;
     }
