@@ -27,6 +27,10 @@ public class ParserBasedActDefChannel implements ActionDef {
         if (action.equals("")) {
             return eval;
         }
+
+        if (action.toString().contains("|"))
+            return effectHandshake(eval,action);
+
         String channel = getChannel(action.toString());
         String var = getVar(action.toString());
         boolean isReading = action.toString().contains("?");
@@ -45,16 +49,26 @@ public class ParserBasedActDefChannel implements ActionDef {
         return null;
     }
 
+    //action = c?x | c!y
+    private Map<String, Object> effectHandshake(Map<String, Object> eval, Object action) {
+        String[] channelActions = action.toString().split("|");
+        boolean firstRead = channelActions[0].contains("?");
+        if (firstRead)
+            eval.replace(getVar(channelActions[0]), eval.get(getVar(channelActions[1])));
+        else
+            eval.replace(getVar(channelActions[1]), eval.get(getVar(channelActions[0])));
+        return eval;
+    }
 
 
-    private String getChannel(String action) {
+    public static String getChannel(String action) {
         int ind = action.indexOf('?') == -1 ? action.indexOf('!') : action.indexOf('?');
         String channel = action.substring(0, ind);
         channel = channel.substring(channel.lastIndexOf(' ') + 1);
         return channel;
     }
 
-    private String getVar(String action) {
+    public static String getVar(String action) {
         int ind = action.indexOf('?') == -1 ? action.indexOf('!') : action.indexOf('?');
         String var = action.substring(ind + 1);
         int cutIndex = var.indexOf(' ') != -1 ? var.indexOf(' ') : var.length();

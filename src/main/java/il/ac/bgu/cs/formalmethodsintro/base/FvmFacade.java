@@ -825,7 +825,7 @@ public class FvmFacade {
         //Add Labeling
         ts.addToLabel(state, state.first.toString()); //location AP
         Map<String, Object> eval = state.getSecond();
-        for(String var: eval.keySet()) {
+        for (String var : eval.keySet()) {
             ts.addToLabel(state, var + " = " + eval.get(var));
         }
     }
@@ -949,9 +949,11 @@ public class FvmFacade {
         ProgramGraph<L, A> pg = cs.getProgramGraphs().get(index);
         for (PGTransition<L, A> trans : pg.getTransitions()) {
             if (trans.getFrom().equals(state.getFirst().get(index)) && isHoldingCondition(state.getSecond(), trans.getCondition(), conditions)) {
-                if (trans.getAction().toString().startsWith("_"))
-                    System.out.println("do nothing");
-                    //transitions.add(getTransitionsActions());
+                if (trans.getAction().toString().startsWith("_")) {
+                    Set<TSTransition<Pair<List<L>, Map<String, Object>>, A>> newTrans = getTransitionsHandshake(cs, state, trans, actions, conditions, index);
+                    transitions.addAll(newTrans);
+                }
+                //transitions.add(getTransitionsActions());
                 else {
                     TSTransition<Pair<List<L>, Map<String, Object>>, A> newTrans = getTransitionsChannel(state, trans, actions, index);
                     if (newTrans != null)
@@ -976,9 +978,50 @@ public class FvmFacade {
         return new TSTransition<>(state, transition.getAction(), toState);
     }
 
-    //
-//    private <L, A> Set<TSTransition<Pair<List<L>, Map<String, Object>>, A>> getTransitionsChannel(PGTransition<L, A> trans) {
-//    }
+    private <A> A getHandshakeAction(A act1, A act2, boolean isFirst) {
+        if (isFirst)
+            return (A) ((String) act1 + "|" + (String) act2);
+        return (A) ((String) act2 + "|" + (String) act1);
+
+    }
+
+
+
+    private <L, A> Set<TSTransition<Pair<List<L>, Map<String, Object>>, A>> getTransitionsHandshake(ChannelSystem<L, A> cs, Pair<List<L>, Map<String, Object>> state, PGTransition<L, A> transition, Set<ActionDef> actions, Set<ConditionDef> conditions, int index) {
+        Set<TSTransition<Pair<List<L>, Map<String, Object>>, A>> newTransitions = new HashSet<>();
+        for (int pgIndex2 = 0; pgIndex2 < cs.getProgramGraphs().size() && pgIndex2 != index; pgIndex2++) {
+            ProgramGraph<L, A> pg2 = cs.getProgramGraphs().get(pgIndex2);
+            for (PGTransition<L, A> pg2Trans : pg2.getTransitions())
+                if (isMatchingTransitions(transition, pg2Trans) && isHoldingCondition(state.getSecond(), pg2Trans.getCondition(), conditions)) {
+                    List<L> toStateLocs = new LinkedList<>(state.getFirst());
+                    toStateLocs.remove(index);
+                    toStateLocs.add(index, transition.getTo());
+                    toStateLocs.remove(pgIndex2);
+                    toStateLocs.add(pgIndex2, pg2Trans.getTo());
+                    Map<String, Object> values = new HashMap<>(Util.deepCopyM(state.getSecond()));
+                    values = getAction(actions, transition.getAction()).effect(values, transition.getAction());
+                    if (values == null) //illegal action
+                        continue;
+                    Pair<List<L>, Map<String, Object>> toState = new Pair<List<L>, Map<String, Object>>(toStateLocs, values);
+                    A handshakeAction = getHandshakeAction(transition.getAction(), pg2Trans.getAction(), pgIndex2 > index);
+                    TSTransition<Pair<List<L>, Map<String, Object>>, A> newTrans = new TSTransition<>(state, handshakeAction, toState);
+                }
+        }
+        return newTransitions;
+    }
+
+    private <L, A> boolean isMatchingTransitions(PGTransition<L,A> pg1Trans, PGTransition<L,A> pg2Trans) {
+        //same channels
+        if (ParserBasedActDefChannel.getChannel(pg1Trans.getAction().toString()).equals(ParserBasedActDefChannel.getChannel(pg2Trans.getAction().toString()))) {
+            if (pg1Trans.getAction().toString().contains("!") && pg2Trans.getAction().toString().contains("?"))
+                return true;
+            if (pg1Trans.getAction().toString().contains("?") && pg2Trans.getAction().toString().contains("!"))
+                return true;
+        }
+        return false;
+    }
+
+
     private <L, A> boolean isPGHasVar(String var, ProgramGraph<L, A> pg) {
         for (List<String> initialization : pg.getInitalizations())
             for (String str : initialization)
@@ -1063,7 +1106,6 @@ public class FvmFacade {
 
     private <L> Set<String> mapToString(Pair<List<L>, Map<String, Object>> state) {
         Set<String> equalityStrings = new HashSet<>();
-        System.out.println(state);
         for (Map.Entry entry : state.getSecond().entrySet()) {
             equalityStrings.add(entry.getKey() + " = " + entry.getValue().toString());
         }

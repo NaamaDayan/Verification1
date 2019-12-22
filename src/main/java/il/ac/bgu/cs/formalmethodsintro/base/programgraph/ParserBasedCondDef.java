@@ -74,7 +74,8 @@ public class ParserBasedCondDef implements ConditionDef {
             end = channel.length() > channel.indexOf(' ') ? channel.length() : channel.indexOf(' ');
             int value = Integer.parseInt(channel.substring(channel.indexOf(")") + 2, end));
             channel = channel.substring(0, channel.indexOf(")"));
-            return (equall && (((Queue) (eval.get(channel))).size() == value)) || (larger && (((Queue) (eval.get(channel))).size() > value)) || (smaller && (((Queue) (eval.get(channel))).size() < value));
+            if (eval.get(channel) instanceof Queue)
+                return (equall && (((Queue) (eval.get(channel))).size() == value)) || (larger && (((Queue) (eval.get(channel))).size() > value)) || (smaller && (((Queue) (eval.get(channel))).size() < value));
         }
         return true;
     }
