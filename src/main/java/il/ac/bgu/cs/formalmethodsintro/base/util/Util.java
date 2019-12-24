@@ -55,6 +55,23 @@ public class Util {
 
         return _cartesianProduct(0, sets);
     }
+    public static <S> int indexOfElement (List<S> lst, S element){
+        int i = 0 ;
+        for(S ele: lst) {
+            if (ele.equals(element))
+                return i;
+            i += 1;
+        }
+        return -1;
+    }
+    public static boolean isNumber(String num) {
+        try {
+            int x = Integer.parseInt(num);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
     private static <S> List<Set<S>> _cartesianProduct(int index, List<Set<S>> sets) {
         List<Set<S>> ret = new LinkedList<Set<S>>();

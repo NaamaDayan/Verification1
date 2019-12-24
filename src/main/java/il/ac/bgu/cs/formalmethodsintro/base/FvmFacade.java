@@ -880,30 +880,36 @@ public class FvmFacade {
      * @return A transition system representing {@code cs}.
      */
 
+
     private <L, A> Set<Pair<List<L>, Map<String, Object>>> getInitialStates(ChannelSystem<L, A> cs, Set<ActionDef> actionDefs) {
         Set<Pair<List<L>, Map<String, Object>>> initStates = new HashSet<>();
-        List<Set<Pair<L, Map<String, Object>>>> toCartesian = new LinkedList<>();
+        List<Set<Pair<Pair<L, Map<String, Object>>, Integer>>> toCartesian = new LinkedList<>();
         for (ProgramGraph<L, A> pg : cs.getProgramGraphs()) {
-            Set<Pair<L, Map<String, Object>>> statesWithInitialization = new HashSet<>();
+
+            Set<Pair<Pair<L, Map<String, Object>>, Integer>> statesWithInitialization = new HashSet<>();
             for (L initLoc : pg.getInitialLocations()) {
                 if (pg.getInitalizations().size() == 0)
-                    statesWithInitialization.add(new Pair<L, Map<String, Object>>(initLoc, new HashMap<>()));
+                    statesWithInitialization.add(new Pair<>(new Pair<L, Map<String, Object>>(initLoc, new HashMap<>()), Util.indexOfElement(cs.getProgramGraphs(), pg)));
                 for (List<String> initialization : pg.getInitalizations()) {
                     Map<String, Object> evalFun = parseInitialization(initialization, actionDefs);
-                    Pair<L, Map<String, Object>> state = new Pair<>(initLoc, evalFun);
+                    Pair<Pair<L, Map<String, Object>>, Integer> state = new Pair<Pair<L, Map<String, Object>>, Integer>(new Pair<>(initLoc, evalFun), Util.indexOfElement(cs.getProgramGraphs(), pg));
                     statesWithInitialization.add(state);
                 }
             }
             toCartesian.add(statesWithInitialization);
         }
-        List<Set<Pair<L, Map<String, Object>>>> allStates = Util.cartesianProduct(toCartesian);
-        for (Set<Pair<L, Map<String, Object>>> state : allStates) {
-            List<L> locations = new LinkedList<>();
+
+        List<Set<Pair<Pair<L, Map<String, Object>>, Integer>>> allStates = Util.cartesianProduct(toCartesian);
+        for (Set<Pair<Pair<L, Map<String, Object>>, Integer>> state : allStates) {
+            List<L> locations = new ArrayList<L>();
             Map<String, Object> vars = new HashMap<>();
-            for (Pair<L, Map<String, Object>> partialState : state) {
-                locations.add(partialState.getFirst());
-                vars.putAll(partialState.getSecond());
-            }
+            for (int ind = 0; ind < cs.getProgramGraphs().size(); ind++)
+                for (Pair<Pair<L, Map<String, Object>>, Integer> partialState : state) {
+                    if (partialState.getSecond() == ind) { //right loc
+                        locations.add(partialState.getFirst().getFirst());
+                        vars.putAll(partialState.getFirst().getSecond());
+                    }
+                }
             initStates.add(new Pair<>(locations, vars));
         }
         return initStates;
@@ -986,10 +992,11 @@ public class FvmFacade {
     }
 
 
-
     private <L, A> Set<TSTransition<Pair<List<L>, Map<String, Object>>, A>> getTransitionsHandshake(ChannelSystem<L, A> cs, Pair<List<L>, Map<String, Object>> state, PGTransition<L, A> transition, Set<ActionDef> actions, Set<ConditionDef> conditions, int index) {
         Set<TSTransition<Pair<List<L>, Map<String, Object>>, A>> newTransitions = new HashSet<>();
-        for (int pgIndex2 = 0; pgIndex2 < cs.getProgramGraphs().size() && pgIndex2 != index; pgIndex2++) {
+        for (int pgIndex2 = 0; pgIndex2 < cs.getProgramGraphs().size() ; pgIndex2++) {
+            if (pgIndex2 == index)
+                continue;
             ProgramGraph<L, A> pg2 = cs.getProgramGraphs().get(pgIndex2);
             for (PGTransition<L, A> pg2Trans : pg2.getTransitions())
                 if (isMatchingTransitions(transition, pg2Trans) && isHoldingCondition(state.getSecond(), pg2Trans.getCondition(), conditions)) {
@@ -1005,12 +1012,15 @@ public class FvmFacade {
                     Pair<List<L>, Map<String, Object>> toState = new Pair<List<L>, Map<String, Object>>(toStateLocs, values);
                     A handshakeAction = getHandshakeAction(transition.getAction(), pg2Trans.getAction(), pgIndex2 > index);
                     TSTransition<Pair<List<L>, Map<String, Object>>, A> newTrans = new TSTransition<>(state, handshakeAction, toState);
+                    newTransitions.add(newTrans);
                 }
         }
         return newTransitions;
     }
 
-    private <L, A> boolean isMatchingTransitions(PGTransition<L,A> pg1Trans, PGTransition<L,A> pg2Trans) {
+    private <L, A> boolean isMatchingTransitions(PGTransition<L, A> pg1Trans, PGTransition<L, A> pg2Trans) {
+        if (pg1Trans.getAction().toString().length() == 0 | pg2Trans.getAction().toString().length() == 0)
+            return false;
         //same channels
         if (ParserBasedActDefChannel.getChannel(pg1Trans.getAction().toString()).equals(ParserBasedActDefChannel.getChannel(pg2Trans.getAction().toString()))) {
             if (pg1Trans.getAction().toString().contains("!") && pg2Trans.getAction().toString().contains("?"))
@@ -1030,6 +1040,8 @@ public class FvmFacade {
         return false;
     }
 
+
+
     //given pg, return initialization which were not described :{C=[], x=0, y=1}, {C=[], x=0,y=0},...
     private <L, A> List<List<String>> parseInitializations(ProgramGraph<L, A> pg) {
         List<String> actions = new LinkedList<>();
@@ -1044,8 +1056,9 @@ public class FvmFacade {
                 channel = channel.substring(channel.lastIndexOf(' ') + 1);
                 partialInitializations.add(CollectionHelper.set(channel + ":=[]")); //channel not a var
                 String var = action.substring(ind + 1);
-                if (isPGHasVar(var, pg)) //only add new vars
+                if (isPGHasVar(var, pg) || var.length() == 0 || Util.isNumber(var)) //only add new vars
                     continue;
+
                 //TODO:: check if var is a number, and if so - do not include it!!
                 int cutIndex = var.indexOf(' ') != -1 ? var.indexOf(' ') : var.length();
                 var = var.substring(0, cutIndex);

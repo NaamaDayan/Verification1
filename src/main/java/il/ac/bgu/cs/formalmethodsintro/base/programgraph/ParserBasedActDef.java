@@ -65,7 +65,8 @@ public class ParserBasedActDef implements ActionDef {
 //     */
     @Override
     public boolean isMatchingAction(Object action) {
-        return action.equals("") || parseAction((String) action) != null;
+        boolean noChannel = !(action.toString().contains("!") || action.toString().contains("?"));
+        return action.equals("") ||  (noChannel && parseAction((String) action) != null);
     }
 
 }

@@ -52,7 +52,6 @@ public class ChannelSystemTest {
                         p(seq("set_tmr(0)", "off", "wait(1)"), map(p("y", 0), p("C", seq()), p("D", seq(0))))
 
                 )));
-
     }
 
     @Test

@@ -5,6 +5,7 @@ import il.ac.bgu.cs.formalmethodsintro.base.nanopromela.NanoPromelaLexer;
 import il.ac.bgu.cs.formalmethodsintro.base.nanopromela.NanoPromelaParser;
 import il.ac.bgu.cs.formalmethodsintro.base.nanopromela.NanoPromelaParser.SpecContext;
 import il.ac.bgu.cs.formalmethodsintro.base.nanopromela.NanoPromelaParser.StmtContext;
+import il.ac.bgu.cs.formalmethodsintro.base.util.Util;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.RecognitionException;
@@ -36,13 +37,21 @@ public class ParserBasedActDefChannel implements ActionDef {
         boolean isReading = action.toString().contains("?");
         Queue<String> channelQueue = ((Queue<String>)eval.get(channel));
         if (isReading && channelQueue.size()>0) {
-            int out = Integer.parseInt(((Queue<String>) channelQueue).poll());
+            String queueElement = ((Queue<String>) channelQueue).poll();
             eval.replace(channel, channelQueue);
-            eval.replace(var,out);
+            if (!queueElement.equals("")) {
+                int out = Integer.parseInt(queueElement);
+                eval.replace(var, out);
+            }
             return eval;
         }
         else if (!isReading) { //writing
-            channelQueue.add(eval.get(var).toString());
+            if (Util.isNumber(var))
+                channelQueue.add(var);
+            else if (var.toString().length() == 0)
+                channelQueue.add("");
+            else
+                channelQueue.add(eval.get(var).toString());
             eval.replace(channel,channelQueue);
             return eval;
         }
