@@ -669,7 +669,7 @@ public class FvmFacade {
         //states
         Set<Map<String, Boolean>> inputsLabels = binaryPermAsMap(c.getInputPortNames());
         Set<Map<String, Boolean>> registersLabels = binaryPermAsMap(c.getRegisterNames());
-        Set<Pair<Map<String, Boolean>, Map<String, Boolean>>> states = cartesian_set(registersLabels, inputsLabels);
+        Set<Pair<Map<String, Boolean>, Map<String, Boolean>>> states = cartesian_set(inputsLabels, registersLabels);
         transitionSystem.addAllStates(states);
         //actions
         Set<Map<String, Boolean>> actions = binaryPermAsMap(c.getInputPortNames());
@@ -681,13 +681,13 @@ public class FvmFacade {
         Set<Map<String, Boolean>> initRegisters = new HashSet<Map<String, Boolean>>();
         initRegisters.add(registersMap);
         Set<Map<String, Boolean>> initInputs = binaryPermAsMap(c.getInputPortNames());
-        Set<Pair<Map<String, Boolean>, Map<String, Boolean>>> initialStates = cartesian_set(initRegisters, initInputs);
+        Set<Pair<Map<String, Boolean>, Map<String, Boolean>>> initialStates = cartesian_set(initInputs, initRegisters);
         for (Pair<Map<String, Boolean>, Map<String, Boolean>> initialState : initialStates)
             transitionSystem.addInitialState(initialState);
 
         //transitions
         for (Pair<Map<String, Boolean>, Map<String, Boolean>> state : transitionSystem.getStates()) {
-            Map<String, Boolean> inputMap = state.getSecond();
+            Map<String, Boolean> inputMap = state.getFirst();
             for (String input : c.getInputPortNames()) {
                 Set<Map<String, Boolean>> relevantActions = new HashSet<>();
                 for (int i = 0; i < 2; i++) { //true and false
@@ -696,7 +696,8 @@ public class FvmFacade {
                     relevantActions.add(relevantAction);
                 }
                 for (Map<String, Boolean> relevantAction : relevantActions) {
-                    Pair<Map<String, Boolean>, Map<String, Boolean>> toState = new Pair<Map<String, Boolean>, Map<String, Boolean>>(c.updateRegisters(state.getSecond(), state.getFirst()), relevantAction);
+                    Map<String, Boolean> s = c.updateRegisters(state.getFirst(), state.getSecond());
+                    Pair<Map<String, Boolean>, Map<String, Boolean>> toState = new Pair<Map<String, Boolean>, Map<String, Boolean>>(relevantAction, s);
                     transitionSystem.addTransitionFrom(state).action(relevantAction).to(toState);
                 }
             }
@@ -710,8 +711,8 @@ public class FvmFacade {
 
         //labeling function
         for (Pair<Map<String, Boolean>, Map<String, Boolean>> state : transitionSystem.getStates()) {
-            Map<String, Boolean> inputs = state.getSecond();
-            Map<String, Boolean> registers = state.getFirst();
+            Map<String, Boolean> inputs = state.getFirst();
+            Map<String, Boolean> registers = state.getSecond();
             Map<String, Boolean> outputs = c.computeOutputs(inputs, registers);
             List<String> relevantAPs = new LinkedList<String>();
             relevantAPs.addAll(getRelevantAPS(inputs));

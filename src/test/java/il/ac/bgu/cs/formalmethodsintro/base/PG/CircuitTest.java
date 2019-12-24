@@ -70,6 +70,6 @@ public class CircuitTest {
         Assert.assertTrue(ts.getStates().size()==4);
         Assert.assertTrue(ts.getActions().size()==2);
         Assert.assertTrue(ts.getTransitions().size()==8);
-        Assert.assertTrue(ts.getAtomicPropositions().size()==2); //TODO: check!!! //I think it should be 3!!!
+        Assert.assertTrue(ts.getAtomicPropositions().size()==3); //TODO: check!!! //I think it should be 3!!!
     }
 }
