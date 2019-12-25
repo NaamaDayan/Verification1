@@ -124,14 +124,14 @@ public class FvmFacade {
             return false;
         while (e.size() > 0) {
             S from = e.head();
+            if (!ts.getStates().contains(from))
+                throw new StateNotFoundException(from);
             AlternatingSequence<A, S> tail = e.tail(); //action and then next state
             if (tail.size() == 0) //only one state
                 return ts.getStates().contains(from);
             A action = tail.head();
             e = tail.tail();
             S to = e.head();
-            if (!ts.getStates().contains(from))
-                throw new StateNotFoundException(from);
             if (!ts.getStates().contains(to))
                 throw new StateNotFoundException(to);
             if (!ts.getActions().contains(action))
@@ -277,6 +277,8 @@ public class FvmFacade {
      * @return All the states in {@code Pre(s)}, in the context of {@code ts}.
      */
     public <S> Set<S> pre(TransitionSystem<S, ?, ?> ts, S s) {
+        if (!ts.getStates().contains(s))
+            throw new StateNotFoundException(s);
         Set<? extends TSTransition<S, ?>> transitions = ts.getTransitions();
         Set<S> pre_states = new HashSet<>();
         for (TSTransition<S, ?> transition : transitions) {
@@ -296,11 +298,8 @@ public class FvmFacade {
      */
     public <S> Set<S> pre(TransitionSystem<S, ?, ?> ts, Set<S> c) {
         Set<S> all_pre = new HashSet<>();
-        for (S state : c) {
-            if (!ts.getStates().contains(state))
-                throw new StateNotFoundException(state);
+        for (S state : c)
             all_pre.addAll(pre(ts, state));
-        }
         return all_pre;
     }
 
