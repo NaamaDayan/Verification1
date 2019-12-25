@@ -1182,6 +1182,8 @@ public class FvmFacade {
 
     private static final String EXIT_STATE = ""; //TODO: "" or "exit" ???????
     private static final String TRUE_CONDITION = ""; //TODO: "" or "true" ???????
+    private static final String NOTHING_ACTION = ""; //TODO: "" or "nothing" ???????
+    private static final String SKIP_ACTION = "skip";
 
     private static Set<String> toRem = new HashSet<>();
 
@@ -1226,7 +1228,16 @@ public class FvmFacade {
     }
 
     private void addDoStmtToPG(DostmtContext dostmt, ProgramGraph<String, String> pg) {
-        //TODO: add a single transition to exit
+        //a single transition to exit
+        String notOption = "";
+        for (OptionContext option : dostmt.option()) {
+            if (!option.equals(TRUE_CONDITION))
+                if (notOption.equals("")) //first condition
+                    notOption = "!(" + option.boolexpr().getText() + ")";
+                else
+                    notOption += " && !(" + option.boolexpr().getText() + ")";
+            pg.addTransition(new PGTransition<>(dostmt.getText(), notOption, NOTHING_ACTION, EXIT_STATE));
+        }
         for (OptionContext option : dostmt.option()) {
             StmtContext subStmt = option.stmt();
             String gi = option.boolexpr().getText();
@@ -1269,7 +1280,7 @@ public class FvmFacade {
         } else {
             if (h.equals(TRUE_CONDITION))
                 return gi;
-            return '(' + gi + ") && (" + h + ')';
+            return "((" + gi + ") && (" + h + "))";
         }
     }
 
@@ -1299,7 +1310,7 @@ public class FvmFacade {
 
     private void addBaseCaseToPG(StmtContext root, ProgramGraph<String, String> pg) {
         String rootText = root.getText();
-        String action = root.skipstmt() != null ? "nothing"
+        String action = root.skipstmt() != null ? SKIP_ACTION
                 : root.atomicstmt() != null ? rootText.substring(rootText.indexOf('{') + 1, rootText.indexOf('}'))
                 : rootText;
         pg.addTransition(new PGTransition<>(root.getText(), TRUE_CONDITION, action, EXIT_STATE));
