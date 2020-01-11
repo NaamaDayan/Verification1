@@ -995,7 +995,7 @@ public class FvmFacade {
 
     private <L, A> Set<TSTransition<Pair<List<L>, Map<String, Object>>, A>> getTransitionsHandshake(ChannelSystem<L, A> cs, Pair<List<L>, Map<String, Object>> state, PGTransition<L, A> transition, Set<ActionDef> actions, Set<ConditionDef> conditions, int index) {
         Set<TSTransition<Pair<List<L>, Map<String, Object>>, A>> newTransitions = new HashSet<>();
-        for (int pgIndex2 = 0; pgIndex2 < cs.getProgramGraphs().size() ; pgIndex2++) {
+        for (int pgIndex2 = 0; pgIndex2 < cs.getProgramGraphs().size(); pgIndex2++) {
             if (pgIndex2 == index)
                 continue;
             ProgramGraph<L, A> pg2 = cs.getProgramGraphs().get(pgIndex2);
@@ -1040,7 +1040,6 @@ public class FvmFacade {
                     return true;
         return false;
     }
-
 
 
     //given pg, return initialization which were not described :{C=[], x=0, y=1}, {C=[], x=0,y=0},...
@@ -1319,7 +1318,33 @@ public class FvmFacade {
      */
     public <Sts, Saut, A, P> TransitionSystem<Pair<Sts, Saut>, A, Saut> product(TransitionSystem<Sts, A, P> ts,
                                                                                 Automaton<Saut, P> aut) {
-        throw new java.lang.UnsupportedOperationException();
+        TransitionSystem<Pair<Sts, Saut>, A, Saut> productTS = new TransitionSystem<>();
+        productTS.addAllStates(cartesian_set(ts.getStates(), aut.getAllStates())); //TODO::: check the function getAllStates()
+        productTS.addAllActions(ts.getActions());
+        //transitions
+        for (TSTransition<Sts, A> transition : ts.getTransitions()) { //transition = s --a--> t
+            Set<P> lToState = ts.getLabelingFunction().get(transition.getTo()); // L(t)
+            for (Pair<Sts, Saut> productState : productTS.getStates())
+                if (productState.getFirst().equals(transition.getFrom())) {
+                    Set<Saut> pVals = aut.getTransitions().get(productState.getSecond()).get(lToState); // p in delta(q,L(t))
+                    for (Saut pVal : pVals)
+                        productTS.addTransition(new TSTransition<>(productState, transition.getAction(), new Pair<>(transition.getTo(), pVal)));
+                }
+        }
+        //initial states
+        for (Sts initialState : ts.getInitialStates()) {
+            Set<P> lInitialState = ts.getLabelingFunction().get(initialState); //L(S0)
+            for (Saut initialAutStatae : aut.getInitialStates()) {
+                Set<Saut> toInitials = aut.getTransitions().get(initialAutStatae).get(lInitialState);
+                for (Saut toInitial : toInitials)
+                    productTS.addInitialState(new Pair<>(initialState, toInitial));
+            }
+        }
+        //atomic propositions
+        for (Pair<Sts, Saut> pairedState : productTS.getStates()) {
+            productTS.addToLabel(pairedState, pairedState.second);
+        }
+        return productTS;
     }
 
     /**
@@ -1362,7 +1387,34 @@ public class FvmFacade {
      * @return An equivalent automaton with a single set of accepting states.
      */
     public <L> Automaton<?, L> GNBA2NBA(MultiColorAutomaton<?, L> mulAut) {
-        throw new java.lang.UnsupportedOperationException();
+        return GNBA2NBAHelper(mulAut);
+    }
+
+    private <State, L> Automaton<Pair<State, Integer>, L> GNBA2NBAHelper(MultiColorAutomaton<State, L> mulAut) {
+        Automaton<Pair<State, Integer>, L> finalNBA = new Automaton<>();
+        int numOfColors = mulAut.getColors().size();
+        List<MultiColorAutomaton<Pair<State, Integer>, L>> autCopies = new LinkedList<>();
+        for (int i = 0; i < numOfColors; i++)
+            autCopies.add(mulAut.copyAutomat(i));
+        //set initials
+        for (Pair<State, Integer> state : autCopies.get(0).getInitialStates())
+            finalNBA.setInitial(state);
+        for (Map.Entry<State, Map<Set<L>, Set<State>>> transition : mulAut.getTransitions().entrySet()) {
+            for (Map.Entry<Set<L>, Set<State>> entry : transition.getValue().entrySet())
+                for (State toState : entry.getValue())
+                    for (int i = 0; i < numOfColors; i++)
+                        for (int j = 0; j < numOfColors; j++) {
+                            boolean sAcceptable = mulAut.getAcceptingStates(i).contains(transition.getKey());
+                            if ((!sAcceptable && j == i) || (sAcceptable && (j == i % numOfColors + 1)))
+                                finalNBA.addTransition(new Pair<>(transition.getKey(), i), entry.getKey(), new Pair<>(toState, j));
+
+
+                        }
+        }
+        //acceptance
+        Set<?> accepting = new HashSet<>(autCopies.get(0).getAcceptingStates(0));
+        finalNBA.addAllAccepting(accepting, 0);
+        return finalNBA;
     }
 
 
@@ -1442,7 +1494,6 @@ public class FvmFacade {
         return cartesianSet;
     }
 
-
     private static Set<List<String>> cartesian_initizalizations(Set<List<String>> inits1, Set<List<String>> inits2) {
         Set<List<String>> cartesianSet = new HashSet<List<String>>();
         for (List<String> initial1 : inits1)
@@ -1480,7 +1531,6 @@ public class FvmFacade {
                 transWithState.add(transition);
         return transWithState;
     }
-
 
     private static Set<boolean[]> sets = new HashSet<>();
 
@@ -1521,5 +1571,13 @@ public class FvmFacade {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+    }
+
+    private static <S1, S2> Set<S1> getKeysByValue(Map<S1, S2> map, S2 value) {
+        Set<S1> keys = new HashSet<>();
+        for (Map.Entry<S1, S2> entry : map.entrySet())
+            if (entry.getValue().equals(value))
+                keys.add(entry.getKey());
+        return keys;
     }
 }
