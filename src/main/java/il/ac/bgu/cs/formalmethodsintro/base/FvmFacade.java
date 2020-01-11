@@ -124,14 +124,14 @@ public class FvmFacade {
             return false;
         while (e.size() > 0) {
             S from = e.head();
+            if (!ts.getStates().contains(from))
+                throw new StateNotFoundException(from);
             AlternatingSequence<A, S> tail = e.tail(); //action and then next state
             if (tail.size() == 0) //only one state
                 return ts.getStates().contains(from);
             A action = tail.head();
             e = tail.tail();
             S to = e.head();
-            if (!ts.getStates().contains(from))
-                throw new StateNotFoundException(from);
             if (!ts.getStates().contains(to))
                 throw new StateNotFoundException(to);
             if (!ts.getActions().contains(action))
@@ -277,6 +277,8 @@ public class FvmFacade {
      * @return All the states in {@code Pre(s)}, in the context of {@code ts}.
      */
     public <S> Set<S> pre(TransitionSystem<S, ?, ?> ts, S s) {
+        if (!ts.getStates().contains(s))
+            throw new StateNotFoundException(s);
         Set<? extends TSTransition<S, ?>> transitions = ts.getTransitions();
         Set<S> pre_states = new HashSet<>();
         for (TSTransition<S, ?> transition : transitions) {
@@ -296,11 +298,8 @@ public class FvmFacade {
      */
     public <S> Set<S> pre(TransitionSystem<S, ?, ?> ts, Set<S> c) {
         Set<S> all_pre = new HashSet<>();
-        for (S state : c) {
-            if (!ts.getStates().contains(state))
-                throw new StateNotFoundException(state);
+        for (S state : c)
             all_pre.addAll(pre(ts, state));
-        }
         return all_pre;
     }
 
@@ -1181,6 +1180,8 @@ public class FvmFacade {
 
     private static final String EXIT_STATE = ""; //TODO: "" or "exit" ???????
     private static final String TRUE_CONDITION = ""; //TODO: "" or "true" ???????
+    private static final String NOTHING_ACTION = ""; //TODO: "" or "nothing" ???????
+    private static final String SKIP_ACTION = "skip";
 
     private static Set<String> toRem = new HashSet<>();
 
@@ -1225,7 +1226,16 @@ public class FvmFacade {
     }
 
     private void addDoStmtToPG(DostmtContext dostmt, ProgramGraph<String, String> pg) {
-        //TODO: add a single transition to exit
+        //a single transition to exit
+        String notOption = "";
+        for (OptionContext option : dostmt.option()) {
+            if (!option.equals(TRUE_CONDITION))
+                if (notOption.equals("")) //first condition
+                    notOption = "!(" + option.boolexpr().getText() + ")";
+                else
+                    notOption += " && !(" + option.boolexpr().getText() + ")";
+            pg.addTransition(new PGTransition<>(dostmt.getText(), notOption, NOTHING_ACTION, EXIT_STATE));
+        }
         for (OptionContext option : dostmt.option()) {
             StmtContext subStmt = option.stmt();
             String gi = option.boolexpr().getText();
@@ -1268,7 +1278,7 @@ public class FvmFacade {
         } else {
             if (h.equals(TRUE_CONDITION))
                 return gi;
-            return '(' + gi + ") && (" + h + ')';
+            return "((" + gi + ") && (" + h + "))";
         }
     }
 
@@ -1298,7 +1308,7 @@ public class FvmFacade {
 
     private void addBaseCaseToPG(StmtContext root, ProgramGraph<String, String> pg) {
         String rootText = root.getText();
-        String action = root.skipstmt() != null ? "nothing"
+        String action = root.skipstmt() != null ? SKIP_ACTION
                 : root.atomicstmt() != null ? rootText.substring(rootText.indexOf('{') + 1, rootText.indexOf('}'))
                 : rootText;
         pg.addTransition(new PGTransition<>(root.getText(), TRUE_CONDITION, action, EXIT_STATE));
