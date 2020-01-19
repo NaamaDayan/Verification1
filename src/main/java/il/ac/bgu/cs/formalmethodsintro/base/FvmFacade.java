@@ -18,6 +18,8 @@ import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.TransitionSystem;
 import il.ac.bgu.cs.formalmethodsintro.base.util.CollectionHelper;
 import il.ac.bgu.cs.formalmethodsintro.base.util.Pair;
 import il.ac.bgu.cs.formalmethodsintro.base.util.Util;
+import il.ac.bgu.cs.formalmethodsintro.base.verification.VeficationSucceeded;
+import il.ac.bgu.cs.formalmethodsintro.base.verification.VerificationFailed;
 import il.ac.bgu.cs.formalmethodsintro.base.verification.VerificationResult;
 
 import static il.ac.bgu.cs.formalmethodsintro.base.nanopromela.NanoPromelaFileReader.*;
@@ -1373,7 +1375,113 @@ public class FvmFacade {
      */
     public <S, A, P, Saut> VerificationResult<S> verifyAnOmegaRegularProperty(TransitionSystem<S, A, P> ts,
                                                                               Automaton<Saut, P> aut) {
-        throw new java.lang.UnsupportedOperationException();
+        TransitionSystem<Pair<S, Saut>, A, Saut> productTS = product(ts, aut);
+        DFS<S, Saut> dfs = new DFS<>();
+
+        Set<Pair<S, Saut>> notVisitedInitials = diff(productTS.getInitialStates(), dfs.getR());
+        while (!notVisitedInitials.isEmpty() && !dfs.isFound_cycle()) {
+            Pair<S, Saut> s = notVisitedInitials.iterator().next(); //TODO: is this fine to let s line in the algo?
+            reachableCycle(s, dfs, productTS, aut);
+            notVisitedInitials = diff(productTS.getInitialStates(), dfs.getR());
+        }
+        if (!dfs.isFound_cycle())
+            return new VeficationSucceeded<>();
+        else {
+            VerificationFailed failed = new VerificationFailed();
+            //TODO: set prefix & cycle
+            return failed;
+        }
+    }
+
+    private <Saut, S, A, P> void reachableCycle(Pair<S, Saut> s, DFS<S, Saut> dfs, TransitionSystem<Pair<S, Saut>, A, Saut> ts, Automaton<Saut, P> aut) {
+        dfs.getU().push(s);
+        dfs.getR().add(s);
+        while(!(dfs.getU().isEmpty() || dfs.isFound_cycle())) {
+            Pair<S, Saut> sPrime = dfs.getU().peek();
+            Set<Pair<S, Saut>> reachablesNotVisited = diff(post(ts, sPrime), dfs.getR());
+            if (!reachablesNotVisited.isEmpty()) {
+                Pair<S, Saut> sPrimePrime = reachablesNotVisited.iterator().next(); //TODO: is this fine to let s line in the algo?
+                dfs.getU().push(sPrimePrime);
+                dfs.getR().add(sPrimePrime);
+            }
+            else {
+                dfs.getU().pop();
+                if(aut.getAcceptingStates().contains(sPrime.getSecond()))
+                    dfs.setFound_cycle(cycleCheck(sPrime, dfs, ts));
+            }
+        }
+    }
+
+    private <Saut, S, A> boolean cycleCheck(Pair<S, Saut> s, DFS<S, Saut> dfs, TransitionSystem<Pair<S, Saut>, A, Saut> ts) {
+        boolean foundCycle = false;
+        dfs.getV().push(s);
+        dfs.getT().add(s);
+        while(!(dfs.getV().isEmpty() || foundCycle)) {
+            Pair<S, Saut> sPrime = dfs.getV().peek();
+            if (post(ts, sPrime).contains(s))
+                foundCycle = true;
+            else {
+                Set<Pair<S, Saut>> diffPost = diff(post(ts, sPrime), dfs.getT()); //TODO: is this fine to let s line in the algo?
+                if (!diffPost.isEmpty()) {
+                    Pair<S, Saut> sPrimePrime = diffPost.iterator().next();
+                    dfs.getV().push(sPrimePrime);
+                    dfs.getT().add(sPrimePrime);
+                }
+                else
+                    dfs.getV().pop();
+            }
+        }
+        return foundCycle;
+    }
+
+
+    public <S, Saut> Set<Pair<S, Saut>> diff(Set<Pair<S, Saut>> s1, Set<Pair<S, Saut>> s2) {
+        Set<Pair<S, Saut>> res = new HashSet<>();
+        for (Pair<S, Saut> p:s1) {
+            if (!s2.contains(p))
+                res.add(p);
+        }
+        return res;
+    }
+
+    private class DFS<S, Saut> {
+        private Set<Pair<S, Saut>> R;
+        private Stack<Pair<S, Saut>> U;
+        private Set<Pair<S, Saut>> T;
+        private Stack<Pair<S, Saut>> V;
+        private boolean found_cycle;
+
+        public DFS() {
+            R = new HashSet<>();
+            U = new Stack<>();
+            T = new HashSet<>();
+            V = new Stack<>();
+            found_cycle = false;
+        }
+
+        public Set<Pair<S, Saut>> getR() {
+            return R;
+        }
+
+        public Stack<Pair<S, Saut>> getU() {
+            return U;
+        }
+
+        public Set<Pair<S, Saut>> getT() {
+            return T;
+        }
+
+        public Stack<Pair<S, Saut>> getV() {
+            return V;
+        }
+
+        public boolean isFound_cycle() {
+            return found_cycle;
+        }
+
+        public void setFound_cycle(boolean found_cycle) {
+            this.found_cycle = found_cycle;
+        }
     }
 
     /**
