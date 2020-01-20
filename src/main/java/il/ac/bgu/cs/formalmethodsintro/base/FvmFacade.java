@@ -1388,9 +1388,17 @@ public class FvmFacade {
             return new VeficationSucceeded<>();
         else {
             VerificationFailed failed = new VerificationFailed();
-            //TODO: set prefix & cycle
+            failed.setCycle(reverse(dfs.getV()));
+            failed.setPrefix(reverse(dfs.getU()));
             return failed;
         }
+    }
+
+    private <Saut, S> List reverse(Stack<Pair<S, Saut>> stack) {
+        List<Pair<S, Saut>> result = new LinkedList();
+        while (!stack.isEmpty())
+            result.add(stack.pop());
+        return result;
     }
 
     private <Saut, S, A, P> void reachableCycle(Pair<S, Saut> s, DFS<S, Saut> dfs, TransitionSystem<Pair<S, Saut>, A, Saut> ts, Automaton<Saut, P> aut) {
