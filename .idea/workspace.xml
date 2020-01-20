@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a3fdb15c-2dc8-45c4-930d-74704924ba91" name="Default Changelist" comment="" />
+    <list default="true" id="a3fdb15c-2dc8-45c4-930d-74704924ba91" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="1515" column="38" lean-forward="true" selection-start-line="1515" selection-start-column="38" selection-end-line="1515" selection-end-column="38" />
+            <state relative-caret-position="80">
+              <caret line="1343" selection-start-line="1343" selection-end-line="1343" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#67415#67416#0" expanded="true" />
@@ -30,63 +32,18 @@
                 <element signature="e#68083#68084#0" expanded="true" />
                 <element signature="e#68142#68143#0" expanded="true" />
                 <element signature="e#68196#68197#0" expanded="true" />
-                <element signature="e#71258#71259#0" expanded="true" />
-                <element signature="e#71738#71739#0" expanded="true" />
+                <element signature="e#71402#71403#0" expanded="true" />
+                <element signature="e#71882#71883#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/AutTsProductTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/automata/MultiColorAutomaton.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="34" column="60" selection-start-line="34" selection-start-column="60" selection-end-line="34" selection-end-column="60" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/VerificationTests.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/GNBACritSectionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="84" column="57" lean-forward="true" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/NanoPromelaFileReader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/AutTsProductTests2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="170">
+              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -108,18 +65,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="39">
               <caret line="4" column="31" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ChannelSystemTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="580">
-              <caret line="49" column="174" selection-start-line="49" selection-start-column="174" selection-end-line="49" selection-end-column="174" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -257,15 +202,6 @@
               <item name="base" type="462c0819:PsiDirectoryNode" />
               <item name="ex3" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="FormalMethodsIntro-Base" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HW-Base" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-              <item name="sanity" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -277,7 +213,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1579510697073" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1579524306675" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../FORMAI-master" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -298,7 +234,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.VerificationTests">
+  <component name="RunManager" selected="JUnit.GNBAThreeColors">
     <configuration name="AutTsProductTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FormalMethodsIntro-Base" />
       <extension name="coverage">
@@ -313,7 +249,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AutTsProductTests2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AutomatonTest.automatonTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FormalMethodsIntro-Base" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="il.ac.bgu.cs.formalmethodsintro.base.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base" />
+      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.AutomatonTest" />
+      <option name="METHOD_NAME" value="automatonTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GNBACritSectionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FormalMethodsIntro-Base" />
       <extension name="coverage">
         <pattern>
@@ -322,12 +274,12 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3" />
-      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.AutTsProductTests2" />
+      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.GNBACritSectionTest" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AutomatonTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GNBAThreeColors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FormalMethodsIntro-Base" />
       <extension name="coverage">
         <pattern>
@@ -336,21 +288,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3" />
-      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.AutomatonTest" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TransitionSystemTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FormalMethodsIntro-Base" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="il.ac.bgu.cs.formalmethodsintro.base.TS.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.TS" />
-      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.TS.TransitionSystemTest" />
+      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.GNBAThreeColors" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -371,11 +309,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GNBAThreeColors" />
+        <item itemvalue="JUnit.GNBACritSectionTest" />
+        <item itemvalue="JUnit.AutomatonTest.automatonTest" />
         <item itemvalue="JUnit.VerificationTests" />
-        <item itemvalue="JUnit.AutTsProductTests2" />
         <item itemvalue="JUnit.AutTsProductTests" />
-        <item itemvalue="JUnit.AutomatonTest" />
-        <item itemvalue="JUnit.TransitionSystemTest" />
       </list>
     </recent_temporary>
   </component>
@@ -397,29 +335,11 @@
       <workItem from="1576834661523" duration="10039000" />
       <workItem from="1577271380403" duration="664000" />
       <workItem from="1577272714966" duration="2902000" />
-      <workItem from="1579431408317" duration="13196000" />
+      <workItem from="1579431408317" duration="14047000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Ex1ExtraPrePostTest - 2019.12.25 at 14h 46m 36s.xml">
-      <configuration name="Ex1ExtraPrePostTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Ex1FragmentsTest - 2019.12.25 at 14h 46m 44s.xml">
-      <configuration name="Ex1FragmentsTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PostTests - 2019.12.25 at 14h 46m 54s.xml">
-      <configuration name="PostTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AutomatonTest - 2020.01.20 at 10h 53m 21s.xml">
-      <configuration name="AutomatonTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AutTsProductTests - 2020.01.20 at 10h 53m 27s.xml">
-      <configuration name="AutTsProductTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AutTsProductTests2 - 2020.01.20 at 10h 53m 42s.xml">
-      <configuration name="AutTsProductTests2" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="VerificationTests - 2020.01.20 at 10h 54m 34s.xml">
       <configuration name="VerificationTests" configurationId="JUnit" />
     </history-entry>
@@ -432,24 +352,42 @@
     <history-entry file="VerificationTests - 2020.01.20 at 10h 58m 10s.xml">
       <configuration name="VerificationTests" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="AutomatonTest - 2020.01.20 at 14h 40m 49s.xml">
+      <configuration name="AutomatonTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AutTsProductTests - 2020.01.20 at 14h 40m 55s.xml">
+      <configuration name="AutTsProductTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AutTsProductTests2 - 2020.01.20 at 14h 41m 05s.xml">
+      <configuration name="AutTsProductTests2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AutTsProductTests - 2020.01.20 at 14h 41m 13s.xml">
+      <configuration name="AutTsProductTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="VerificationTests - 2020.01.20 at 14h 41m 36s.xml">
+      <configuration name="VerificationTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AutomatonTest_automatonTest - 2020.01.20 at 14h 43m 31s.xml">
+      <configuration name="AutomatonTest.automatonTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62642000" />
+    <option name="totallyTimeSpent" value="63493000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2194332" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2194332" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Designer" order="6" />
-      <window_info anchor="bottom" id="Duplicate detector" weight="0.3285968" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.29129663" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49878544" visible="true" weight="0.43161634" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49878544" visible="true" weight="0.43161634" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4831261" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -461,6 +399,7 @@
       <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49959514" weight="0.32149202" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Version Control" order="13" weight="0.3285968" />
+      <window_info anchor="bottom" id="Duplicate detector" order="14" weight="0.3285968" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -539,13 +478,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/NanoPromelaLexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-658">
-          <caret line="86" column="15" lean-forward="true" selection-start-line="86" selection-start-column="15" selection-end-line="86" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4/4.5.1/antlr4-4.5.1.jar!/org/antlr/v4/runtime/RuleContext.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="514">
@@ -849,16 +781,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/AutomatonTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-408">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/codeprinter/TsPrinter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1753">
@@ -890,9 +812,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/automata/MultiColorAutomaton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="34" column="46" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
+          <folding>
+            <element signature="e#2023#2024#0" expanded="true" />
+            <element signature="e#2053#2054#0" expanded="true" />
+            <element signature="e#2120#2121#0" expanded="true" />
+            <element signature="e#2154#2155#0" expanded="true" />
+            <element signature="e#3072#3073#0" expanded="true" />
+            <element signature="e#3113#3114#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/AutomataFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-624">
+        <state relative-caret-position="17">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -902,7 +839,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/AutomatonTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
+        <state relative-caret-position="204">
           <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -920,9 +857,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/AutTsProductTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/CounterExampleVerifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-578">
+        <state relative-caret-position="85">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -940,17 +887,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/automata/MultiColorAutomaton.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/VerificationTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="34" column="60" selection-start-line="34" selection-start-column="60" selection-end-line="34" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/AutTsProductTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        <state relative-caret-position="90">
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -959,8 +899,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="1515" column="38" lean-forward="true" selection-start-line="1515" selection-start-column="38" selection-end-line="1515" selection-end-column="38" />
+        <state relative-caret-position="80">
+          <caret line="1343" selection-start-line="1343" selection-end-line="1343" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#67415#67416#0" expanded="true" />
@@ -975,16 +915,26 @@
             <element signature="e#68083#68084#0" expanded="true" />
             <element signature="e#68142#68143#0" expanded="true" />
             <element signature="e#68196#68197#0" expanded="true" />
-            <element signature="e#71258#71259#0" expanded="true" />
-            <element signature="e#71738#71739#0" expanded="true" />
+            <element signature="e#71402#71403#0" expanded="true" />
+            <element signature="e#71882#71883#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/VerificationTests.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/AutomatonTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="84" column="57" lean-forward="true" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
+        <state relative-caret-position="153">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/GNBACritSectionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
