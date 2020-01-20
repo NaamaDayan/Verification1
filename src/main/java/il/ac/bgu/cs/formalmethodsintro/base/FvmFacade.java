@@ -1336,6 +1336,8 @@ public class FvmFacade {
         //transitions
         for (TSTransition<Sts, A> transition : ts.getTransitions()) { //transition = s --a--> t
             Set<P> lToState = ts.getLabelingFunction().get(transition.getTo()); // L(t)
+            if (lToState == null)
+                lToState = new HashSet<>();
             for (Pair<Sts, Saut> productState : productTS.getStates())
                 if (productState.getFirst().equals(transition.getFrom())) {
                     Set<Saut> pVals = aut.getTransitions().get(productState.getSecond()).get(lToState); // p in delta(q,L(t))
@@ -1343,9 +1345,12 @@ public class FvmFacade {
                         productTS.addTransition(new TSTransition<>(productState, transition.getAction(), new Pair<>(transition.getTo(), pVal)));
                 }
         }
+
         //initial states
         for (Sts initialState : ts.getInitialStates()) {
             Set<P> lInitialState = ts.getLabelingFunction().get(initialState); //L(S0)
+            if (lInitialState == null)
+                lInitialState = new HashSet<>();
             for (Saut initialAutStatae : aut.getInitialStates()) {
                 Set<Saut> toInitials = aut.getTransitions().get(initialAutStatae).get(lInitialState);
                 for (Saut toInitial : toInitials)
@@ -1404,17 +1409,16 @@ public class FvmFacade {
     private <Saut, S, A, P> void reachableCycle(Pair<S, Saut> s, DFS<S, Saut> dfs, TransitionSystem<Pair<S, Saut>, A, Saut> ts, Automaton<Saut, P> aut) {
         dfs.getU().push(s);
         dfs.getR().add(s);
-        while(!(dfs.getU().isEmpty() || dfs.isFound_cycle())) {
+        while (!(dfs.getU().isEmpty() || dfs.isFound_cycle())) {
             Pair<S, Saut> sPrime = dfs.getU().peek();
             Set<Pair<S, Saut>> reachablesNotVisited = diff(post(ts, sPrime), dfs.getR());
             if (!reachablesNotVisited.isEmpty()) {
                 Pair<S, Saut> sPrimePrime = reachablesNotVisited.iterator().next(); //TODO: is this fine to let s line in the algo?
                 dfs.getU().push(sPrimePrime);
                 dfs.getR().add(sPrimePrime);
-            }
-            else {
+            } else {
                 dfs.getU().pop();
-                if(aut.getAcceptingStates().contains(sPrime.getSecond()))
+                if (aut.getAcceptingStates().contains(sPrime.getSecond()))
                     dfs.setFound_cycle(cycleCheck(sPrime, dfs, ts));
             }
         }
@@ -1424,7 +1428,7 @@ public class FvmFacade {
         boolean foundCycle = false;
         dfs.getV().push(s);
         dfs.getT().add(s);
-        while(!(dfs.getV().isEmpty() || foundCycle)) {
+        while (!(dfs.getV().isEmpty() || foundCycle)) {
             Pair<S, Saut> sPrime = dfs.getV().peek();
             if (post(ts, sPrime).contains(s))
                 foundCycle = true;
@@ -1434,8 +1438,7 @@ public class FvmFacade {
                     Pair<S, Saut> sPrimePrime = diffPost.iterator().next();
                     dfs.getV().push(sPrimePrime);
                     dfs.getT().add(sPrimePrime);
-                }
-                else
+                } else
                     dfs.getV().pop();
             }
         }
@@ -1445,7 +1448,7 @@ public class FvmFacade {
 
     public <S, Saut> Set<Pair<S, Saut>> diff(Set<Pair<S, Saut>> s1, Set<Pair<S, Saut>> s2) {
         Set<Pair<S, Saut>> res = new HashSet<>();
-        for (Pair<S, Saut> p:s1) {
+        for (Pair<S, Saut> p : s1) {
             if (!s2.contains(p))
                 res.add(p);
         }

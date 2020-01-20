@@ -32,9 +32,13 @@ public class MultiColorAutomaton<State, L> {
         Set<State> states = new HashSet<>() {
         };
         states.addAll(transitions.keySet());
-        Set<Set<State>> otherState = ((Set) ((Map) transitions.values()).values());
-        for (Set<State> otherStatae : otherState)
-            states.addAll(otherStatae);
+        for (State s : transitions.keySet()) {
+            Map<Set<L>, Set<State>> statesMap = transitions.get(s);
+            for (Map.Entry<Set<L>, Set<State>> entry : statesMap.entrySet()) {
+                Set<State> otherState = entry.getValue();
+                states.addAll(otherState);
+            }
+        }
         return states;
     }
 
@@ -94,9 +98,9 @@ public class MultiColorAutomaton<State, L> {
         acc.add(s);
     }
 
-    public void addAllAccepting(Set<?> states, int color){
+    public void addAllAccepting(Set<?> states, int color) {
         for (Object state : states)
-            setAccepting((State)state, color);
+            setAccepting((State) state, color);
     }
 
 
@@ -145,22 +149,22 @@ public class MultiColorAutomaton<State, L> {
     }
 
 
-    public MultiColorAutomaton<Pair<State,Integer>, L> copyAutomat(int i) {
-        MultiColorAutomaton<Pair<State,Integer>, L> copyAut = new MultiColorAutomaton<>();
+    public MultiColorAutomaton<Pair<State, Integer>, L> copyAutomat(int i) {
+        MultiColorAutomaton<Pair<State, Integer>, L> copyAut = new MultiColorAutomaton<>();
         //initials
         for (State state : this.getInitialStates())
-            copyAut.setInitial(new Pair<State,Integer>(state,i ));
+            copyAut.setInitial(new Pair<State, Integer>(state, i));
         //transitions
         for (Map.Entry<State, Map<Set<L>, Set<State>>> entry : transitions.entrySet()) {
             Map<Set<L>, Set<State>> values = new HashMap<>(entry.getValue());
             for (Map.Entry<Set<L>, Set<State>> value : values.entrySet())
                 for (State toState : value.getValue())
-                    copyAut.addTransition(new Pair<>(entry.getKey(),i), value.getKey(), new Pair<>(toState, i));
+                    copyAut.addTransition(new Pair<>(entry.getKey(), i), value.getKey(), new Pair<>(toState, i));
         }
 
         //acceptance
         for (State s : accepting.get(i))
-            copyAut.setAccepting(new Pair<>(s,i), i);
+            copyAut.setAccepting(new Pair<>(s, i), i);
         return copyAut;
     }
 
