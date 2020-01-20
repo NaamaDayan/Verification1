@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a3fdb15c-2dc8-45c4-930d-74704924ba91" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" afterDir="false" />
-    </list>
+    <list default="true" id="a3fdb15c-2dc8-45c4-930d-74704924ba91" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,118 +14,100 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="177" column="43" lean-forward="true" selection-start-line="177" selection-start-column="43" selection-end-line="177" selection-end-column="43" />
+            <state relative-caret-position="165">
+              <caret line="1515" column="38" lean-forward="true" selection-start-line="1515" selection-start-column="38" selection-end-line="1515" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#18204#18205#0" expanded="true" />
-                <element signature="e#18246#18247#0" expanded="true" />
-                <element signature="e#18285#18286#0" expanded="true" />
-                <element signature="e#18328#18329#0" expanded="true" />
-                <element signature="e#18547#18548#0" expanded="true" />
-                <element signature="e#18613#18614#0" expanded="true" />
-                <element signature="e#18655#18656#0" expanded="true" />
-                <element signature="e#18723#18724#0" expanded="true" />
+                <element signature="e#67415#67416#0" expanded="true" />
+                <element signature="e#67447#67448#0" expanded="true" />
+                <element signature="e#67572#67573#0" expanded="true" />
+                <element signature="e#67604#67605#0" expanded="true" />
+                <element signature="e#67729#67730#0" expanded="true" />
+                <element signature="e#67761#67762#0" expanded="true" />
+                <element signature="e#67886#67887#0" expanded="true" />
+                <element signature="e#67918#67919#0" expanded="true" />
+                <element signature="e#68041#68042#0" expanded="true" />
+                <element signature="e#68083#68084#0" expanded="true" />
+                <element signature="e#68142#68143#0" expanded="true" />
+                <element signature="e#68196#68197#0" expanded="true" />
+                <element signature="e#71258#71259#0" expanded="true" />
+                <element signature="e#71738#71739#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/AutTsProductTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="98">
+              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/automata/MultiColorAutomaton.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="141">
+              <caret line="34" column="60" selection-start-line="34" selection-start-column="60" selection-end-line="34" selection-end-column="60" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/TS/PostTests.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/VerificationTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/programgraph/ProgramGraph.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1666">
-              <caret line="108" selection-start-line="108" selection-end-line="108" />
-              <folding>
-                <element signature="e#2652#2653#0" expanded="true" />
-                <element signature="e#2684#2685#0" expanded="true" />
-                <element signature="e#3203#3204#0" expanded="true" />
-                <element signature="e#3264#3265#0" expanded="true" />
-                <element signature="e#3366#3367#0" expanded="true" />
-                <element signature="e#3429#3430#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/programgraph/PGTransition.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
-              <caret line="77" selection-start-line="77" selection-end-line="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/programgraph/ParserBasedCondDef.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="48" selection-start-line="48" selection-end-line="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/NanoPromelaTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
+            <state relative-caret-position="209">
+              <caret line="84" column="57" lean-forward="true" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1153#1154#0" expanded="true" />
-                <element signature="e#1200#1201#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/VendingmachineInNanopromela.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/NanoPromelaFileReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/programgraph/ThrowingErrorListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/NanoPromelaParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20247">
-              <caret line="1420" selection-start-line="1420" selection-end-line="1420" />
+            <state relative-caret-position="98">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
-                <element signature="e#15113#15114#0" expanded="true" />
-                <element signature="e#15182#15183#0" expanded="true" />
-                <element signature="e#15225#15226#0" expanded="true" />
-                <element signature="e#15295#15296#0" expanded="true" />
-                <element signature="e#15348#15349#0" expanded="true" />
-                <element signature="e#15423#15424#0" expanded="true" />
-                <element signature="e#15478#15479#0" expanded="true" />
-                <element signature="e#15554#15555#0" expanded="true" />
-                <element signature="e#15603#15604#0" expanded="true" />
-                <element signature="e#15676#15677#0" expanded="true" />
-                <element signature="e#16084#16085#0" expanded="true" />
-                <element signature="e#16136#16137#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/AutTsProductTests2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="98">
+              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/transitionsystem/TransitionSystem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/verification/VerificationFailed.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="39">
+              <caret line="4" column="31" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -137,8 +116,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>todo</find>
-      <find>addStateToTS</find>
       <find>getAction</find>
       <find>getAction()</find>
       <find>actions</find>
@@ -164,9 +141,11 @@
       <find>atomic</find>
       <find>atomic{</find>
       <find>pre(</find>
-      <find>post(</find>
       <find>isExecutionFragment(</find>
       <find>action</find>
+      <find>addConcatenationToPG</find>
+      <find>post(</find>
+      <find>post</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -183,22 +162,26 @@
         <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ChannelSystemTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/NanoPromelaTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" />
+        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/AutomatonTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/AutomataFactory.java" />
+        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/AutTsProductTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/AutTsProductTests2.java" />
+        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/CounterExampleVerifier.java" />
+        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/VerificationTests.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1937" />
-    <option name="height" value="1097" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1098" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -215,6 +198,27 @@
               <item name="FormalMethodsIntro-Base" type="b2602c69:ProjectViewProjectNode" />
               <item name="HW-Base" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FormalMethodsIntro-Base" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HW-Base" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FormalMethodsIntro-Base" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HW-Base" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FormalMethodsIntro-Base" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HW-Base" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -239,18 +243,20 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="base" type="462c0819:PsiDirectoryNode" />
-              <item name="TS" type="462c0819:PsiDirectoryNode" />
+              <item name="ex3" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577278021884" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1579510697073" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../FORMAI-master" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -271,59 +277,45 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TransitionSystemTest">
-    <configuration name="Ex1ExtraPrePostTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.VerificationTests">
+    <configuration name="AutTsProductTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FormalMethodsIntro-Base" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="il.ac.bgu.cs.formalmethodsintro.base.TS.*" />
+          <option name="PATTERN" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.TS" />
-      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.TS.Ex1ExtraPrePostTest" />
+      <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3" />
+      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.AutTsProductTests" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Ex1FragmentsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AutTsProductTests2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FormalMethodsIntro-Base" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="il.ac.bgu.cs.formalmethodsintro.base.TS.*" />
+          <option name="PATTERN" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.TS" />
-      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.TS.Ex1FragmentsTest" />
+      <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3" />
+      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.AutTsProductTests2" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NanoPromelaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AutomatonTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FormalMethodsIntro-Base" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="il.ac.bgu.cs.formalmethodsintro.base.PG.*" />
+          <option name="PATTERN" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.PG" />
-      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.PG.NanoPromelaTest" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PostTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FormalMethodsIntro-Base" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="il.ac.bgu.cs.formalmethodsintro.base.TS.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.TS" />
-      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.TS.PostTests" />
+      <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3" />
+      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.AutomatonTest" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -342,13 +334,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="VerificationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FormalMethodsIntro-Base" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3" />
+      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.VerificationTests" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.VerificationTests" />
+        <item itemvalue="JUnit.AutTsProductTests2" />
+        <item itemvalue="JUnit.AutTsProductTests" />
+        <item itemvalue="JUnit.AutomatonTest" />
         <item itemvalue="JUnit.TransitionSystemTest" />
-        <item itemvalue="JUnit.PostTests" />
-        <item itemvalue="JUnit.Ex1FragmentsTest" />
-        <item itemvalue="JUnit.Ex1ExtraPrePostTest" />
-        <item itemvalue="JUnit.NanoPromelaTest" />
       </list>
     </recent_temporary>
   </component>
@@ -370,31 +376,11 @@
       <workItem from="1576834661523" duration="10039000" />
       <workItem from="1577271380403" duration="664000" />
       <workItem from="1577272714966" duration="2902000" />
+      <workItem from="1579431408317" duration="13196000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="NanoPromelaTest - 2019.12.22 at 14h 10m 53s.xml">
-      <configuration name="NanoPromelaTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="NanoPromelaTest - 2019.12.22 at 14h 16m 05s.xml">
-      <configuration name="NanoPromelaTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="NanoPromelaTest - 2019.12.22 at 14h 17m 27s.xml">
-      <configuration name="NanoPromelaTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="NanoPromelaTest - 2019.12.22 at 14h 18m 11s.xml">
-      <configuration name="NanoPromelaTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="NanoPromelaTest - 2019.12.22 at 14h 20m 45s.xml">
-      <configuration name="NanoPromelaTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="NanoPromelaTest - 2019.12.22 at 14h 21m 45s.xml">
-      <configuration name="NanoPromelaTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="NanoPromelaTest - 2019.12.25 at 13h 02m 21s.xml">
-      <configuration name="NanoPromelaTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="Ex1ExtraPrePostTest - 2019.12.25 at 14h 46m 36s.xml">
       <configuration name="Ex1ExtraPrePostTest" configurationId="JUnit" />
     </history-entry>
@@ -404,21 +390,43 @@
     <history-entry file="PostTests - 2019.12.25 at 14h 46m 54s.xml">
       <configuration name="PostTests" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="AutomatonTest - 2020.01.20 at 10h 53m 21s.xml">
+      <configuration name="AutomatonTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AutTsProductTests - 2020.01.20 at 10h 53m 27s.xml">
+      <configuration name="AutTsProductTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AutTsProductTests2 - 2020.01.20 at 10h 53m 42s.xml">
+      <configuration name="AutTsProductTests2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="VerificationTests - 2020.01.20 at 10h 54m 34s.xml">
+      <configuration name="VerificationTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="VerificationTests - 2020.01.20 at 10h 55m 33s.xml">
+      <configuration name="VerificationTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="VerificationTests - 2020.01.20 at 10h 56m 08s.xml">
+      <configuration name="VerificationTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="VerificationTests - 2020.01.20 at 10h 58m 10s.xml">
+      <configuration name="VerificationTests" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48456000" />
+    <option name="totallyTimeSpent" value="62642000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15384616" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2194332" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Designer" order="6" />
+      <window_info anchor="bottom" id="Duplicate detector" weight="0.3285968" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.29129663" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49878544" visible="true" weight="0.43161634" />
@@ -486,13 +494,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java</url>
-          <line>798</line>
+          <line>800</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java</url>
-          <line>958</line>
+          <line>960</line>
           <properties />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
@@ -511,102 +519,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/generate-grammar.bat">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/grun.bat">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/NanoPromela.tokens">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-900" />
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4/4.5.1/antlr4-4.5.1.jar!/org/antlr/v4/runtime/tree/ParseTreeListener.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/NanoPromelaBaseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" column="69" lean-forward="true" selection-start-line="12" selection-start-column="69" selection-end-line="12" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/NanoPromelaLexer.tokens">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/Evaluator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="66" column="62" lean-forward="true" selection-start-line="66" selection-start-column="62" selection-end-line="66" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/tst4.np">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4/4.5.1/antlr4-4.5.1.jar!/org/antlr/v4/runtime/tree/ParseTree.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/BookingSystemBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/tst3.np">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/tst2.np">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/svvrl/cmd/1.0.0/cmd-1.0.0.jar!/org/svvrl/goal/cmd/ExitStmt.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/util/Pair.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-556">
-          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/NanoPromelaListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="93" column="17" selection-start-line="93" selection-start-column="9" selection-end-line="93" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4/4.5.1/antlr4-4.5.1.jar!/org/antlr/v4/runtime/atn/ParserATNSimulator.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="48" column="11" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4/4.5.1/antlr4-4.5.1.jar!/org/antlr/v4/runtime/CommonTokenStream.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/NanoPromelaLexer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-658">
@@ -639,30 +551,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/TS/TransitionSystemTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-451">
-          <caret line="132" column="16" selection-start-line="132" selection-start-column="16" selection-end-line="132" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ExtendedVendingMachineBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="71">
           <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/NanoPromelaFileReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -772,19 +664,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ChannelSystemTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="101" column="34" selection-start-line="101" selection-start-column="34" selection-end-line="101" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1181#1182#0" expanded="true" />
-            <element signature="e#1235#1236#0" expanded="true" />
-            <element signature="e#3028#3058#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/programgraph/ProgramGraph.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1666">
@@ -814,6 +693,71 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/students.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/TS/Ex1ExtraPrePostTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/TS/Ex1FragmentsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/AlternatingBitProtocolBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/ChannelSystemTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="70" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1181#1182#0" expanded="true" />
+            <element signature="e#1235#1236#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/TS/PostTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/TS/TransitionSystemTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/NanoPromelaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1153#1154#0" expanded="true" />
+            <element signature="e#1200#1201#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/VendingmachineInNanopromela.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -830,8 +774,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/NanoPromelaParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20247">
-          <caret line="1420" selection-start-line="1420" selection-end-line="1420" />
+        <state relative-caret-position="6545">
+          <caret line="476" selection-start-line="476" selection-end-line="476" />
           <folding>
             <element signature="e#15113#15114#0" expanded="true" />
             <element signature="e#15182#15183#0" expanded="true" />
@@ -843,63 +787,187 @@
             <element signature="e#15554#15555#0" expanded="true" />
             <element signature="e#15603#15604#0" expanded="true" />
             <element signature="e#15676#15677#0" expanded="true" />
+            <element signature="e#16009#16010#0" expanded="true" />
             <element signature="e#16084#16085#0" expanded="true" />
             <element signature="e#16136#16137#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/PG/NanoPromelaTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/verification/VeficationSucceeded.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/verification/VerificationSucceeded.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/verification/VerificationResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/verification/VerificationFailed.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="4" column="31" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/transitionsystem/TransitionSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/AutomatonTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-408">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1153#1154#0" expanded="true" />
-            <element signature="e#1200#1201#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/students.txt">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/codeprinter/TsPrinter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1753">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/codeprinter/ObjectPrinter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/examples/SemaphoreBasedMutualExclusionBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="38" lean-forward="true" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/examples/PetersonProgramGraphBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/AutomataFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-624">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/AutomatonTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/AutTsProductTests2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/CounterExampleVerifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-578">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/nanopromela/NanoPromelaFileReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/automata/MultiColorAutomaton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="34" column="60" selection-start-line="34" selection-start-column="60" selection-end-line="34" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/AutTsProductTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="177" column="43" lean-forward="true" selection-start-line="177" selection-start-column="43" selection-end-line="177" selection-end-column="43" />
+        <state relative-caret-position="165">
+          <caret line="1515" column="38" lean-forward="true" selection-start-line="1515" selection-start-column="38" selection-end-line="1515" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#18204#18205#0" expanded="true" />
-            <element signature="e#18246#18247#0" expanded="true" />
-            <element signature="e#18285#18286#0" expanded="true" />
-            <element signature="e#18328#18329#0" expanded="true" />
-            <element signature="e#18547#18548#0" expanded="true" />
-            <element signature="e#18613#18614#0" expanded="true" />
-            <element signature="e#18655#18656#0" expanded="true" />
-            <element signature="e#18723#18724#0" expanded="true" />
+            <element signature="e#67415#67416#0" expanded="true" />
+            <element signature="e#67447#67448#0" expanded="true" />
+            <element signature="e#67572#67573#0" expanded="true" />
+            <element signature="e#67604#67605#0" expanded="true" />
+            <element signature="e#67729#67730#0" expanded="true" />
+            <element signature="e#67761#67762#0" expanded="true" />
+            <element signature="e#67886#67887#0" expanded="true" />
+            <element signature="e#67918#67919#0" expanded="true" />
+            <element signature="e#68041#68042#0" expanded="true" />
+            <element signature="e#68083#68084#0" expanded="true" />
+            <element signature="e#68142#68143#0" expanded="true" />
+            <element signature="e#68196#68197#0" expanded="true" />
+            <element signature="e#71258#71259#0" expanded="true" />
+            <element signature="e#71738#71739#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/TS/Ex1ExtraPrePostTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/VerificationTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/TS/Ex1FragmentsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/TS/PostTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+        <state relative-caret-position="209">
+          <caret line="84" column="57" lean-forward="true" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
