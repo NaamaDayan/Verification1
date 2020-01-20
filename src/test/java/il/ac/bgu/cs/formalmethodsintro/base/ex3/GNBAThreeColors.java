@@ -23,8 +23,8 @@ public class GNBAThreeColors {
 		MultiColorAutomaton<String, String> mulAut = getMCAut();
 
 		Automaton<?, String> aut = fvmFacadeImpl.GNBA2NBA(mulAut);
-
-		assertEquals(aut, getExpected());
+		Automaton<Pair<Integer, Integer>, String> expected = getExpected();
+		assertEquals(aut, expected);
 
 	}
 
