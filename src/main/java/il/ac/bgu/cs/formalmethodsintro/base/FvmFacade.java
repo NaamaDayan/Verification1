@@ -1520,14 +1520,14 @@ public class FvmFacade {
         return GNBA2NBAHelper(mulAut);
     }
 
-    private <State, L> Automaton<State, L> GNBA2NBAHelper(MultiColorAutomaton<State, L> mulAut) {
-        Automaton<State, L> finalNBA = new Automaton<>();
+    private <State, L> Automaton<Pair<State,Integer>, L> GNBA2NBAHelper(MultiColorAutomaton<State, L> mulAut) {
+        Automaton<Pair<State,Integer>, L> finalNBA = new Automaton<>();
         int numOfColors = mulAut.getColors().size();
-        List<MultiColorAutomaton<State, L>> autCopies = new LinkedList<>();
+        List<MultiColorAutomaton<Pair<State,Integer>, L>> autCopies = new LinkedList<>();
         for (int i : mulAut.getColors())
             autCopies.add(mulAut.copyAutomat(i));
         //set initials
-        for (State state : autCopies.get(0).getInitialStates())
+        for (Pair<State,Integer> state : autCopies.get(0).getInitialStates())
             finalNBA.setInitial(state);
         for (Map.Entry<State, Map<Set<L>, Set<State>>> transition : mulAut.getTransitions().entrySet()) {
             for (Map.Entry<Set<L>, Set<State>> entry : transition.getValue().entrySet())
@@ -1536,9 +1536,7 @@ public class FvmFacade {
                         for (int j : mulAut.getColors()) {
                             boolean sAcceptable = mulAut.getAcceptingStates(i).contains(transition.getKey());
                             if ((!sAcceptable && j == i) || (sAcceptable && (j == i % numOfColors + 1)))
-                                finalNBA.addTransition((State)((String)transition.getKey() + i), entry.getKey(), (State)((String)toState + j));
-
-
+                                finalNBA.addTransition(new Pair<>(transition.getKey(),i), entry.getKey(), new Pair<>(toState, j));
                         }
         }
         //acceptance
