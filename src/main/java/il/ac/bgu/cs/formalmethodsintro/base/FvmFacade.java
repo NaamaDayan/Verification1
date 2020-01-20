@@ -1341,8 +1341,9 @@ public class FvmFacade {
             for (Pair<Sts, Saut> productState : productTS.getStates())
                 if (productState.getFirst().equals(transition.getFrom())) {
                     Set<Saut> pVals = aut.getTransitions().get(productState.getSecond()).get(lToState); // p in delta(q,L(t))
-                    for (Saut pVal : pVals)
-                        productTS.addTransition(new TSTransition<>(productState, transition.getAction(), new Pair<>(transition.getTo(), pVal)));
+                    if (pVals != null)
+                        for (Saut pVal : pVals)
+                            productTS.addTransition(new TSTransition<>(productState, transition.getAction(), new Pair<>(transition.getTo(), pVal)));
                 }
         }
 
@@ -1519,29 +1520,29 @@ public class FvmFacade {
         return GNBA2NBAHelper(mulAut);
     }
 
-    private <State, L> Automaton<Pair<State, Integer>, L> GNBA2NBAHelper(MultiColorAutomaton<State, L> mulAut) {
-        Automaton<Pair<State, Integer>, L> finalNBA = new Automaton<>();
+    private <State, L> Automaton<State, L> GNBA2NBAHelper(MultiColorAutomaton<State, L> mulAut) {
+        Automaton<State, L> finalNBA = new Automaton<>();
         int numOfColors = mulAut.getColors().size();
-        List<MultiColorAutomaton<Pair<State, Integer>, L>> autCopies = new LinkedList<>();
-        for (int i = 0; i < numOfColors; i++)
+        List<MultiColorAutomaton<State, L>> autCopies = new LinkedList<>();
+        for (int i : mulAut.getColors())
             autCopies.add(mulAut.copyAutomat(i));
         //set initials
-        for (Pair<State, Integer> state : autCopies.get(0).getInitialStates())
+        for (State state : autCopies.get(0).getInitialStates())
             finalNBA.setInitial(state);
         for (Map.Entry<State, Map<Set<L>, Set<State>>> transition : mulAut.getTransitions().entrySet()) {
             for (Map.Entry<Set<L>, Set<State>> entry : transition.getValue().entrySet())
                 for (State toState : entry.getValue())
-                    for (int i = 0; i < numOfColors; i++)
-                        for (int j = 0; j < numOfColors; j++) {
+                    for (int i : mulAut.getColors())
+                        for (int j : mulAut.getColors()) {
                             boolean sAcceptable = mulAut.getAcceptingStates(i).contains(transition.getKey());
                             if ((!sAcceptable && j == i) || (sAcceptable && (j == i % numOfColors + 1)))
-                                finalNBA.addTransition(new Pair<>(transition.getKey(), i), entry.getKey(), new Pair<>(toState, j));
+                                finalNBA.addTransition((State)((String)transition.getKey() + i), entry.getKey(), (State)((String)toState + j));
 
 
                         }
         }
         //acceptance
-        Set<?> accepting = new HashSet<>(autCopies.get(0).getAcceptingStates(0));
+        Set<?> accepting = new HashSet<>(autCopies.get(0).getAcceptingStates(1));
         finalNBA.addAllAccepting(accepting, 0);
         return finalNBA;
     }

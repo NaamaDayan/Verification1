@@ -4,6 +4,7 @@ import static il.ac.bgu.cs.formalmethodsintro.base.util.CollectionHelper.set;
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 
+import java.sql.SQLOutput;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,7 +23,8 @@ public class GNBACritSectionTest {
 
 		MultiColorAutomaton<String, String> mulAut = getMCAut();
 		Automaton<?, String> aut = fvmFacadeImpl.GNBA2NBA(mulAut);
-		assertEquals(getExpected(), aut);
+		Automaton<String, String> expected = getExpected();
+		assertEquals(expected, aut);
 
 	}
 
@@ -56,7 +58,7 @@ public class GNBACritSectionTest {
 
 		aut.addTransition("s01", crit2, "s21");
 		aut.addTransition("s01", crit1, "s11");
-		aut.addTransition("s02", crit2, "a22");
+		aut.addTransition("s02", crit2, "s22");
 		aut.addTransition("s02", crit1, "s12");
 
 		// True transitions
@@ -66,7 +68,7 @@ public class GNBACritSectionTest {
 			aut.addTransition("s02", s, "s02");
 			aut.addTransition("s21", s, "s01");
 			aut.addTransition("s12", s, "s02");
-			aut.addTransition("a22", s, "s01");
+			aut.addTransition("s22", s, "s01");
 		}
 
 		aut.setInitial("s01");
