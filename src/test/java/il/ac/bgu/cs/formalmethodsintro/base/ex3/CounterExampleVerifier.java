@@ -42,6 +42,7 @@ public class CounterExampleVerifier<S, A, P, Saut> {
 	void verifyCounterExample(VerificationFailed<S> vrf) {
 
 		// A counter example must begin with an initial state
+		Set<S> sss = ts.getInitialStates();
 		assertTrue(ts.getInitialStates().contains(vrf.getPrefix().get(0)));
 
 		for (Saut sa : aut.getInitialStates()) {

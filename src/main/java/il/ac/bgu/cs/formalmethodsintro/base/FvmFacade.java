@@ -21,6 +21,7 @@ import il.ac.bgu.cs.formalmethodsintro.base.util.Util;
 import il.ac.bgu.cs.formalmethodsintro.base.verification.VeficationSucceeded;
 import il.ac.bgu.cs.formalmethodsintro.base.verification.VerificationFailed;
 import il.ac.bgu.cs.formalmethodsintro.base.verification.VerificationResult;
+import il.ac.bgu.cs.formalmethodsintro.base.verification.VerificationSucceeded;
 
 import static il.ac.bgu.cs.formalmethodsintro.base.nanopromela.NanoPromelaFileReader.*;
 
@@ -1391,19 +1392,29 @@ public class FvmFacade {
             notVisitedInitials = diff(productTS.getInitialStates(), dfs.getR());
         }
         if (!dfs.isFound_cycle())
-            return new VeficationSucceeded<>();
+            return new VerificationSucceeded<>();
         else {
             VerificationFailed failed = new VerificationFailed();
-            failed.setCycle(reverse(dfs.getV()));
-            failed.setPrefix(reverse(dfs.getU()));
+            failed.setCycle(stackToList(dfs.getV())); //TODO: NOT SURE ABOUT THAT! (should be reverse?)
+            failed.setPrefix(stackToList(dfs.getU())); //TODO: NOT SURE ABOUT THAT! (should be reverse?)
             return failed;
         }
     }
 
     private <Saut, S> List reverse(Stack<Pair<S, Saut>> stack) {
-        List<Pair<S, Saut>> result = new LinkedList();
+        List<S> result = new LinkedList();
         while (!stack.isEmpty())
-            result.add(stack.pop());
+            result.add(stack.pop().first);
+        return result;
+    }
+
+    private <Saut, S> List stackToList(Stack<Pair<S, Saut>> stack) {
+        List<S> result = new LinkedList();
+        Stack<S> stack2 = new Stack<>();
+        while (!stack.isEmpty())
+            stack2.push(stack.pop().first);
+        while (!stack2.isEmpty())
+            result.add(stack2.pop());
         return result;
     }
 
