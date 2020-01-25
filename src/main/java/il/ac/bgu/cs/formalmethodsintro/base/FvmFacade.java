@@ -9,7 +9,7 @@ import il.ac.bgu.cs.formalmethodsintro.base.channelsystem.ChannelSystem;
 import il.ac.bgu.cs.formalmethodsintro.base.circuits.Circuit;
 import il.ac.bgu.cs.formalmethodsintro.base.exceptions.ActionNotFoundException;
 import il.ac.bgu.cs.formalmethodsintro.base.exceptions.StateNotFoundException;
-import il.ac.bgu.cs.formalmethodsintro.base.ltl.LTL;
+import il.ac.bgu.cs.formalmethodsintro.base.ltl.*;
 import il.ac.bgu.cs.formalmethodsintro.base.nanopromela.NanoPromelaParser.*;
 import il.ac.bgu.cs.formalmethodsintro.base.programgraph.*;
 import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.AlternatingSequence;
@@ -1516,7 +1516,116 @@ public class FvmFacade {
      * @return An automaton A such that L_\omega(A)=Words(ltl)
      */
     public <L> Automaton<?, L> LTL2NBA(LTL<L> ltl) {
-        throw new java.lang.UnsupportedOperationException();
+        return GNBA2NBA(LTL2GNBA(ltl));
+    }
+
+    private <L> MultiColorAutomaton<?, L> LTL2GNBA(LTL<L> ltl) {
+        MultiColorAutomaton<?, L> result = new MultiColorAutomaton<>();
+
+        Set<LTL<L>> sub = calcSub(ltl);
+        Set<Set<LTL<L>>> allSubSets = getSubsets(sub);
+        Set<Set<LTL<L>>> consistentSubs = getConsistentSubs(allSubSets, sub);
+
+
+    }
+
+    //power set
+    //TODO: check
+    private <L> Set<Set<LTL<L>>> getSubsets(Set<LTL<L>> sub) {
+        Set<Set<LTL<L>>> result = new HashSet<>();
+        return getSubsetsRec(new ArrayList(sub), new HashSet<>(), 0, result);
+    }
+
+    private <L> Set<Set<LTL<L>>> getSubsetsRec(ArrayList<LTL<L>> origSet, Set<LTL<L>> curr, int ind, Set<Set<LTL<L>>> result) {
+        if (ind == origSet.size())
+            result.add(curr);
+        else {
+            HashSet<LTL<L>> with = new HashSet<>(curr);
+            with.add(origSet.get(ind));
+            getSubsetsRec(origSet, with, ind + 1, result);
+            //without
+            getSubsetsRec(origSet, curr, ind + 1, result);
+        }
+        return result;
+    }
+
+    //TODO: check
+    private <L> Set<Set<LTL<L>>> getConsistentSubs(Set<Set<LTL<L>>> allSubs, Set<LTL<L>> sub) {
+        Set<Set<LTL<L>>> result = new HashSet<>();
+        for (Set<LTL<L>> subset: allSubs)
+            if (isConsistent(subset, sub))
+                result.add(subset);
+        return result;
+    }
+
+    private <L> boolean isConsistent(Set<LTL<L>> set, Set<LTL<L>> sub) {
+        return isLogicalConsistent(set, sub) && isLocalConsistent(set, sub) && isMax(set, sub);
+    }
+
+    private <L> boolean isLogicalConsistent(Set<LTL<L>> set, Set<LTL<L>> sub) {
+        if (sub.contains(new TRUE<>()))
+            if (!set.contains(new TRUE<>()))
+                return false;
+        for (LTL<L> phi: sub) {
+            if (set.contains(phi))
+                if (set.contains(new Not(phi)))
+                    return false;
+            if (phi instanceof And) {
+                if (set.contains(phi))
+                    if (!(set.contains(((And<L>) phi).getLeft()) && set.contains(((And<L>) phi).getRight())))
+                        return false;
+                if (set.contains(((And<L>) phi).getRight()) && set.contains(((And<L>) phi).getLeft()))
+                    if (!set.contains(phi))
+                        return false;
+            }
+        }
+        return true;
+    }
+
+    private <L> boolean isLocalConsistent(Set<LTL<L>> set, Set<LTL<L>> sub) {
+        for (LTL<L> phi: sub) {
+            if (phi instanceof Until) {
+                if (set.contains(((Until<L>) phi).getRight()))
+                    if (!set.contains(phi))
+                        return false;
+                if (set.contains(phi))
+                    if (!(set.contains(((Until<L>) phi).getRight()) || set.contains(((Until<L>) phi).getLeft())))
+                        return false;
+            }
+        }
+        return true;
+    }
+
+    private <L> boolean isMax(Set<LTL<L>> set, Set<LTL<L>> sub) {
+        for (LTL<L> phi: sub) {
+            if (!set.contains(phi))
+                if (!set.contains(new Not(phi)))
+                    return false;
+        }
+        return true;
+    }
+
+
+    private <L> Set<LTL<L>> calcSub(LTL<L> ltl) {
+        return calcSubRec(ltl, new HashSet<>());
+    }
+
+    private <L> Set<LTL<L>> calcSubRec(LTL<L> ltl, HashSet<LTL<L>> sub) {
+        sub.add(ltl);
+        sub.add(new Not<>(ltl));
+        if (ltl instanceof Until) {
+            calcSubRec(((Until) ltl).getLeft(), sub);
+            calcSubRec(((Until) ltl).getRight(), sub);
+        }
+        else if (ltl instanceof And) {
+            calcSubRec(((And) ltl).getLeft(), sub);
+            calcSubRec(((And) ltl).getRight(), sub);
+        }
+        else if (ltl instanceof Not)
+            calcSubRec(((Not) ltl).getInner(), sub);
+        else if (ltl instanceof Next)
+            calcSubRec(((Next) ltl).getInner(), sub);
+        return sub;
     }
 
     /**
