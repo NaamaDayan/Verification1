@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3fdb15c-2dc8-45c4-930d-74704924ba91" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -13,48 +14,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/LTL.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="1541" column="14" lean-forward="true" selection-start-line="1541" selection-start-column="14" selection-end-line="1541" selection-end-column="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#70512#70513#0" expanded="true" />
-                <element signature="e#70544#70545#0" expanded="true" />
-                <element signature="e#70578#70579#0" expanded="true" />
-                <element signature="e#70610#70611#0" expanded="true" />
-                <element signature="e#70654#70655#0" expanded="true" />
-                <element signature="e#70686#70687#0" expanded="true" />
-                <element signature="e#70720#70721#0" expanded="true" />
-                <element signature="e#70752#70753#0" expanded="true" />
-                <element signature="e#70794#70795#0" expanded="true" />
-                <element signature="e#70836#70837#0" expanded="true" />
-                <element signature="e#70895#70896#0" expanded="true" />
-                <element signature="e#70949#70950#0" expanded="true" />
-                <element signature="e#71898#71899#0" expanded="true" />
-                <element signature="e#71944#71945#0" expanded="true" />
-                <element signature="e#75177#75178#0" expanded="true" />
-                <element signature="e#76304#76305#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="119">
+              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/Next.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/AP.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="38" column="60" selection-start-line="38" selection-start-column="60" selection-end-line="38" selection-end-column="60" />
+            <state relative-caret-position="51">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -62,8 +35,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/automata/MultiColorAutomaton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+            <state relative-caret-position="-16">
+              <caret line="53" column="46" lean-forward="true" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
               <folding>
                 <element signature="e#2023#2024#0" expanded="true" />
                 <element signature="e#2053#2054#0" expanded="true" />
@@ -76,15 +49,24 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="277">
+              <caret line="1535" column="29" lean-forward="true" selection-start-line="1535" selection-start-column="29" selection-end-line="1535" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#77914#77915#0" expanded="true" />
+                <element signature="e#79041#79042#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sub</find>
-      <find>true</find>
-      <find>nothin</find>
-      <find>nothing</find>
-      <find>coin</find>
       <find>and</find>
       <find>ts</find>
       <find>NOTHING_ACTION</find>
@@ -110,6 +92,11 @@
       <find>sPrimePrime</find>
       <find>rever</find>
       <find>notp_np</find>
+      <find>MultiColorAutomaton&lt;?, L&gt;</find>
+      <find>new MultiColorAutomaton&lt;&gt;();</find>
+      <find>new MultiColorAutomato</find>
+      <find>MultiColorAutomaton</find>
+      <find>ltl</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -148,6 +135,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -224,14 +213,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1579962106097" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1579962180518" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../FORMAI-master" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -351,7 +338,8 @@
       <workItem from="1576834661523" duration="10039000" />
       <workItem from="1577271380403" duration="664000" />
       <workItem from="1577272714966" duration="2902000" />
-      <workItem from="1579431408317" duration="25960000" />
+      <workItem from="1579431408317" duration="26626000" />
+      <workItem from="1580993916169" duration="7146000" />
     </task>
     <servers />
   </component>
@@ -388,13 +376,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75406000" />
+    <option name="totallyTimeSpent" value="83218000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2194332" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22348177" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -470,13 +458,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java</url>
-          <line>801</line>
+          <line>800</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java</url>
-          <line>961</line>
+          <line>960</line>
           <properties />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
@@ -879,28 +867,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/automata/MultiColorAutomaton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
-          <folding>
-            <element signature="e#2023#2024#0" expanded="true" />
-            <element signature="e#2053#2054#0" expanded="true" />
-            <element signature="e#2120#2121#0" expanded="true" />
-            <element signature="e#2154#2155#0" expanded="true" />
-            <element signature="e#3072#3073#0" expanded="true" />
-            <element signature="e#3113#3114#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/LTL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/Until.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -908,7 +874,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/AP.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/TRUE.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
@@ -929,35 +895,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/TRUE.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/LTL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="119">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/AP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/automata/MultiColorAutomaton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16">
+          <caret line="53" column="46" lean-forward="true" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
+          <folding>
+            <element signature="e#2023#2024#0" expanded="true" />
+            <element signature="e#2053#2054#0" expanded="true" />
+            <element signature="e#2120#2121#0" expanded="true" />
+            <element signature="e#2154#2155#0" expanded="true" />
+            <element signature="e#3072#3073#0" expanded="true" />
+            <element signature="e#3113#3114#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="1541" column="14" lean-forward="true" selection-start-line="1541" selection-start-column="14" selection-end-line="1541" selection-end-column="14" />
+        <state relative-caret-position="277">
+          <caret line="1535" column="29" lean-forward="true" selection-start-line="1535" selection-start-column="29" selection-end-line="1535" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#70512#70513#0" expanded="true" />
-            <element signature="e#70544#70545#0" expanded="true" />
-            <element signature="e#70578#70579#0" expanded="true" />
-            <element signature="e#70610#70611#0" expanded="true" />
-            <element signature="e#70654#70655#0" expanded="true" />
-            <element signature="e#70686#70687#0" expanded="true" />
-            <element signature="e#70720#70721#0" expanded="true" />
-            <element signature="e#70752#70753#0" expanded="true" />
-            <element signature="e#70794#70795#0" expanded="true" />
-            <element signature="e#70836#70837#0" expanded="true" />
-            <element signature="e#70895#70896#0" expanded="true" />
-            <element signature="e#70949#70950#0" expanded="true" />
-            <element signature="e#71898#71899#0" expanded="true" />
-            <element signature="e#71944#71945#0" expanded="true" />
-            <element signature="e#75177#75178#0" expanded="true" />
-            <element signature="e#76304#76305#0" expanded="true" />
+            <element signature="e#77914#77915#0" expanded="true" />
+            <element signature="e#79041#79042#0" expanded="true" />
           </folding>
         </state>
       </provider>

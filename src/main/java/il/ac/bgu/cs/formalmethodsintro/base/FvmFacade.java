@@ -18,7 +18,6 @@ import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.TransitionSystem;
 import il.ac.bgu.cs.formalmethodsintro.base.util.CollectionHelper;
 import il.ac.bgu.cs.formalmethodsintro.base.util.Pair;
 import il.ac.bgu.cs.formalmethodsintro.base.util.Util;
-import il.ac.bgu.cs.formalmethodsintro.base.verification.VeficationSucceeded;
 import il.ac.bgu.cs.formalmethodsintro.base.verification.VerificationFailed;
 import il.ac.bgu.cs.formalmethodsintro.base.verification.VerificationResult;
 import il.ac.bgu.cs.formalmethodsintro.base.verification.VerificationSucceeded;
@@ -1520,13 +1519,78 @@ public class FvmFacade {
     }
 
     private <L> MultiColorAutomaton<?, L> LTL2GNBA(LTL<L> ltl) {
-        MultiColorAutomaton<?, L> result = new MultiColorAutomaton<>();
+        MultiColorAutomaton<Set<LTL<L>>, L> result = new MultiColorAutomaton<>(); //TODO: is it OK that instead of
+        // wildcard (?) we put a specific type?
 
         Set<LTL<L>> sub = calcSub(ltl);
         Set<Set<LTL<L>>> allSubSets = getSubsets(sub);
         Set<Set<LTL<L>>> consistentSubs = getConsistentSubs(allSubSets, sub);
 
+        for (Set<LTL<L>> state : consistentSubs) {
+            //add initials
+            if (state.contains(ltl))
+                result.addInitial(state);
+            Set<L> atomics = getAtomics(state);
+            //TODO: here we put only the atomics in the transition, not their negation.
+            //TODO: check whether a negated AP should be in the transition too, or that its absence is fine.
+            //add transitions
+            for (Set<LTL<L>> dest : consistentSubs) {
+                if (nextConditionsHold(state, dest, sub) && subConditionsHold(state, dest, sub))
+                    result.addTransition(state, atomics, dest);
+            }
+        }
+        //add accepting
+        int k = 0;
+        for (LTL<L> sub_ltl : sub) {
+            if (sub_ltl instanceof Until) {
+                for (Set<LTL<L>> state : result.getAllStates())
+                    if (!state.contains(new Not<>(sub_ltl)) || state.contains(((Until<L>) sub_ltl).getRight()))
+                        result.setAccepting(state, k);
+                k++;
+            }
+        }
+        return result;
+    }
 
+    private <L> boolean nextConditionsHold(Set<LTL<L>> from, Set<LTL<L>> dest, Set<LTL<L>> sub) {
+        for (LTL<L> ltl: sub) {
+            if (ltl instanceof Next) {
+                //first condition
+                if (from.contains(ltl))
+                    if (!dest.contains(((Next<L>) ltl).getInner()))
+                        return false;
+                //second condition
+                if (dest.contains(((Next<L>) ltl).getInner()))
+                    if (!from.contains(ltl))
+                        return false;
+            }
+        }
+        return true;
+    }
+
+    private <L> boolean subConditionsHold(Set<LTL<L>> from, Set<LTL<L>> dest, Set<LTL<L>> sub) {
+        for (LTL<L> ltl: sub) {
+            if (ltl instanceof Until) {
+                //first condition
+                if (from.contains(ltl) && from.contains(new Not<>(((Until<L>) ltl).getRight()))) //TODO: contains(Not(ltl))
+                                                                                                //TODO: or !contains(ltl) ???
+                    if (!dest.contains(ltl))
+                        return false;
+                //second condition
+                if (from.contains(new Not<>(ltl)) && from.contains(((Until<L>) ltl).getLeft()))
+                    if (dest.contains(ltl))
+                        return false;
+            }
+        }
+        return true;
+    }
+
+    private <L> Set<L> getAtomics(Set<LTL<L>> state) {
+        Set<L> atomics = new HashSet<>();
+        for(LTL<L> ltl: state)
+            if (ltl instanceof AP)
+                atomics.add(((AP<L>) ltl).getName());
+        return atomics;
     }
 
     //power set
