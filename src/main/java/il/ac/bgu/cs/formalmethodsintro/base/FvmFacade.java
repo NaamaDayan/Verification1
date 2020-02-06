@@ -1544,10 +1544,14 @@ public class FvmFacade {
         for (LTL<L> sub_ltl : sub) {
             if (sub_ltl instanceof Until) {
                 for (Set<LTL<L>> state : result.getAllStates())
-                    if (!state.contains(new Not<>(sub_ltl)) || state.contains(((Until<L>) sub_ltl).getRight()))
+                    if (state.contains(getNotLTL(sub_ltl)) || state.contains(((Until<L>) sub_ltl).getRight()))
                         result.setAccepting(state, k);
                 k++;
             }
+        }
+        if (k == 0) { //No UNTILSs in ltl, set all to be accepting
+            for (Set<LTL<L>> state : result.getAllStates())
+                result.setAccepting(state, k);
         }
         return result;
     }
@@ -1572,12 +1576,12 @@ public class FvmFacade {
         for (LTL<L> ltl: sub) {
             if (ltl instanceof Until) {
                 //first condition
-                if (from.contains(ltl) && from.contains(new Not<>(((Until<L>) ltl).getRight()))) //TODO: contains(Not(ltl))
+                if (from.contains(ltl) && from.contains(getNotLTL(((Until<L>) ltl).getRight()))) //TODO: contains(Not(ltl))
                                                                                                 //TODO: or !contains(ltl) ???
                     if (!dest.contains(ltl))
                         return false;
                 //second condition
-                if (from.contains(new Not<>(ltl)) && from.contains(((Until<L>) ltl).getLeft()))
+                if (from.contains(getNotLTL(ltl)) && from.contains(((Until<L>) ltl).getLeft()))
                     if (dest.contains(ltl))
                         return false;
             }
@@ -1616,9 +1620,10 @@ public class FvmFacade {
     //TODO: check
     private <L> Set<Set<LTL<L>>> getConsistentSubs(Set<Set<LTL<L>>> allSubs, Set<LTL<L>> sub) {
         Set<Set<LTL<L>>> result = new HashSet<>();
-        for (Set<LTL<L>> subset: allSubs)
+        for (Set<LTL<L>> subset: allSubs) {
             if (isConsistent(subset, sub))
                 result.add(subset);
+        }
         return result;
     }
 
@@ -1632,7 +1637,7 @@ public class FvmFacade {
                 return false;
         for (LTL<L> phi: sub) {
             if (set.contains(phi))
-                if (set.contains(new Not(phi)))
+                if (set.contains(getNotLTL(phi)))
                     return false;
             if (phi instanceof And) {
                 if (set.contains(phi))
@@ -1663,10 +1668,14 @@ public class FvmFacade {
     private <L> boolean isMax(Set<LTL<L>> set, Set<LTL<L>> sub) {
         for (LTL<L> phi: sub) {
             if (!set.contains(phi))
-                if (!set.contains(new Not(phi)))
+                if (!set.contains(getNotLTL(phi)))
                     return false;
         }
         return true;
+    }
+
+    private <L> LTL<L> getNotLTL(LTL<L> phi) {
+        return phi instanceof Not ? ((Not<L>) phi).getInner() : new Not<>(phi);
     }
 
 
@@ -1676,7 +1685,7 @@ public class FvmFacade {
 
     private <L> Set<LTL<L>> calcSubRec(LTL<L> ltl, HashSet<LTL<L>> sub) {
         sub.add(ltl);
-        sub.add(new Not<>(ltl));
+        sub.add(getNotLTL(ltl));
         if (ltl instanceof Until) {
             calcSubRec(((Until) ltl).getLeft(), sub);
             calcSubRec(((Until) ltl).getRight(), sub);
@@ -1718,13 +1727,13 @@ public class FvmFacade {
                 for (State toState : entry.getValue())
                     for (int i : mulAut.getColors())
                         for (int j : mulAut.getColors()) {
-                            boolean sAcceptable = mulAut.getAcceptingStates(i).contains(transition.getKey());
-                            if ((!sAcceptable && j == i) || (sAcceptable && (j == i % numOfColors + 1)))
+                            boolean sAcceptable = mulAut.getAcceptingStates(i).contains(transition.getKey()); //TODO:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+                            if ((!sAcceptable && j == i) || (sAcceptable && (j == i % numOfColors + 1))) //TODO: Shahar - what is the right formula if we start from 0 and not 1?????????
                                 finalNBA.addTransition(new Pair<>(transition.getKey(),i), entry.getKey(), new Pair<>(toState, j));
                         }
         }
         //acceptance
-        Set<?> accepting = new HashSet<>(autCopies.get(0).getAcceptingStates(1));
+        Set<?> accepting = new HashSet<>(autCopies.get(0).getAcceptingStates(0)); //TODO: Shahar - was 1 in color, changed it to 0
         finalNBA.addAllAccepting(accepting, 0);
         return finalNBA;
     }
