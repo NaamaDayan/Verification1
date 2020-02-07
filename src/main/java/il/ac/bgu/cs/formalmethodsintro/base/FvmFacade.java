@@ -1728,7 +1728,7 @@ public class FvmFacade {
                     for (int i : mulAut.getColors())
                         for (int j : mulAut.getColors()) {
                             boolean sAcceptable = mulAut.getAcceptingStates(i).contains(transition.getKey()); //TODO:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
-                            if ((!sAcceptable && j == i) || (sAcceptable && (j == i % numOfColors + 1))) //TODO: Shahar - what is the right formula if we start from 0 and not 1?????????
+                            if ((!sAcceptable && j == i) || (sAcceptable && (j == (i+1) % numOfColors))) //TODO: Shahar - what is the right formula if we start from 0 and not 1?????????
                                 finalNBA.addTransition(new Pair<>(transition.getKey(),i), entry.getKey(), new Pair<>(toState, j));
                         }
         }

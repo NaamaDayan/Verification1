@@ -32,7 +32,8 @@ public class LTLTest_Maayan {
         Automaton<?, String> exp = expected2();
 
 
-        assertEquals(aut.equals(expected2()), true);
+        assertEquals(aut.equals(exp), true);
+
     }
 
     Automaton<Pair<Set<String>, Integer>, String> expected() {
