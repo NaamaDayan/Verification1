@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a3fdb15c-2dc8-45c4-930d-74704924ba91" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest_Maayan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest_Maayan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/GNBACritSectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/GNBACritSectionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/MyLTLChecks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/MyLTLChecks.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,20 +26,38 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+            <state relative-caret-position="174">
+              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/MyLTLChecks.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="148">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="1735" column="78" selection-start-line="1735" selection-start-column="77" selection-end-line="1735" selection-end-column="78" />
+            <state relative-caret-position="63">
+              <caret line="1717" column="37" selection-start-line="1717" selection-start-column="37" selection-end-line="1717" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#18331#18332#0" expanded="true" />
@@ -87,31 +107,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/GNBACritSectionTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="25" column="51" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/GNBAThreeColors.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/automata/Automaton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="42" column="33" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="33" />
+            <state relative-caret-position="272">
+              <caret line="39" column="20" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="20" />
               <folding>
                 <element signature="e#1231#1232#0" expanded="true" />
                 <element signature="e#1271#1272#0" expanded="true" />
@@ -180,15 +179,16 @@
         <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/AutomataFactory.java" />
         <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/AutTsProductTests.java" />
         <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/AutTsProductTests2.java" />
-        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/GNBACritSectionTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/automata/Automaton.java" />
         <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/VerificationTests.java" />
         <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/CounterExampleVerifier.java" />
-        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/MyLTLChecks.java" />
         <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest2.java" />
-        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest_Maayan.java" />
+        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/GNBACritSectionTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest1.java" />
         <option value="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" />
+        <option value="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/MyLTLChecks.java" />
       </list>
     </option>
   </component>
@@ -277,7 +277,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1581066465314" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1581069349734" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../FORMAI-master" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -302,7 +302,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.GNBACritSectionTest.simpleTest">
+  <component name="RunManager" selected="JUnit.LTLTest1.test">
     <configuration name="GNBACritSectionTest.simpleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FormalMethodsIntro-Base" />
       <extension name="coverage">
@@ -319,7 +319,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GNBAThreeColors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GNBAThreeColors.threeColorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FormalMethodsIntro-Base" />
       <extension name="coverage">
         <pattern>
@@ -329,11 +329,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3" />
       <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.GNBAThreeColors" />
+      <option name="METHOD_NAME" value="threeColorTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LTLTest_Maayan" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LTLTest1.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FormalMethodsIntro-Base" />
       <extension name="coverage">
         <pattern>
@@ -342,22 +344,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3" />
-      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.LTLTest_Maayan" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LTLTest_Maayan.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FormalMethodsIntro-Base" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3" />
-      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.LTLTest_Maayan" />
-      <option name="METHOD_NAME" value="test2" />
+      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.LTLTest1" />
+      <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -379,13 +367,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MyLTLChecks.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FormalMethodsIntro-Base" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3" />
+      <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.MyLTLChecks" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GNBACritSectionTest.simpleTest" />
-        <item itemvalue="JUnit.LTLTest_Maayan" />
-        <item itemvalue="JUnit.LTLTest_Maayan.test2" />
+        <item itemvalue="JUnit.LTLTest1.test" />
+        <item itemvalue="JUnit.MyLTLChecks.test" />
         <item itemvalue="JUnit.LTLTest.test" />
-        <item itemvalue="JUnit.GNBAThreeColors" />
+        <item itemvalue="JUnit.GNBAThreeColors.threeColorTest" />
+        <item itemvalue="JUnit.GNBACritSectionTest.simpleTest" />
       </list>
     </recent_temporary>
   </component>
@@ -413,39 +417,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GNBAThreeColors - 2020.02.07 at 10h 19m 26s.xml">
-      <configuration name="GNBAThreeColors" configurationId="JUnit" />
+    <history-entry file="LTLTest1_test - 2020.02.07 at 11h 17m 31s.xml">
+      <configuration name="LTLTest1.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LTLTest_Maayan_test2 - 2020.02.07 at 10h 20m 26s.xml">
-      <configuration name="LTLTest_Maayan.test2" configurationId="JUnit" />
+    <history-entry file="LTLTest1_test - 2020.02.07 at 11h 19m 19s.xml">
+      <configuration name="LTLTest1.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LTLTest_Maayan_test2 - 2020.02.07 at 10h 20m 37s.xml">
-      <configuration name="LTLTest_Maayan.test2" configurationId="JUnit" />
+    <history-entry file="LTLTest1_test - 2020.02.07 at 11h 19m 55s.xml">
+      <configuration name="LTLTest1.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LTLTest_Maayan_test2 - 2020.02.07 at 10h 22m 08s.xml">
-      <configuration name="LTLTest_Maayan.test2" configurationId="JUnit" />
+    <history-entry file="MyLTLChecks_test - 2020.02.07 at 11h 21m 22s.xml">
+      <configuration name="MyLTLChecks.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LTLTest_test - 2020.02.07 at 10h 22m 44s.xml">
+    <history-entry file="MyLTLChecks_test - 2020.02.07 at 11h 32m 37s.xml">
+      <configuration name="MyLTLChecks.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LTLTest_test - 2020.02.07 at 11h 34m 49s.xml">
       <configuration name="LTLTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LTLTest_Maayan_test2 - 2020.02.07 at 10h 23m 16s.xml">
-      <configuration name="LTLTest_Maayan.test2" configurationId="JUnit" />
+    <history-entry file="MyLTLChecks_test - 2020.02.07 at 11h 43m 34s.xml">
+      <configuration name="MyLTLChecks.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LTLTest_Maayan - 2020.02.07 at 10h 23m 28s.xml">
-      <configuration name="LTLTest_Maayan" configurationId="JUnit" />
+    <history-entry file="MyLTLChecks_test - 2020.02.07 at 11h 49m 24s.xml">
+      <configuration name="MyLTLChecks.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LTLTest_Maayan - 2020.02.07 at 11h 05m 39s.xml">
-      <configuration name="LTLTest_Maayan" configurationId="JUnit" />
+    <history-entry file="LTLTest1_test - 2020.02.07 at 11h 52m 54s.xml">
+      <configuration name="LTLTest1.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GNBACritSectionTest_simpleTest - 2020.02.07 at 11h 05m 51s.xml">
-      <configuration name="GNBACritSectionTest.simpleTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GNBACritSectionTest_simpleTest - 2020.02.07 at 11h 07m 37s.xml">
-      <configuration name="GNBACritSectionTest.simpleTest" configurationId="JUnit" />
+    <history-entry file="LTLTest1_test - 2020.02.07 at 11h 54m 09s.xml">
+      <configuration name="LTLTest1.test" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93422000" />
+    <option name="totallyTimeSpent" value="96134000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -461,7 +465,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.29129663" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49878544" weight="0.38010657" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.89520425" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.38010657" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3285968" />
@@ -557,7 +561,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest1.java</url>
-          <line>31</line>
+          <line>32</line>
           <properties />
           <option name="timeStamp" value="44" />
         </line-breakpoint>
@@ -568,10 +572,34 @@
           <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/GNBACritSectionTest.java</url>
+          <url>file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/GNBAThreeColors.java</url>
+          <line>26</line>
+          <properties />
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest.java</url>
+          <line>32</line>
+          <properties />
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/MyLTLChecks.java</url>
           <line>27</line>
           <properties />
-          <option name="timeStamp" value="54" />
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java</url>
+          <line>1555</line>
+          <properties />
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java</url>
+          <line>1730</line>
+          <properties />
+          <option name="timeStamp" value="63" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -581,6 +609,7 @@
         <watch expression="((HashMap.Node)((HashMap)exp.transitions).entrySet().toArray()[0]).getValue()" custom="java.util.HashMap.Node,java.util.HashMap" />
         <watch expression="((HashMap)result.transitions).entrySet().toArray()[3]" custom="java.util.HashMap" />
         <watch expression="aut.transitions" />
+        <watch expression="((HashMap)result.transitions).entrySet().toArray()[1]" custom="java.util.HashMap" />
       </configuration>
     </watches-manager>
   </component>
@@ -954,17 +983,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/MyLTLChecks.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/GNBACritSectionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+        <state relative-caret-position="459">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/GNBAThreeColors.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/automata/Automaton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="42" column="33" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="33" />
+        <state relative-caret-position="272">
+          <caret line="39" column="20" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="20" />
           <folding>
             <element signature="e#1231#1232#0" expanded="true" />
             <element signature="e#1271#1272#0" expanded="true" />
@@ -981,56 +1020,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="47" column="63" selection-start-line="47" selection-start-column="63" selection-end-line="47" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/GNBAThreeColors.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest_Maayan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="31" column="47" lean-forward="true" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="306">
+          <caret line="30" column="24" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+        <state relative-caret-position="120">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/GNBACritSectionTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest_Maayan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="25" column="51" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
+        <state relative-caret-position="2533">
+          <caret line="149" column="56" selection-start-line="149" selection-start-column="49" selection-end-line="149" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/MyLTLChecks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="1735" column="78" selection-start-line="1735" selection-start-column="77" selection-end-line="1735" selection-end-column="78" />
+        <state relative-caret-position="63">
+          <caret line="1717" column="37" selection-start-line="1717" selection-start-column="37" selection-end-line="1717" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#18331#18332#0" expanded="true" />
@@ -1075,6 +1097,13 @@
             <element signature="e#79329#79330#0" expanded="true" />
             <element signature="e#79374#79375#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
         </state>
       </provider>
     </entry>

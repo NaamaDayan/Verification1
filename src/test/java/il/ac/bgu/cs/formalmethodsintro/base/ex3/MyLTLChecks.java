@@ -19,11 +19,14 @@ public class MyLTLChecks {
 
 	@Test
 	public void test() {
-		AP<String> p = new AP<>("a");
+		AP<String> a = new AP<>("a");
+		AP<String> b = new AP<>("b");
 
-		LTL<String> ltl = next(p);
+
+		LTL<String> ltl = until(a, until(b, not(a)));
 
 		Automaton<?, String> aut = fvmFacadeImpl.LTL2NBA(ltl);
+		int aa = 7;
 
 	}
 
