@@ -9,6 +9,7 @@ import il.ac.bgu.cs.formalmethodsintro.base.channelsystem.ChannelSystem;
 import il.ac.bgu.cs.formalmethodsintro.base.circuits.Circuit;
 import il.ac.bgu.cs.formalmethodsintro.base.exceptions.ActionNotFoundException;
 import il.ac.bgu.cs.formalmethodsintro.base.exceptions.StateNotFoundException;
+import il.ac.bgu.cs.formalmethodsintro.base.fairness.FairnessCondition;
 import il.ac.bgu.cs.formalmethodsintro.base.ltl.*;
 import il.ac.bgu.cs.formalmethodsintro.base.nanopromela.NanoPromelaParser.*;
 import il.ac.bgu.cs.formalmethodsintro.base.programgraph.*;
@@ -1738,6 +1739,55 @@ public class FvmFacade {
         return finalNBA;
     }
 
+
+    /**
+     * Verify that a system satisfies an LTL formula under fairness conditions.
+     * @param ts Transition system
+     * @param fc Fairness condition
+     * @param ltl An LTL formula
+     * @param <S>  Type of states in the transition system
+     * @param <A> Type of actions in the transition system
+     * @param <P> Type of atomic propositions in the transition system
+     * @return a VerificationSucceeded object or a VerificationFailed object with a counterexample.
+     */
+    public <S, A, P> VerificationResult<S> verifyFairLTLFormula(TransitionSystem<S, A, P> ts, FairnessCondition<A> fc, LTL<P> ltl){
+        TransitionSystem<Pair<S, A>, A, Object> TSPrime = new TransitionSystem<>(); // Object because string and P aren't the same
+        //States & initals & labels
+        for (S state: ts.getStates())
+            for (A act: ts.getActions()) {
+                Pair<S, A> newState = new Pair<>(state, act);
+                if (ts.getInitialStates().contains(state))
+                    TSPrime.addInitialState(newState);
+                else
+                    TSPrime.addState(newState);
+                //labeling
+                //add the original labels
+                for(P label: ts.getLabel(state))
+                    TSPrime.addToLabel(newState, label);
+                //add the triggered and enabled labels by need
+                TSPrime.addToLabel(newState, "triggered(" + act.toString() + ")");
+                for(A alphaPrime: ts.getActions())
+                    if (!post(ts, state, alphaPrime).isEmpty())
+                        TSPrime.addToLabel(newState, "enabled(" + alphaPrime.toString() + ")");
+            }
+        //Actions
+        TSPrime.addAllActions(ts.getActions());
+        //APs
+        Set<Object> APprime = new HashSet<>(); //because string and P aren't the same
+        APprime.addAll(ts.getAtomicPropositions());
+        for(A act: ts.getActions()) {
+            APprime.add("triggered(" + act.toString() + ")");
+            APprime.add("enabled(" + act.toString() + ")");
+        }
+        //transitions
+        for(TSTransition<S, A> trans: ts.getTransitions()) {
+            for (Pair<S, A> tsprimeState: TSPrime.getStates()) {
+                if (tsprimeState.getFirst().equals(trans.getFrom()))
+                    TSPrime.addTransition(new TSTransition<>(tsprimeState, trans.getAction(), new Pair<>(trans.getTo(), trans.getAction())));
+            }
+        }
+        //-----TS_Prime is ready!----
+    }
 
 //********************************* UTILITIES *****************************************
 
