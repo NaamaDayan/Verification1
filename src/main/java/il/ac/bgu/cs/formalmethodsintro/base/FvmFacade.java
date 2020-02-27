@@ -9,7 +9,7 @@ import il.ac.bgu.cs.formalmethodsintro.base.channelsystem.ChannelSystem;
 import il.ac.bgu.cs.formalmethodsintro.base.circuits.Circuit;
 import il.ac.bgu.cs.formalmethodsintro.base.exceptions.ActionNotFoundException;
 import il.ac.bgu.cs.formalmethodsintro.base.exceptions.StateNotFoundException;
-import il.ac.bgu.cs.formalmethodsintro.base.ltl.LTL;
+import il.ac.bgu.cs.formalmethodsintro.base.ltl.*;
 import il.ac.bgu.cs.formalmethodsintro.base.nanopromela.NanoPromelaParser.*;
 import il.ac.bgu.cs.formalmethodsintro.base.programgraph.*;
 import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.AlternatingSequence;
@@ -18,7 +18,6 @@ import il.ac.bgu.cs.formalmethodsintro.base.transitionsystem.TransitionSystem;
 import il.ac.bgu.cs.formalmethodsintro.base.util.CollectionHelper;
 import il.ac.bgu.cs.formalmethodsintro.base.util.Pair;
 import il.ac.bgu.cs.formalmethodsintro.base.util.Util;
-import il.ac.bgu.cs.formalmethodsintro.base.verification.VeficationSucceeded;
 import il.ac.bgu.cs.formalmethodsintro.base.verification.VerificationFailed;
 import il.ac.bgu.cs.formalmethodsintro.base.verification.VerificationResult;
 import il.ac.bgu.cs.formalmethodsintro.base.verification.VerificationSucceeded;
@@ -1516,7 +1515,190 @@ public class FvmFacade {
      * @return An automaton A such that L_\omega(A)=Words(ltl)
      */
     public <L> Automaton<?, L> LTL2NBA(LTL<L> ltl) {
-        throw new java.lang.UnsupportedOperationException();
+        return GNBA2NBA(LTL2GNBA(ltl));
+    }
+
+    private <L> MultiColorAutomaton<?, L> LTL2GNBA(LTL<L> ltl) {
+        MultiColorAutomaton<Set<LTL<L>>, L> result = new MultiColorAutomaton<>(); //TODO: is it OK that instead of
+        // wildcard (?) we put a specific type?
+
+        Set<LTL<L>> sub = calcSub(ltl);
+        Set<Set<LTL<L>>> allSubSets = getSubsets(sub);
+        Set<Set<LTL<L>>> consistentSubs = getConsistentSubs(allSubSets, sub);
+
+        for (Set<LTL<L>> state : consistentSubs) {
+            //add initials
+            if (state.contains(ltl))
+                result.addInitial(state);
+            Set<L> atomics = getAtomics(state);
+            //TODO: here we put only the atomics in the transition, not their negation.
+            //TODO: check whether a negated AP should be in the transition too, or that its absence is fine.
+            //add transitions
+            for (Set<LTL<L>> dest : consistentSubs) {
+                if (nextConditionsHold(state, dest, sub) && subConditionsHold(state, dest, sub))
+                    result.addTransition(state, atomics, dest);
+            }
+        }
+        //add accepting
+        int k = 0;
+        for (LTL<L> sub_ltl : sub) {
+            if (sub_ltl instanceof Until) {
+                for (Set<LTL<L>> state : result.getAllStates())
+                    if (state.contains(getNotLTL(sub_ltl)) || state.contains(((Until<L>) sub_ltl).getRight()))
+                        result.setAccepting(state, k);
+                k++;
+            }
+        }
+        if (k == 0) { //No UNTILSs in ltl, set all to be accepting
+            for (Set<LTL<L>> state : result.getAllStates())
+                result.setAccepting(state, k);
+        }
+        return result;
+    }
+
+    private <L> boolean nextConditionsHold(Set<LTL<L>> from, Set<LTL<L>> dest, Set<LTL<L>> sub) {
+        for (LTL<L> ltl: sub) {
+            if (ltl instanceof Next) {
+                //first condition
+                if (from.contains(ltl))
+                    if (!dest.contains(((Next<L>) ltl).getInner()))
+                        return false;
+                //second condition
+                if (dest.contains(((Next<L>) ltl).getInner()))
+                    if (!from.contains(ltl))
+                        return false;
+            }
+        }
+        return true;
+    }
+
+    private <L> boolean subConditionsHold(Set<LTL<L>> from, Set<LTL<L>> dest, Set<LTL<L>> sub) {
+        for (LTL<L> ltl: sub) {
+            if (ltl instanceof Until) {
+                //first condition
+                if (from.contains(ltl) && from.contains(getNotLTL(((Until<L>) ltl).getRight()))) //TODO: contains(Not(ltl))
+                                                                                                //TODO: or !contains(ltl) ???
+                    if (!dest.contains(ltl))
+                        return false;
+                //second condition
+                if (from.contains(getNotLTL(ltl)) && from.contains(((Until<L>) ltl).getLeft()))
+                    if (dest.contains(ltl))
+                        return false;
+            }
+        }
+        return true;
+    }
+
+    private <L> Set<L> getAtomics(Set<LTL<L>> state) {
+        Set<L> atomics = new HashSet<>();
+        for(LTL<L> ltl: state)
+            if (ltl instanceof AP)
+                atomics.add(((AP<L>) ltl).getName());
+        return atomics;
+    }
+
+    //power set
+    //TODO: check
+    private <L> Set<Set<LTL<L>>> getSubsets(Set<LTL<L>> sub) {
+        Set<Set<LTL<L>>> result = new HashSet<>();
+        return getSubsetsRec(new ArrayList(sub), new HashSet<>(), 0, result);
+    }
+
+    private <L> Set<Set<LTL<L>>> getSubsetsRec(ArrayList<LTL<L>> origSet, Set<LTL<L>> curr, int ind, Set<Set<LTL<L>>> result) {
+        if (ind == origSet.size())
+            result.add(curr);
+        else {
+            HashSet<LTL<L>> with = new HashSet<>(curr);
+            with.add(origSet.get(ind));
+            getSubsetsRec(origSet, with, ind + 1, result);
+            //without
+            getSubsetsRec(origSet, curr, ind + 1, result);
+        }
+        return result;
+    }
+
+    //TODO: check
+    private <L> Set<Set<LTL<L>>> getConsistentSubs(Set<Set<LTL<L>>> allSubs, Set<LTL<L>> sub) {
+        Set<Set<LTL<L>>> result = new HashSet<>();
+        for (Set<LTL<L>> subset: allSubs) {
+            if (isConsistent(subset, sub))
+                result.add(subset);
+        }
+        return result;
+    }
+
+    private <L> boolean isConsistent(Set<LTL<L>> set, Set<LTL<L>> sub) {
+        return isLogicalConsistent(set, sub) && isLocalConsistent(set, sub) && isMax(set, sub);
+    }
+
+    private <L> boolean isLogicalConsistent(Set<LTL<L>> set, Set<LTL<L>> sub) {
+        if (sub.contains(new TRUE<>()))
+            if (!set.contains(new TRUE<>()))
+                return false;
+        for (LTL<L> phi: sub) {
+            if (set.contains(phi))
+                if (set.contains(getNotLTL(phi)))
+                    return false;
+            if (phi instanceof And) {
+                if (set.contains(phi))
+                    if (!(set.contains(((And<L>) phi).getLeft()) && set.contains(((And<L>) phi).getRight())))
+                        return false;
+                if (set.contains(((And<L>) phi).getRight()) && set.contains(((And<L>) phi).getLeft()))
+                    if (!set.contains(phi))
+                        return false;
+            }
+        }
+        return true;
+    }
+
+    private <L> boolean isLocalConsistent(Set<LTL<L>> set, Set<LTL<L>> sub) {
+        for (LTL<L> phi: sub) {
+            if (phi instanceof Until) {
+                if (set.contains(((Until<L>) phi).getRight()))
+                    if (!set.contains(phi))
+                        return false;
+                if (set.contains(phi))
+                    if (!(set.contains(((Until<L>) phi).getRight()) || set.contains(((Until<L>) phi).getLeft())))
+                        return false;
+            }
+        }
+        return true;
+    }
+
+    private <L> boolean isMax(Set<LTL<L>> set, Set<LTL<L>> sub) {
+        for (LTL<L> phi: sub) {
+            if (!set.contains(phi))
+                if (!set.contains(getNotLTL(phi)))
+                    return false;
+        }
+        return true;
+    }
+
+    private <L> LTL<L> getNotLTL(LTL<L> phi) {
+        return phi instanceof Not ? ((Not<L>) phi).getInner() : new Not<>(phi);
+    }
+
+
+    private <L> Set<LTL<L>> calcSub(LTL<L> ltl) {
+        return calcSubRec(ltl, new HashSet<>());
+    }
+
+    private <L> Set<LTL<L>> calcSubRec(LTL<L> ltl, HashSet<LTL<L>> sub) {
+        sub.add(ltl);
+        sub.add(getNotLTL(ltl));
+        if (ltl instanceof Until) {
+            calcSubRec(((Until) ltl).getLeft(), sub);
+            calcSubRec(((Until) ltl).getRight(), sub);
+        }
+        else if (ltl instanceof And) {
+            calcSubRec(((And) ltl).getLeft(), sub);
+            calcSubRec(((And) ltl).getRight(), sub);
+        }
+        else if (ltl instanceof Not)
+            calcSubRec(((Not) ltl).getInner(), sub);
+        else if (ltl instanceof Next)
+            calcSubRec(((Next) ltl).getInner(), sub);
+        return sub;
     }
 
     /**
@@ -1545,13 +1727,13 @@ public class FvmFacade {
                 for (State toState : entry.getValue())
                     for (int i : mulAut.getColors())
                         for (int j : mulAut.getColors()) {
-                            boolean sAcceptable = mulAut.getAcceptingStates(i).contains(transition.getKey());
-                            if ((!sAcceptable && j == i) || (sAcceptable && (j == i % numOfColors + 1)))
+                            boolean sAcceptable = mulAut.getAcceptingStates(i).contains(transition.getKey()); //TODO:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+                            if ((!sAcceptable && j == i) || (sAcceptable && (j == (i+1) % numOfColors))) //TODO: Shahar - what is the right formula if we start from 0 and not 1?????????
                                 finalNBA.addTransition(new Pair<>(transition.getKey(),i), entry.getKey(), new Pair<>(toState, j));
                         }
         }
         //acceptance
-        Set<?> accepting = new HashSet<>(autCopies.get(0).getAcceptingStates(1));
+        Set<?> accepting = new HashSet<>(autCopies.get(0).getAcceptingStates(0)); //TODO: Shahar - was 1 in color, changed it to 0
         finalNBA.addAllAccepting(accepting, 0);
         return finalNBA;
     }

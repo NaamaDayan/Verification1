@@ -28,8 +28,9 @@ public class LTLTest1 {
 		LTL<String> ltl = until(not(p), next(p));
 
 		Automaton<?, String> aut = fvmFacadeImpl.LTL2NBA(ltl);
+		Automaton<?, String> exp = expected();
 
-		assertEquals(aut, expected());
+		assertEquals(aut, exp);
 
 	}
 

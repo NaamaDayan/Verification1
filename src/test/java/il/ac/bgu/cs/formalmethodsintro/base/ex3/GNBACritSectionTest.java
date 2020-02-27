@@ -43,8 +43,8 @@ public class GNBACritSectionTest {
 		}
 
 		aut.setInitial("s0");
-		aut.setAccepting("s1", 1);
-		aut.setAccepting("s2", 2);
+		aut.setAccepting("s1", 0);
+		aut.setAccepting("s2", 1);
 
 		return aut;
 	}
