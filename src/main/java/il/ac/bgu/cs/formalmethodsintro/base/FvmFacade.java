@@ -1603,7 +1603,8 @@ public class FvmFacade {
         ArrayList<LTL<L>> subAsList = new ArrayList(sub);
         Set<Set<LTL<L>>> result = new HashSet<>();
         int n = sub.size();
-        for (int i = 0; i < (1<<n); i++) {
+        long pow_set_size = (long)Math.pow(2, n);
+        for (int i = 0; i < pow_set_size; i++) {
             Set<LTL<L>> currSet = new HashSet<>();
             for (int j = 0; j < n; j++)
                 if ((i & (1 << j)) > 0)
