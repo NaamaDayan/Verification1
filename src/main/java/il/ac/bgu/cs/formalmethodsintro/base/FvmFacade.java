@@ -1856,6 +1856,10 @@ public class FvmFacade {
         }
         //FULL EXPRESSION
         LTL phiF = new And(startfirstPart, new And(startsecondPart, startThirdPart));
+
+        LTL finalExpr = new IfThen<>(phiF, ltl).toLTL();
+        Automaton aut_bad_expr = LTL2NBA(new Not<>(finalExpr));
+        return verifyAnOmegaRegularProperty(TSPrime, aut_bad_expr);
     }
 
     class Or<L> extends LTL<L> {
