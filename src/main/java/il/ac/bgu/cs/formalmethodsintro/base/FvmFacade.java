@@ -1524,7 +1524,7 @@ public class FvmFacade {
         // wildcard (?) we put a specific type?
 
         Set<LTL<L>> sub = calcSub(ltl);
-        Set<Set<LTL<L>>> allSubSets = getSubsets(sub);
+        Set<Set<LTL<L>>> allSubSets = getSubsetsIter(sub);
         Set<Set<LTL<L>>> consistentSubs = getConsistentSubs(allSubSets, sub);
 
         for (Set<LTL<L>> state : consistentSubs) {
@@ -1596,6 +1596,21 @@ public class FvmFacade {
             if (ltl instanceof AP)
                 atomics.add(((AP<L>) ltl).getName());
         return atomics;
+    }
+
+    //power set - ITERATIVE
+    private <L> Set<Set<LTL<L>>> getSubsetsIter(Set<LTL<L>> sub) {
+        ArrayList<LTL<L>> subAsList = new ArrayList(sub);
+        Set<Set<LTL<L>>> result = new HashSet<>();
+        int n = sub.size();
+        for (int i = 0; i < (1<<n); i++) {
+            Set<LTL<L>> currSet = new HashSet<>();
+            for (int j = 0; j < n; j++)
+                if ((i & (1 << j)) > 0)
+                    currSet.add(subAsList.get(j));
+            result.add(currSet);
+        }
+        return result;
     }
 
     //power set
@@ -1676,9 +1691,12 @@ public class FvmFacade {
     }
 
     private <L> LTL<L> getNotLTL(LTL<L> phi) {
-        return phi instanceof Not ? ((Not<L>) phi).getInner() : new Not<>(phi);
+        return phi instanceof Not ? ((Not<L>) phi).getInner() : new Not<>(shrink(phi));
     }
 
+    private <L> LTL<L> getAndLTL(LTL<L> phi1, LTL<L> phi2) {
+        return (phi1 instanceof TRUE && phi2 instanceof TRUE) ? new TRUE<>() : shrink(new And<>(shrink(phi1), shrink(phi2)));
+    }
 
     private <L> Set<LTL<L>> calcSub(LTL<L> ltl) {
         return calcSubRec(ltl, new HashSet<>());
@@ -1788,10 +1806,14 @@ public class FvmFacade {
         //-----TS_Prime is ready!----
         //build the three parts of the formula:
         //FIRST PART
-        LTL firstPart = new And(new TRUE(), new TRUE());
+        LTL firstPart = fc.getUnconditional().isEmpty() ? new TRUE() : new And(new TRUE(), new TRUE());
         LTL startfirstPart = firstPart;
         for (Set<A> uncond : fc.getUnconditional()) {
             if (!uncond.isEmpty()) {
+                if (!firstPart.equals(new And(new TRUE(), new TRUE()))) {
+                    ((And) firstPart).setRight(new And(new TRUE(), new TRUE()));
+                    firstPart = ((And) firstPart).getRight();
+                }
                 Or innerOr = new Or(new False<>().toLTL(), new False<>().toLTL());
                 for (A ap : uncond) {
                     innerOr.setLeft(new AP("triggered(" + ap.toString() + ")"));
@@ -1800,15 +1822,17 @@ public class FvmFacade {
                 }
                 LTL alwaysEventually = new Always<>(new Eventually<>(innerOr.toLTL()).toLTL()).toLTL();
                 ((And) firstPart).setLeft(alwaysEventually);
-                ((And) firstPart).setRight(new And(new TRUE(), new TRUE()));
-                firstPart = ((And) firstPart).getRight();
             }
         }
         //SECOND PART
-        LTL secondPart = new And(new TRUE(), new TRUE());
+        LTL secondPart = fc.getStrong().isEmpty() ? new TRUE(): new And(new TRUE(), new TRUE());
         LTL startsecondPart = secondPart;
         for (Set<A> strong : fc.getStrong()) {
             if (!strong.isEmpty()) {
+                if (!secondPart.equals(new And(new TRUE(), new TRUE()))) {
+                    ((And) secondPart).setRight(new And(new TRUE(), new TRUE()));
+                    secondPart = ((And) secondPart).getRight();
+                }
                 Or innerEnabledOr = new Or(new False<>().toLTL(), new False<>().toLTL());
                 Or innerTriggeredOr = new Or(new False<>().toLTL(), new False<>().toLTL());
                 for (A ap : strong) {
@@ -1825,15 +1849,17 @@ public class FvmFacade {
                 LTL alwaysEventuallyTriggered = new Always<>(new Eventually<>(innerTriggeredOr.toLTL()).toLTL()).toLTL();
                 LTL cond = new IfThen<>(alwaysEventuallyEnabled, alwaysEventuallyTriggered).toLTL();
                 ((And) secondPart).setLeft(cond);
-                ((And) secondPart).setRight(new And(new TRUE(), new TRUE()));
-                secondPart = ((And) secondPart).getRight();
             }
         }
         //THIRD PART
-        LTL thirdPart = new And(new TRUE(), new TRUE());
+        LTL thirdPart = fc.getWeak().isEmpty() ? new TRUE(): new And(new TRUE(), new TRUE());
         LTL startThirdPart = thirdPart;
         for (Set<A> weak : fc.getWeak()) {
             if (!weak.isEmpty()) {
+                if (!thirdPart.equals(new And(new TRUE(), new TRUE()))) {
+                    ((And) thirdPart).setRight(new And(new TRUE(), new TRUE()));
+                    thirdPart = ((And) thirdPart).getRight();
+                }
                 Or innerEnabledOr = new Or(new False<>().toLTL(), new False<>().toLTL());
                 Or innerTriggeredOr = new Or(new False<>().toLTL(), new False<>().toLTL());
                 for (A ap : weak) {
@@ -1850,15 +1876,14 @@ public class FvmFacade {
                 LTL alwaysEventuallyTriggered = new Always<>(new Eventually<>(innerTriggeredOr.toLTL()).toLTL()).toLTL();
                 LTL cond = new IfThen<>(eventuallyAlwaysEnabled, alwaysEventuallyTriggered).toLTL();
                 ((And) thirdPart).setLeft(cond);
-                ((And) thirdPart).setRight(new And(new TRUE(), new TRUE()));
-                thirdPart = ((And) thirdPart).getRight();
             }
+
         }
         //FULL EXPRESSION
-        LTL phiF = new And(startfirstPart, new And(startsecondPart, startThirdPart));
+        LTL phiF = getAndLTL(shrink(startfirstPart), getAndLTL(shrink(startsecondPart), shrink(startThirdPart)));
 
         LTL finalExpr = new IfThen<>(phiF, ltl).toLTL();
-        Automaton aut_bad_expr = LTL2NBA(new Not<>(finalExpr));
+        Automaton aut_bad_expr = LTL2NBA(getNotLTL(finalExpr));
         return verifyAnOmegaRegularProperty(TSPrime, aut_bad_expr);
     }
 
@@ -1888,7 +1913,9 @@ public class FvmFacade {
         }
 
         public LTL<L> toLTL() {
-            return new Not<>(new And<>(new Not<>(this.left), new Not<>(this.right)));
+            this.left = shrink(this.left);
+            this.right = shrink(this.right);
+            return getNotLTL(getAndLTL(getNotLTL(this.left), getNotLTL(this.right)));
         }
     }
 
@@ -1900,6 +1927,7 @@ public class FvmFacade {
         }
 
         public LTL<L> toLTL() {
+            this.inner = shrink(this.inner);
             return new Until<>(new TRUE<>(), this.inner);
         }
     }
@@ -1912,7 +1940,8 @@ public class FvmFacade {
         }
 
         public LTL<L> toLTL() {
-            return new Not<>(new Eventually<>(new Not<>(this.inner)).toLTL());
+            this.inner = shrink(this.inner);
+            return getNotLTL(new Eventually<>(getNotLTL(this.inner)).toLTL());
         }
     }
 
@@ -1932,8 +1961,29 @@ public class FvmFacade {
         }
 
         public LTL<L> toLTL() {
-            return new Or<>(new Not<>(this.ifExp), this.then).toLTL();
+            this.ifExp = shrink(this.ifExp);
+            this.then = shrink(this.then);
+            return new Or<>(getNotLTL(this.ifExp), this.then).toLTL();
         }
+    }
+
+    private <L> LTL<L> shrink(LTL<L> ltl) {
+        if (ltl instanceof And) {
+            if (((And<L>) ltl).getLeft() instanceof TRUE && ((And<L>) ltl).getRight() instanceof TRUE)
+                return new TRUE<>();
+            if (((And<L>) ltl).getLeft() instanceof TRUE)
+                return ((And<L>) ltl).getRight();
+            if (((And<L>) ltl).getRight() instanceof TRUE)
+                return ((And<L>) ltl).getLeft();
+            if (((And<L>) ltl).getLeft().equals(new Not<>(new TRUE<>())) || ((And<L>) ltl).getRight().equals(new Not<>(new TRUE<>())))
+                return new Not<>(new TRUE<>());
+        }
+//        if (ltl instanceof Or)
+//            if (((Or<L>) ltl).getLeft() instanceof TRUE || ((Or<L>) ltl).getRight() instanceof TRUE)
+//                return new TRUE<>();
+//            if (((Or<L>) ltl).getLeft().equals(new Not<>(new TRUE<>())) && ((Or<L>) ltl).getRight().equals(new Not<>(new TRUE<>())))
+//                return new Not<>(new TRUE<>());
+        return ltl;
     }
 //********************************* UTILITIES *****************************************
 

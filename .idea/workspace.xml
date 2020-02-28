@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3fdb15c-2dc8-45c4-930d-74704924ba91" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex4/LTLFairCondTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -18,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="1599" lean-forward="true" selection-start-line="1599" selection-end-line="1599" />
+            <state relative-caret-position="66">
+              <caret line="1526" selection-start-line="1526" selection-end-line="1526" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#18331#18332#0" expanded="true" />
@@ -50,12 +48,8 @@
                 <element signature="e#71433#71434#0" expanded="true" />
                 <element signature="e#71818#71819#0" expanded="true" />
                 <element signature="e#71864#71865#0" expanded="true" />
-                <element signature="e#78054#78055#0" expanded="true" />
-                <element signature="e#78140#78141#0" expanded="true" />
-                <element signature="e#78192#78193#0" expanded="true" />
-                <element signature="e#78247#78248#0" expanded="true" />
-                <element signature="e#79329#79330#0" expanded="true" />
-                <element signature="e#79374#79375#0" expanded="true" />
+                <element signature="e#78986#78987#0" expanded="true" />
+                <element signature="e#80097#80098#0" expanded="true" />
                 <element signature="e#84676#84677#0" expanded="true" />
                 <element signature="e#84716#84717#0" expanded="true" />
                 <element signature="e#84762#84763#0" expanded="true" />
@@ -64,66 +58,11 @@
                 <element signature="e#84988#84989#0" expanded="true" />
                 <element signature="e#85024#85025#0" expanded="true" />
                 <element signature="e#85060#85061#0" expanded="true" />
-                <element signature="e#84175#84176#0" expanded="true" />
-                <element signature="e#84216#84217#0" expanded="true" />
                 <element signature="e#84376#84377#0" expanded="true" />
                 <element signature="e#84418#84419#0" expanded="true" />
-                <element signature="e#84451#84452#0" expanded="true" />
-                <element signature="e#84547#84548#0" expanded="true" />
-                <element signature="e#89000#89001#0" expanded="true" />
-                <element signature="e#89122#89123#0" expanded="true" />
+                <element signature="e#90321#90322#0" expanded="true" />
                 <element signature="e#85274#85275#0" expanded="true" />
                 <element signature="e#85328#85329#0" expanded="true" />
-                <element signature="e#86136#86137#0" expanded="true" />
-                <element signature="e#86176#86177#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/Not.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-              <folding>
-                <element signature="e#181#182#0" expanded="true" />
-                <element signature="e#283#284#0" expanded="true" />
-                <element signature="e#317#318#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/LTL.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex4/LTLFairCondTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="12">
-              <caret line="50" selection-start-line="50" selection-end-line="50" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/And.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="34" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="34" />
-              <folding>
-                <element signature="e#318#319#0" expanded="true" />
-                <element signature="e#345#346#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -146,6 +85,18 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex4/LTLFairCondTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="82">
+              <caret line="50" selection-start-line="50" selection-end-line="50" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -157,14 +108,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>addConcatenationToPG</find>
-      <find>post(</find>
-      <find>assert</find>
-      <find>post</find>
-      <find>dfs</find>
-      <find>class dfs</find>
-      <find>cycleCheck</find>
-      <find>reverse</find>
       <find>sPrimePrime</find>
       <find>rever</find>
       <find>notp_np</find>
@@ -187,6 +130,14 @@
       <find>trigger</find>
       <find>innerEnabledOr</find>
       <find>powerSet</find>
+      <find>getSubsets</find>
+      <find>not(</find>
+      <find>not</find>
+      <find>new nOT</find>
+      <find>new And</find>
+      <find>thirdPart</find>
+      <find>getAndLTL</find>
+      <find>getNot</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -295,6 +246,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="base" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="FormalMethodsIntro-Base" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HW-Base" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="ex4" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -305,7 +265,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1582899045042" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1582911582597" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../FORMAI-master" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -333,7 +293,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.GNBACritSectionTest">
+  <component name="RunManager" selected="JUnit.LTLFairCondTest">
     <configuration name="GNBACritSectionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FormalMethodsIntro-Base" />
       <extension name="coverage">
@@ -362,7 +322,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LTLFairCondTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LTLFairCondTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FormalMethodsIntro-Base" />
       <extension name="coverage">
         <pattern>
@@ -372,8 +332,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex4" />
       <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex4.LTLFairCondTest" />
-      <option name="METHOD_NAME" value="test" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -392,7 +350,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LTLTest_Maayan" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LTLTest_Maayan.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FormalMethodsIntro-Base" />
       <extension name="coverage">
         <pattern>
@@ -402,17 +360,19 @@
       </extension>
       <option name="PACKAGE_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3" />
       <option name="MAIN_CLASS_NAME" value="il.ac.bgu.cs.formalmethodsintro.base.ex3.LTLTest_Maayan" />
+      <option name="METHOD_NAME" value="test2" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.LTLFairCondTest" />
+        <item itemvalue="JUnit.LTLTest_Maayan.test2" />
         <item itemvalue="JUnit.GNBACritSectionTest" />
         <item itemvalue="JUnit.GNBAThreeColors" />
         <item itemvalue="JUnit.LTLTest" />
-        <item itemvalue="JUnit.LTLTest_Maayan" />
-        <item itemvalue="JUnit.LTLFairCondTest.test" />
       </list>
     </recent_temporary>
   </component>
@@ -439,50 +399,59 @@
       <workItem from="1582114291584" duration="1940000" />
       <workItem from="1582133088072" duration="2302000" />
       <workItem from="1582138426511" duration="691000" />
-      <workItem from="1582808903210" duration="18870000" />
+      <workItem from="1582808903210" duration="25689000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="LTLFairCondTest_test - 2020.02.28 at 15h 45m 36s.xml">
-      <configuration name="LTLFairCondTest.test" configurationId="JUnit" />
+    <history-entry file="LTLFairCondTest - 2020.02.28 at 19h 26m 01s.xml">
+      <configuration name="LTLFairCondTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LTLFairCondTest_test - 2020.02.28 at 15h 46m 03s.xml">
-      <configuration name="LTLFairCondTest.test" configurationId="JUnit" />
+    <history-entry file="LTLFairCondTest - 2020.02.28 at 19h 26m 48s.xml">
+      <configuration name="LTLFairCondTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LTLFairCondTest_test - 2020.02.28 at 15h 49m 01s.xml">
-      <configuration name="LTLFairCondTest.test" configurationId="JUnit" />
+    <history-entry file="LTLFairCondTest - 2020.02.28 at 19h 26m 58s.xml">
+      <configuration name="LTLFairCondTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LTLFairCondTest_test - 2020.02.28 at 15h 50m 45s.xml">
-      <configuration name="LTLFairCondTest.test" configurationId="JUnit" />
+    <history-entry file="LTLFairCondTest - 2020.02.28 at 19h 28m 08s.xml">
+      <configuration name="LTLFairCondTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LTLFairCondTest_test - 2020.02.28 at 15h 55m 55s.xml">
-      <configuration name="LTLFairCondTest.test" configurationId="JUnit" />
+    <history-entry file="LTLFairCondTest - 2020.02.28 at 19h 29m 58s.xml">
+      <configuration name="LTLFairCondTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LTLTest_Maayan - 2020.02.28 at 16h 09m 49s.xml">
-      <configuration name="LTLTest_Maayan" configurationId="JUnit" />
+    <history-entry file="LTLFairCondTest - 2020.02.28 at 19h 35m 44s.xml">
+      <configuration name="LTLFairCondTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LTLTest - 2020.02.28 at 16h 10m 00s.xml">
-      <configuration name="LTLTest" configurationId="JUnit" />
+    <history-entry file="LTLFairCondTest - 2020.02.28 at 19h 35m 47s.xml">
+      <configuration name="LTLFairCondTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GNBAThreeColors - 2020.02.28 at 16h 10m 12s.xml">
-      <configuration name="GNBAThreeColors" configurationId="JUnit" />
+    <history-entry file="LTLFairCondTest - 2020.02.28 at 19h 36m 07s.xml">
+      <configuration name="LTLFairCondTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GNBACritSectionTest - 2020.02.28 at 16h 10m 18s.xml">
-      <configuration name="GNBACritSectionTest" configurationId="JUnit" />
+    <history-entry file="LTLFairCondTest - 2020.02.28 at 19h 37m 22s.xml">
+      <configuration name="LTLFairCondTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GNBACritSectionTest - 2020.02.28 at 16h 10m 23s.xml">
-      <configuration name="GNBACritSectionTest" configurationId="JUnit" />
+    <history-entry file="LTLFairCondTest - 2020.02.28 at 19h 37m 31s.xml">
+      <configuration name="LTLFairCondTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120667000" />
+    <option name="totallyTimeSpent" value="127486000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2388664" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2388664" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -491,8 +460,8 @@
       <window_info id="Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.29129663" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49878544" visible="true" weight="0.38010657" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.37655416" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49878544" weight="0.4777975" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.55950266" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3285968" />
@@ -593,12 +562,6 @@
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest_Maayan.java</url>
-          <line>34</line>
-          <properties />
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/GNBAThreeColors.java</url>
           <line>26</line>
           <properties />
@@ -618,15 +581,21 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java</url>
-          <line>1556</line>
+          <line>1885</line>
           <properties />
-          <option name="timeStamp" value="62" />
+          <option name="timeStamp" value="74" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java</url>
-          <line>1859</line>
+          <line>1729</line>
           <properties />
-          <option name="timeStamp" value="67" />
+          <option name="timeStamp" value="88" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java</url>
+          <line>1526</line>
+          <properties />
+          <option name="timeStamp" value="89" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -637,6 +606,7 @@
         <watch expression="((HashMap)result.transitions).entrySet().toArray()[3]" custom="java.util.HashMap" />
         <watch expression="aut.transitions" />
         <watch expression="((HashMap)result.transitions).entrySet().toArray()[1]" custom="java.util.HashMap" />
+        <watch expression="startThirdPart" />
       </configuration>
     </watches-manager>
   </component>
@@ -875,13 +845,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/TRUE.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/HashSet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -979,21 +942,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/fairness/FairnessCondition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding>
-            <element signature="e#462#463#0" expanded="true" />
-            <element signature="e#498#499#0" expanded="true" />
-            <element signature="e#536#537#0" expanded="true" />
-            <element signature="e#565#566#0" expanded="true" />
-            <element signature="e#601#602#0" expanded="true" />
-            <element signature="e#628#629#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/AP.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -1001,53 +949,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/And.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="34" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="34" />
-          <folding>
-            <element signature="e#318#319#0" expanded="true" />
-            <element signature="e#345#346#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex4/LTLFairCondTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/LTL.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/Not.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#181#182#0" expanded="true" />
-            <element signature="e#283#284#0" expanded="true" />
-            <element signature="e#317#318#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest_Maayan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="28" column="27" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1090,10 +995,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/Not.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#181#182#0" expanded="true" />
+            <element signature="e#283#284#0" expanded="true" />
+            <element signature="e#317#318#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex3/LTLTest_Maayan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="28" column="27" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/And.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="34" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="34" />
+          <folding>
+            <element signature="e#318#319#0" expanded="true" />
+            <element signature="e#345#346#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/il/ac/bgu/cs/formalmethodsintro/base/ex4/LTLFairCondTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/ltl/TRUE.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3" selection-start-column="3" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/fairness/FairnessCondition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding>
+            <element signature="e#462#463#0" expanded="true" />
+            <element signature="e#498#499#0" expanded="true" />
+            <element signature="e#536#537#0" expanded="true" />
+            <element signature="e#565#566#0" expanded="true" />
+            <element signature="e#601#602#0" expanded="true" />
+            <element signature="e#628#629#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/il/ac/bgu/cs/formalmethodsintro/base/FvmFacade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="1599" lean-forward="true" selection-start-line="1599" selection-end-line="1599" />
+        <state relative-caret-position="66">
+          <caret line="1526" selection-start-line="1526" selection-end-line="1526" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#18331#18332#0" expanded="true" />
@@ -1124,12 +1094,8 @@
             <element signature="e#71433#71434#0" expanded="true" />
             <element signature="e#71818#71819#0" expanded="true" />
             <element signature="e#71864#71865#0" expanded="true" />
-            <element signature="e#78054#78055#0" expanded="true" />
-            <element signature="e#78140#78141#0" expanded="true" />
-            <element signature="e#78192#78193#0" expanded="true" />
-            <element signature="e#78247#78248#0" expanded="true" />
-            <element signature="e#79329#79330#0" expanded="true" />
-            <element signature="e#79374#79375#0" expanded="true" />
+            <element signature="e#78986#78987#0" expanded="true" />
+            <element signature="e#80097#80098#0" expanded="true" />
             <element signature="e#84676#84677#0" expanded="true" />
             <element signature="e#84716#84717#0" expanded="true" />
             <element signature="e#84762#84763#0" expanded="true" />
@@ -1138,18 +1104,11 @@
             <element signature="e#84988#84989#0" expanded="true" />
             <element signature="e#85024#85025#0" expanded="true" />
             <element signature="e#85060#85061#0" expanded="true" />
-            <element signature="e#84175#84176#0" expanded="true" />
-            <element signature="e#84216#84217#0" expanded="true" />
             <element signature="e#84376#84377#0" expanded="true" />
             <element signature="e#84418#84419#0" expanded="true" />
-            <element signature="e#84451#84452#0" expanded="true" />
-            <element signature="e#84547#84548#0" expanded="true" />
-            <element signature="e#89000#89001#0" expanded="true" />
-            <element signature="e#89122#89123#0" expanded="true" />
+            <element signature="e#90321#90322#0" expanded="true" />
             <element signature="e#85274#85275#0" expanded="true" />
             <element signature="e#85328#85329#0" expanded="true" />
-            <element signature="e#86136#86137#0" expanded="true" />
-            <element signature="e#86176#86177#0" expanded="true" />
           </folding>
         </state>
       </provider>
