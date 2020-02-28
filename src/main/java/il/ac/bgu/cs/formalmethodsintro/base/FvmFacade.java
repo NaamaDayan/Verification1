@@ -1558,7 +1558,7 @@ public class FvmFacade {
     }
 
     private <L> boolean nextConditionsHold(Set<LTL<L>> from, Set<LTL<L>> dest, Set<LTL<L>> sub) {
-        for (LTL<L> ltl: sub) {
+        for (LTL<L> ltl : sub) {
             if (ltl instanceof Next) {
                 //first condition
                 if (from.contains(ltl))
@@ -1574,11 +1574,11 @@ public class FvmFacade {
     }
 
     private <L> boolean subConditionsHold(Set<LTL<L>> from, Set<LTL<L>> dest, Set<LTL<L>> sub) {
-        for (LTL<L> ltl: sub) {
+        for (LTL<L> ltl : sub) {
             if (ltl instanceof Until) {
                 //first condition
                 if (from.contains(ltl) && from.contains(getNotLTL(((Until<L>) ltl).getRight()))) //TODO: contains(Not(ltl))
-                                                                                                //TODO: or !contains(ltl) ???
+                    //TODO: or !contains(ltl) ???
                     if (!dest.contains(ltl))
                         return false;
                 //second condition
@@ -1592,7 +1592,7 @@ public class FvmFacade {
 
     private <L> Set<L> getAtomics(Set<LTL<L>> state) {
         Set<L> atomics = new HashSet<>();
-        for(LTL<L> ltl: state)
+        for (LTL<L> ltl : state)
             if (ltl instanceof AP)
                 atomics.add(((AP<L>) ltl).getName());
         return atomics;
@@ -1621,7 +1621,7 @@ public class FvmFacade {
     //TODO: check
     private <L> Set<Set<LTL<L>>> getConsistentSubs(Set<Set<LTL<L>>> allSubs, Set<LTL<L>> sub) {
         Set<Set<LTL<L>>> result = new HashSet<>();
-        for (Set<LTL<L>> subset: allSubs) {
+        for (Set<LTL<L>> subset : allSubs) {
             if (isConsistent(subset, sub))
                 result.add(subset);
         }
@@ -1636,7 +1636,7 @@ public class FvmFacade {
         if (sub.contains(new TRUE<>()))
             if (!set.contains(new TRUE<>()))
                 return false;
-        for (LTL<L> phi: sub) {
+        for (LTL<L> phi : sub) {
             if (set.contains(phi))
                 if (set.contains(getNotLTL(phi)))
                     return false;
@@ -1653,7 +1653,7 @@ public class FvmFacade {
     }
 
     private <L> boolean isLocalConsistent(Set<LTL<L>> set, Set<LTL<L>> sub) {
-        for (LTL<L> phi: sub) {
+        for (LTL<L> phi : sub) {
             if (phi instanceof Until) {
                 if (set.contains(((Until<L>) phi).getRight()))
                     if (!set.contains(phi))
@@ -1667,7 +1667,7 @@ public class FvmFacade {
     }
 
     private <L> boolean isMax(Set<LTL<L>> set, Set<LTL<L>> sub) {
-        for (LTL<L> phi: sub) {
+        for (LTL<L> phi : sub) {
             if (!set.contains(phi))
                 if (!set.contains(getNotLTL(phi)))
                     return false;
@@ -1690,12 +1690,10 @@ public class FvmFacade {
         if (ltl instanceof Until) {
             calcSubRec(((Until) ltl).getLeft(), sub);
             calcSubRec(((Until) ltl).getRight(), sub);
-        }
-        else if (ltl instanceof And) {
+        } else if (ltl instanceof And) {
             calcSubRec(((And) ltl).getLeft(), sub);
             calcSubRec(((And) ltl).getRight(), sub);
-        }
-        else if (ltl instanceof Not)
+        } else if (ltl instanceof Not)
             calcSubRec(((Not) ltl).getInner(), sub);
         else if (ltl instanceof Next)
             calcSubRec(((Next) ltl).getInner(), sub);
@@ -1714,14 +1712,14 @@ public class FvmFacade {
         return GNBA2NBAHelper(mulAut);
     }
 
-    private <State, L> Automaton<Pair<State,Integer>, L> GNBA2NBAHelper(MultiColorAutomaton<State, L> mulAut) {
-        Automaton<Pair<State,Integer>, L> finalNBA = new Automaton<>();
+    private <State, L> Automaton<Pair<State, Integer>, L> GNBA2NBAHelper(MultiColorAutomaton<State, L> mulAut) {
+        Automaton<Pair<State, Integer>, L> finalNBA = new Automaton<>();
         int numOfColors = mulAut.getColors().size();
-        List<MultiColorAutomaton<Pair<State,Integer>, L>> autCopies = new LinkedList<>();
+        List<MultiColorAutomaton<Pair<State, Integer>, L>> autCopies = new LinkedList<>();
         for (int i : mulAut.getColors())
             autCopies.add(mulAut.copyAutomat(i));
         //set initials
-        for (Pair<State,Integer> state : autCopies.get(0).getInitialStates())
+        for (Pair<State, Integer> state : autCopies.get(0).getInitialStates())
             finalNBA.setInitial(state);
         for (Map.Entry<State, Map<Set<L>, Set<State>>> transition : mulAut.getTransitions().entrySet()) {
             for (Map.Entry<Set<L>, Set<State>> entry : transition.getValue().entrySet())
@@ -1729,8 +1727,8 @@ public class FvmFacade {
                     for (int i : mulAut.getColors())
                         for (int j : mulAut.getColors()) {
                             boolean sAcceptable = mulAut.getAcceptingStates(i).contains(transition.getKey()); //TODO:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
-                            if ((!sAcceptable && j == i) || (sAcceptable && (j == (i+1) % numOfColors))) //TODO: Shahar - what is the right formula if we start from 0 and not 1?????????
-                                finalNBA.addTransition(new Pair<>(transition.getKey(),i), entry.getKey(), new Pair<>(toState, j));
+                            if ((!sAcceptable && j == i) || (sAcceptable && (j == (i + 1) % numOfColors))) //TODO: Shahar - what is the right formula if we start from 0 and not 1?????????
+                                finalNBA.addTransition(new Pair<>(transition.getKey(), i), entry.getKey(), new Pair<>(toState, j));
                         }
         }
         //acceptance
@@ -1742,19 +1740,20 @@ public class FvmFacade {
 
     /**
      * Verify that a system satisfies an LTL formula under fairness conditions.
-     * @param ts Transition system
-     * @param fc Fairness condition
+     *
+     * @param ts  Transition system
+     * @param fc  Fairness condition
      * @param ltl An LTL formula
-     * @param <S>  Type of states in the transition system
+     * @param <S> Type of states in the transition system
      * @param <A> Type of actions in the transition system
      * @param <P> Type of atomic propositions in the transition system
      * @return a VerificationSucceeded object or a VerificationFailed object with a counterexample.
      */
-    public <S, A, P> VerificationResult<S> verifyFairLTLFormula(TransitionSystem<S, A, P> ts, FairnessCondition<A> fc, LTL<P> ltl){
+    public <S, A, P> VerificationResult<S> verifyFairLTLFormula(TransitionSystem<S, A, P> ts, FairnessCondition<A> fc, LTL<P> ltl) {
         TransitionSystem<Pair<S, A>, A, Object> TSPrime = new TransitionSystem<>(); // Object because string and P aren't the same
         //States & initals & labels
-        for (S state: ts.getStates())
-            for (A act: ts.getActions()) {
+        for (S state : ts.getStates())
+            for (A act : ts.getActions()) {
                 Pair<S, A> newState = new Pair<>(state, act);
                 if (ts.getInitialStates().contains(state))
                     TSPrime.addInitialState(newState);
@@ -1762,11 +1761,11 @@ public class FvmFacade {
                     TSPrime.addState(newState);
                 //labeling
                 //add the original labels
-                for(P label: ts.getLabel(state))
+                for (P label : ts.getLabel(state))
                     TSPrime.addToLabel(newState, label);
                 //add the triggered and enabled labels by need
                 TSPrime.addToLabel(newState, "triggered(" + act.toString() + ")");
-                for(A alphaPrime: ts.getActions())
+                for (A alphaPrime : ts.getActions())
                     if (!post(ts, state, alphaPrime).isEmpty())
                         TSPrime.addToLabel(newState, "enabled(" + alphaPrime.toString() + ")");
             }
@@ -1775,20 +1774,163 @@ public class FvmFacade {
         //APs
         Set<Object> APprime = new HashSet<>(); //because string and P aren't the same
         APprime.addAll(ts.getAtomicPropositions());
-        for(A act: ts.getActions()) {
+        for (A act : ts.getActions()) {
             APprime.add("triggered(" + act.toString() + ")");
             APprime.add("enabled(" + act.toString() + ")");
         }
         //transitions
-        for(TSTransition<S, A> trans: ts.getTransitions()) {
-            for (Pair<S, A> tsprimeState: TSPrime.getStates()) {
+        for (TSTransition<S, A> trans : ts.getTransitions()) {
+            for (Pair<S, A> tsprimeState : TSPrime.getStates()) {
                 if (tsprimeState.getFirst().equals(trans.getFrom()))
                     TSPrime.addTransition(new TSTransition<>(tsprimeState, trans.getAction(), new Pair<>(trans.getTo(), trans.getAction())));
             }
         }
         //-----TS_Prime is ready!----
+        //build the three parts of the formula:
+        //FIRST PART
+        LTL firstPart = new And(new TRUE(), new TRUE());
+        LTL startfirstPart = firstPart;
+        for (Set<A> uncond : fc.getUnconditional()) {
+            if (!uncond.isEmpty()) {
+                Or innerOr = new Or(new False<>().toLTL(), new False<>().toLTL());
+                for (A ap : uncond) {
+                    innerOr.setLeft(new AP("triggered(" + ap.toString() + ")"));
+                    LTL tmpInnerOr = innerOr.toLTL();
+                    innerOr = new Or(new False<>().toLTL(), tmpInnerOr);
+                }
+                LTL alwaysEventually = new Always<>(new Eventually<>(innerOr.toLTL()).toLTL()).toLTL();
+                ((And) firstPart).setLeft(alwaysEventually);
+                ((And) firstPart).setRight(new And(new TRUE(), new TRUE()));
+                firstPart = ((And) firstPart).getRight();
+            }
+        }
+        //SECOND PART
+        LTL secondPart = new And(new TRUE(), new TRUE());
+        LTL startsecondPart = secondPart;
+        for (Set<A> strong : fc.getStrong()) {
+            if (!strong.isEmpty()) {
+                Or innerEnabledOr = new Or(new False<>().toLTL(), new False<>().toLTL());
+                Or innerTriggeredOr = new Or(new False<>().toLTL(), new False<>().toLTL());
+                for (A ap : strong) {
+                    //build the enabled or
+                    innerEnabledOr.setLeft(new AP("enabled(" + ap.toString() + ")"));
+                    LTL tmpInnerEnabledOr = innerEnabledOr.toLTL();
+                    innerEnabledOr = new Or(new False<>().toLTL(), tmpInnerEnabledOr);
+                    //build the triggered or
+                    innerTriggeredOr.setLeft(new AP("triggered(" + ap.toString() + ")"));
+                    LTL tmpInnerTriggeredOr = innerTriggeredOr.toLTL();
+                    innerTriggeredOr = new Or(new False<>().toLTL(), tmpInnerTriggeredOr);
+                }
+                LTL alwaysEventuallyEnabled = new Always<>(new Eventually<>(innerEnabledOr.toLTL()).toLTL()).toLTL();
+                LTL alwaysEventuallyTriggered = new Always<>(new Eventually<>(innerTriggeredOr.toLTL()).toLTL()).toLTL();
+                LTL cond = new IfThen<>(alwaysEventuallyEnabled, alwaysEventuallyTriggered).toLTL();
+                ((And) secondPart).setLeft(cond);
+                ((And) secondPart).setRight(new And(new TRUE(), new TRUE()));
+                secondPart = ((And) secondPart).getRight();
+            }
+        }
+        //THIRD PART
+        LTL thirdPart = new And(new TRUE(), new TRUE());
+        LTL startThirdPart = thirdPart;
+        for (Set<A> weak : fc.getWeak()) {
+            if (!weak.isEmpty()) {
+                Or innerEnabledOr = new Or(new False<>().toLTL(), new False<>().toLTL());
+                Or innerTriggeredOr = new Or(new False<>().toLTL(), new False<>().toLTL());
+                for (A ap : weak) {
+                    //build the enabled or
+                    innerEnabledOr.setLeft(new AP("enabled(" + ap.toString() + ")"));
+                    LTL tmpInnerEnabledOr = innerEnabledOr.toLTL();
+                    innerEnabledOr = new Or(new False<>().toLTL(), tmpInnerEnabledOr);
+                    //build the triggered or
+                    innerTriggeredOr.setLeft(new AP("triggered(" + ap.toString() + ")"));
+                    LTL tmpInnerTriggeredOr = innerTriggeredOr.toLTL();
+                    innerTriggeredOr = new Or(new False<>().toLTL(), tmpInnerTriggeredOr);
+                }
+                LTL eventuallyAlwaysEnabled = new Eventually<>(new Always<>(innerEnabledOr.toLTL()).toLTL()).toLTL();
+                LTL alwaysEventuallyTriggered = new Always<>(new Eventually<>(innerTriggeredOr.toLTL()).toLTL()).toLTL();
+                LTL cond = new IfThen<>(eventuallyAlwaysEnabled, alwaysEventuallyTriggered).toLTL();
+                ((And) thirdPart).setLeft(cond);
+                ((And) thirdPart).setRight(new And(new TRUE(), new TRUE()));
+                thirdPart = ((And) thirdPart).getRight();
+            }
+        }
+        //FULL EXPRESSION
+        LTL phiF = new And(startfirstPart, new And(startsecondPart, startThirdPart));
     }
 
+    class Or<L> extends LTL<L> {
+        private LTL<L> left;
+        private LTL<L> right;
+
+        public Or(LTL<L> left, LTL<L> right) {
+            this.left = left;
+            this.right = right;
+        }
+
+        public void setLeft(LTL<L> left) {
+            this.left = left;
+        }
+
+        public void setRight(LTL<L> right) {
+            this.right = right;
+        }
+
+        public LTL<L> getLeft() {
+            return left;
+        }
+
+        public LTL<L> getRight() {
+            return right;
+        }
+
+        public LTL<L> toLTL() {
+            return new Not<>(new And<>(new Not<>(this.left), new Not<>(this.right)));
+        }
+    }
+
+    class Eventually<L> {
+        private LTL<L> inner;
+
+        public Eventually(LTL<L> inner) {
+            this.inner = inner;
+        }
+
+        public LTL<L> toLTL() {
+            return new Until<>(new TRUE<>(), this.inner);
+        }
+    }
+
+    class Always<L> {
+        private LTL<L> inner;
+
+        public Always(LTL<L> inner) {
+            this.inner = inner;
+        }
+
+        public LTL<L> toLTL() {
+            return new Not<>(new Eventually<>(new Not<>(this.inner)).toLTL());
+        }
+    }
+
+    class False<L> {
+        public LTL<L> toLTL() {
+            return new Not<>(new TRUE<>());
+        }
+    }
+
+    class IfThen<L> {
+        private LTL<L> ifExp;
+        private LTL<L> then;
+
+        public IfThen(LTL<L> ifExp, LTL<L> then) {
+            this.ifExp = ifExp;
+            this.then = then;
+        }
+
+        public LTL<L> toLTL() {
+            return new Or<>(new Not<>(this.ifExp), this.then).toLTL();
+        }
+    }
 //********************************* UTILITIES *****************************************
 
     private interface Handler<S1, S2> {
